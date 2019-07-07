@@ -2,7 +2,7 @@ package com.tantra.tantrayoga.base
 
 import android.arch.lifecycle.ViewModel
 import net.gahfy.mvvmposts.injection.component.ViewModelInjector
-import net.gahfy.mvvmposts.injection.module.NetworkModule
+import com.tantra.tantrayoga.common.dependencyinjection.module.NetworkModule
 import com.tantra.tantrayoga.ui.post.PostListViewModel
 import com.tantra.tantrayoga.ui.post.PostViewModel
 import net.gahfy.mvvmposts.injection.component.DaggerViewModelInjector

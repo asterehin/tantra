@@ -1,4 +1,4 @@
-package net.gahfy.mvvmposts.injection.module
+package com.tantra.tantrayoga.common.dependencyinjection.module
 
 import com.tantra.tantrayoga.utils.BASE_URL
 import dagger.Module

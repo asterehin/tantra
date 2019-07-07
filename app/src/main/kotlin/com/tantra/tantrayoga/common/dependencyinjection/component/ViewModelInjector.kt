@@ -1,7 +1,7 @@
 package net.gahfy.mvvmposts.injection.component
 
 import dagger.Component
-import net.gahfy.mvvmposts.injection.module.NetworkModule
+import com.tantra.tantrayoga.common.dependencyinjection.module.NetworkModule
 import com.tantra.tantrayoga.ui.post.PostListViewModel
 import com.tantra.tantrayoga.ui.post.PostViewModel
 import javax.inject.Singleton
