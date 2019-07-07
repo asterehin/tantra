@@ -1,16 +1,22 @@
 {
   "posts": [
     {
+      "userid": "andter",
       "id": 1,
-      "title": "Post 1"
+      "title": "Post 1",
+      "body" : "body1"
     },
     {
+      "userid": "andter",
       "id": 2,
-      "title": "Post 2"
+      "title": "Post 2",
+      "body" : "body2"
     },
     {
+      "userid": "andzab",
       "id": 3,
-      "title": "Post 3"
+      "title": "Post 3",
+      "body" : "body3"
     }
   ],
   "comments": [
