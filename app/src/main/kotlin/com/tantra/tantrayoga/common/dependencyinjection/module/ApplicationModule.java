@@ -1,9 +1,12 @@
-package com.tantra.tantrayoga.common.dependencyinjection.application;
+package com.tantra.tantrayoga.common.dependencyinjection.module;
 
 import android.app.Application;
+import com.tantra.tantrayoga.common.dependencyinjection.application.ApplicationScope;
 import com.tantra.tantrayoga.common.dependencyinjection.logging.MyLogger;
 import dagger.Module;
 import dagger.Provides;
+
+import javax.inject.Singleton;
 
 @Module
 public class ApplicationModule {
@@ -15,16 +18,16 @@ public class ApplicationModule {
     }
 
     @Provides
-    @ApplicationScope
+    @Singleton
     Application application() {
         return mApplication;
     }
 
-    @Provides
-    @ApplicationScope
-    MyLogger logger() {
-        return new MyLogger();
-    }
+//    @Provides
+//    @ApplicationScope
+//    MyLogger logger() {
+//        return new MyLogger();
+//    }
 
 //    @Provides
 //    @ApplicationScope

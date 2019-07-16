@@ -12,6 +12,9 @@ import android.view.Menu
 import android.view.MenuItem
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
+import com.tantra.tantrayoga.common.dependencyinjection.component.DaggerApplicationComponent
+import com.tantra.tantrayoga.common.dependencyinjection.module.ApplicationModule
+import com.tantra.tantrayoga.common.dependencyinjection.module.RoomModule
 import com.tantra.tantrayoga.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,16 +31,19 @@ class PostListActivity : AppCompatActivity() {
 
         binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
+//        DaggerApplicationComponent
+//            .builder()
+//            .applicationModule(ApplicationModule(getApplication()))
+//            .roomModule(RoomModule(getApplication()))
+//            .build()
+//            .inject(this)
+
         viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(PostListViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             if (errorMessage != null) showError(errorMessage) else hideError()
         })
         binding.viewModel = viewModel
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        binding.handler = viewModel
     }
 
     private fun showError(@StringRes errorMessage: Int) {

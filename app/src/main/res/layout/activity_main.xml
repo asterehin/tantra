@@ -4,7 +4,12 @@
     <data>
         <variable
                 name="viewModel"
-                type="com.tantra.tantrayoga.ui.post.PostListViewModel"/>
+                type="com.tantra.tantrayoga.ui.post.PostListViewModel"
+        />
+        <variable
+                name="handler"
+                type="com.tantra.tantrayoga.ui.post.PostListViewModel"
+        />
     </data>
     <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -56,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
-                app:srcCompat="@android:drawable/ic_input_add"/>
+                app:srcCompat="@android:drawable/ic_input_add"
+                android:onClick="@{handler::onClick}"/>
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>
