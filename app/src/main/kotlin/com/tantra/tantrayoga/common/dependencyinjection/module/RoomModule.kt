@@ -17,6 +17,7 @@ import javax.inject.Singleton
 import android.arch.persistence.room.Room
 import com.tantra.tantrayoga.model.PostDao
 import com.tantra.tantrayoga.model.database.AppDatabase
+import com.tantra.tantrayoga.model.database.AppDatabase.Companion.appDatabaseInstance
 import com.tantra.tantrayoga.repository.PostRepository
 
 
@@ -26,7 +27,7 @@ import com.tantra.tantrayoga.repository.PostRepository
  * Module which provides all required dependencies about network
  */
 @Module //@Module — classes which methods “provide dependencies”
-class RoomModule(mApplication: Application, var demoDatabase: AppDatabase = Room.databaseBuilder(mApplication, AppDatabase::class.java, "app-db").build()) {
+class RoomModule(mApplication: Application, var demoDatabase: AppDatabase = appDatabaseInstance(mApplication)) {
 //    private var demoDatabase: AppDatabase
 
 //    init {

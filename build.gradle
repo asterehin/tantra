@@ -10,6 +10,9 @@ buildscript {
     ext.gradle_version = '3.1.0'
     ext.androidxAppcompatVersion = '1.0.2'
     ext.androidxAnnotationVersion = '1.0.2'
+    ext.gsonVersion = '2.8.2'
+    ext.okhttpVersion = '3.11.0'
+
     repositories {
         google()
         jcenter()

@@ -18,6 +18,8 @@ import com.tantra.tantrayoga.common.dependencyinjection.module.RoomModule
 import com.tantra.tantrayoga.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
+//https://nuancesprog.ru/p/3270/
+
 class PostListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: PostListViewModel
@@ -31,16 +33,13 @@ class PostListActivity : AppCompatActivity() {
 
         binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-//        DaggerApplicationComponent
-//            .builder()
-//            .applicationModule(ApplicationModule(getApplication()))
-//            .roomModule(RoomModule(getApplication()))
-//            .build()
-//            .inject(this)
-
         viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(PostListViewModel::class.java)
+        viewModel.addLocationUpdates(this)
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             if (errorMessage != null) showError(errorMessage) else hideError()
+        })
+        viewModel.popularMoviesLiveData.observe(this, Observer { posts ->
+            viewModel.updateList(posts)
         })
         binding.viewModel = viewModel
         binding.handler = viewModel

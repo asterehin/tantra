@@ -1,82 +1,102 @@
 package com.tantra.tantrayoga.ui.post
 
-import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.*
 import android.view.View
 import com.tantra.tantrayoga.model.Post
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+
 import com.tantra.tantrayoga.base.BaseViewModel
 import com.tantra.tantrayoga.model.PostDao
 import com.tantra.tantrayoga.network.PostApi
 import javax.inject.Inject
 import android.support.design.widget.Snackbar
-import com.tantra.tantrayoga.repository.PostRepositoryInterface
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import kotlinx.coroutines.*
+import java.lang.Exception
+import kotlin.coroutines.CoroutineContext
 
-class PostListViewModel(private val postDao: PostDao): BaseViewModel(){
+class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
+
     @Inject
     lateinit var postApi: PostApi
-//    @Inject
-//    lateinit var postRepoInterface: PostRepositoryInterface
-//
-//    @Inject //@Inject — base annotation whereby the “dependency is requested”
-//    fun PostListViewModel(postRepoInterface: PostRepositoryInterface) {
-//        this.postRepoInterface = postRepoInterface
-//    }
+    //    @Inject
+    private val parentJob = Job()
+    private val coroutineContext: CoroutineContext
+        get() = parentJob + Dispatchers.Default
+
+    private val scope = CoroutineScope(coroutineContext)
+
+    private lateinit var lifecycleOwner: LifecycleOwner
+
 
     val postListAdapter: PostListAdapter = PostListAdapter()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
-    val errorMessage:MutableLiveData<Int> = MutableLiveData()
+
+    val popularMoviesLiveData = MutableLiveData<MutableList<Post>>()
+
+    val errorMessage: MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadPosts() }
     private lateinit var subscription: Disposable
 
-    init{
+    init {
         loadPosts()
     }
+
+    // Assign our LifecyclerObserver to LifecycleOwner
+    fun addLocationUpdates(lifecycleOwner: LifecycleOwner) {
+        this.lifecycleOwner = lifecycleOwner
+    }
+
 
     override fun onCleared() {
         super.onCleared()
         subscription.dispose()
     }
 
-    private fun loadPosts(){
-        subscription = Observable.fromCallable { postDao.all }
-                .concatMap {
-                    dbPostList ->
-                        if(dbPostList.isEmpty())
-                            postApi.getPosts().concatMap {
-                                            apiPostList -> postDao.insertAll(*apiPostList.toTypedArray())
-                                 Observable.just(apiPostList)
-                                       }
-                        else
-                            Observable.just(dbPostList)
-                }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { onRetrievePostListStart() }
-                .doOnTerminate { onRetrievePostListFinish() }
-                .subscribe(
-                        { result -> onRetrievePostListSuccess(result) },
-                        { onRetrievePostListError() }
-                )
-    }
+    private fun loadPosts() {
 
-    private fun onRetrievePostListStart(){
+        onRetrievePostListStart()
+
+        scope.launch {
+            val postRequest = postApi.getPosts()
+            try {
+                val response = postRequest.await()
+                if (response.isSuccessful) {
+                    val posts = response.body()
+                    postDao.insertAll(*posts!!.toTypedArray())
+                    popularMoviesLiveData.postValue(postDao.all.toMutableList())
+
+                } else {
+                    onRetrievePostListError()
+                    Log.d("MainActivity ", response.errorBody().toString())
+                }
+
+            } catch (e: Exception) {
+                onSomeException(e)
+            }
+        }
+
+    }
+    private fun onRetrievePostListStart() {
         loadingVisibility.value = View.VISIBLE
         errorMessage.value = null
     }
 
-    private fun onRetrievePostListFinish(){
+    private fun onRetrievePostListFinish() {
         loadingVisibility.value = View.GONE
     }
 
-    private fun onRetrievePostListSuccess(postList:List<Post>){
+    fun onRetrievePostListSuccess(postList: List<Post>) {
         postListAdapter.updatePostList(postList)
     }
 
-    private fun onRetrievePostListError(){
+    private fun onSomeException(e: Exception) {
+        errorMessage.postValue( com.tantra.tantrayoga.R.string.some_error)
+    }
+
+    private fun onRetrievePostListError() {
         errorMessage.value = com.tantra.tantrayoga.R.string.post_error
     }
 
@@ -84,5 +104,17 @@ class PostListViewModel(private val postDao: PostDao): BaseViewModel(){
         //https://medium.com/@kyle.dahlin0/room-persistence-library-with-coroutines-cdd32f9fe669
         Snackbar.make(view, "onCLick has been processed", Snackbar.LENGTH_SHORT).show()
 //        postRepoInterface.insertAppEntry(Post(0, 0, "title", "body"))
+        scope.launch {
+            val i = postDao.insert(Post(5, 0, "title", "body"))
+            Log.e("PostListViewModel-onClick 190 ", "$i")
+            popularMoviesLiveData.postValue(postDao.all.toMutableList())
+        }
+
+    }
+
+    fun updateList(postList: MutableList<Post>?) {
+        onRetrievePostListSuccess(postList?.toList() ?: emptyList())
+
+        onRetrievePostListFinish()
     }
 }

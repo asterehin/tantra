@@ -13,8 +13,12 @@ import android.arch.persistence.room.PrimaryKey
 @Entity
 data class Post(
         val userId: Int,
-        @field:PrimaryKey
+        @field:PrimaryKey(autoGenerate = true)
         val id: Int,
         val title: String,
         val body: String
+)
+
+data class PostResponse(
+        val results: List<Post>
 )

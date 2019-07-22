@@ -1,5 +1,6 @@
 package com.tantra.tantrayoga.common.dependencyinjection.module
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.tantra.tantrayoga.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -40,7 +41,8 @@ object NetworkModule {
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
     }
 }
