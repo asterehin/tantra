@@ -12,6 +12,7 @@ import javax.inject.Inject
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.tantra.tantrayoga.model.Event
 import kotlinx.coroutines.*
 import java.lang.Exception
 import kotlin.coroutines.CoroutineContext
@@ -38,6 +39,11 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
 
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadPosts() }
+
+    private val _navigateToDetails = MutableLiveData<Event<String>>()
+    val navigateToDetails: LiveData<Event<String>>
+        get() = _navigateToDetails
+
     private lateinit var subscription: Disposable
 
     init {
@@ -79,6 +85,7 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
         }
 
     }
+
     private fun onRetrievePostListStart() {
         loadingVisibility.value = View.VISIBLE
         errorMessage.value = null
@@ -93,7 +100,7 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
     }
 
     private fun onSomeException(e: Exception) {
-        errorMessage.postValue( com.tantra.tantrayoga.R.string.some_error)
+        errorMessage.postValue(com.tantra.tantrayoga.R.string.some_error)
     }
 
     private fun onRetrievePostListError() {
@@ -103,13 +110,15 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
     fun onClick(view: View) {
         //https://medium.com/@kyle.dahlin0/room-persistence-library-with-coroutines-cdd32f9fe669
         Snackbar.make(view, "onCLick has been processed", Snackbar.LENGTH_SHORT).show()
-//        postRepoInterface.insertAppEntry(Post(0, 0, "title", "body"))
+        _navigateToDetails.value = Event("some content")  // Trigger the event by setting a new Event as a new value
+
+    }
+
+    fun addNewItem(name: String) {
         scope.launch {
-            val i = postDao.insert(Post(5, 0, "title", "body"))
-            Log.e("PostListViewModel-onClick 190 ", "$i")
+            val i = postDao.insert(Post(5, 0, "title", name))
             popularMoviesLiveData.postValue(postDao.all.toMutableList())
         }
-
     }
 
     fun updateList(postList: MutableList<Post>?) {
