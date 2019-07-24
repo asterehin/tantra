@@ -33,7 +33,7 @@ class ProgrammListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, com.tantra.tantrayoga.R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, com.tantra.tantrayoga.R.layout.activity_programms)
         setSupportActionBar(toolbar)
 
         binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

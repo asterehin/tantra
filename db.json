@@ -36,25 +36,25 @@
   },
   "programms": [
     {
-      "userid": "andter",
+      "userUUID": "andter",
       "UUID": "27390e2e-041e-4813-aa71-985664960a70",
       "name": "Курс 1",
       "desc" : "Программа асан йоги для практики на первом курсе"
     },
     {
-      "userid": "andter",
+      "userUUID": "andter",
       "UUID": "99c93a08-6e02-4627-9b53-37d634ce660b",
       "name": "Курс 2",
       "desc" : "Программа асан йоги для практики на втором курсе"
     },
     {
-      "userid": "andzab",
+      "userUUID": "andzab",
       "UUID": "f9c82941-44a9-4b4a-8611-7f74bea33392",
       "name": "Курс 3",
       "desc" : "Программа асан йоги для практики на третьем курсе"
     },
     {
-      "userid": "andzab",
+      "userUUID": "andzab",
       "UUID": "ee21a714-2a17-4d28-94b2-4e0bfe294bbb",
       "name": "Курс 4",
       "desc" : "Программа асан йоги для практики на четвертом курсе"
