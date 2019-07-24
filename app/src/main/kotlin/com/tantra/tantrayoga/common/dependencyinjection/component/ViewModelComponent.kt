@@ -4,6 +4,7 @@ import dagger.Component
 import com.tantra.tantrayoga.common.dependencyinjection.module.NetworkModule
 import com.tantra.tantrayoga.ui.post.PostListViewModel
 import com.tantra.tantrayoga.ui.post.PostViewModel
+import com.tantra.tantrayoga.ui.programm.ProgrammListViewModel
 import javax.inject.Singleton
 
 /**
@@ -12,6 +13,12 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [(NetworkModule::class)]) //bridge between @Inject and @Module
 interface ViewModelComponent {
+    /**
+     * Injects required dependencies into the specified ProgrammListViewModel.
+     * @param programmListViewModel ProgrammListViewModel in which to inject the dependencies
+     */
+    fun inject(programmListViewModel: ProgrammListViewModel)
+
     /**
      * Injects required dependencies into the specified PostListViewModel.
      * @param postListViewModel PostListViewModel in which to inject the dependencies

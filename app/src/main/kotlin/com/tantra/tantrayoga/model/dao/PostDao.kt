@@ -1,4 +1,4 @@
-package com.tantra.tantrayoga.model
+package com.tantra.tantrayoga.model.dao
 
 import android.arch.persistence.room.*
 import com.tantra.tantrayoga.model.Post

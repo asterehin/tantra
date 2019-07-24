@@ -1,19 +1,9 @@
 package com.tantra.tantrayoga.common.dependencyinjection.component
 
 
-import android.app.Application
-import android.arch.persistence.room.Dao
-import com.tantra.tantrayoga.MainActivity
 import com.tantra.tantrayoga.common.dependencyinjection.application.ApplicationScope
-import com.tantra.tantrayoga.common.dependencyinjection.application.SettingsModule
 import com.tantra.tantrayoga.common.dependencyinjection.module.ApplicationModule
 import com.tantra.tantrayoga.common.dependencyinjection.module.RoomModule
-import com.tantra.tantrayoga.model.PostDao
-import com.tantra.tantrayoga.model.database.AppDatabase
-import com.tantra.tantrayoga.repository.PostRepository
-import com.tantra.tantrayoga.ui.post.PostListActivity
-import com.tantra.tantrayoga.ui.post.PostListViewModel
-import com.tantra.tantrayoga.ui.post.PostViewModel
 import dagger.Component
 
 import javax.inject.Singleton

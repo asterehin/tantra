@@ -1,4 +1,4 @@
-package com.tantra.tantrayoga.ui.post
+package com.tantra.tantrayoga.ui.programm
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -19,13 +19,15 @@ import android.content.DialogInterface
 import android.widget.EditText
 import android.app.AlertDialog
 import android.content.Context
+import com.tantra.tantrayoga.databinding.ActivityProgrammsBinding
+import com.tantra.tantrayoga.ui.programm.ProgrammListViewModel
 
 
 //https://nuancesprog.ru/p/3270/
 
-class PostListActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: PostListViewModel
+class ProgrammListActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityProgrammsBinding
+    private lateinit var viewModel: ProgrammListViewModel
     private var errorSnackbar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +38,7 @@ class PostListActivity : AppCompatActivity() {
 
         binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(PostListViewModel::class.java)
-        viewModel.addLocationUpdates(this)
+        viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(ProgrammListViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             if (errorMessage != null) showError(errorMessage) else hideError()
         })
@@ -45,8 +46,8 @@ class PostListActivity : AppCompatActivity() {
             viewModel.updateList(posts)
         })
         viewModel.navigateToDetails.observe(this, Observer {
-            it?.getContentIfNotHandled()?.let { // Only proceed if the event has never been handled
-                Log.e("PostListActivity-onCreate 48 ", "trigger the opening the dialog")
+            it?.getContentIfNotHandled()?.let {
+                // Only proceed if the event has never been handled
                 showAddItemDialog(this)
             }
         })
@@ -61,8 +62,8 @@ class PostListActivity : AppCompatActivity() {
             .setMessage("Введите название новой программы")
             .setView(taskEditText)
             .setPositiveButton("Add",
-                DialogInterface.OnClickListener { dialog, which -> val task = taskEditText.text.toString()
-                Log.e("PostListActivity-showAddItemDialog 69 ", "" + task)
+                DialogInterface.OnClickListener { dialog, which ->
+                    val task = taskEditText.text.toString()
                     viewModel.addNewItem(task)
 
                 })

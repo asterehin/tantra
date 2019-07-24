@@ -1,21 +1,12 @@
 package com.tantra.tantrayoga.common.dependencyinjection.module
 
 import android.app.Application
-import com.tantra.tantrayoga.common.dependencyinjection.application.ApplicationScope
-import com.tantra.tantrayoga.common.dependencyinjection.logging.MyLogger
-import com.tantra.tantrayoga.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
-import io.reactivex.schedulers.Schedulers
-import com.tantra.tantrayoga.network.PostApi
 import com.tantra.tantrayoga.repository.PostRepositoryInterface
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
-import android.arch.persistence.room.Room
-import com.tantra.tantrayoga.model.PostDao
+import com.tantra.tantrayoga.model.dao.PostDao
+import com.tantra.tantrayoga.model.dao.ProgrammDao
 import com.tantra.tantrayoga.model.database.AppDatabase
 import com.tantra.tantrayoga.model.database.AppDatabase.Companion.appDatabaseInstance
 import com.tantra.tantrayoga.repository.PostRepository
@@ -44,6 +35,13 @@ class RoomModule(mApplication: Application, var demoDatabase: AppDatabase = appD
     @Provides
     fun providesPostDao(demoDatabase: AppDatabase): PostDao {
         return demoDatabase.postDao()
+    }
+
+
+    @Singleton
+    @Provides
+    fun providesProgrammDao(demoDatabase: AppDatabase): ProgrammDao {
+        return demoDatabase.programmDao()
     }
 
     @Singleton

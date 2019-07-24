@@ -1,25 +1,25 @@
-package com.tantra.tantrayoga.ui.post
+package com.tantra.tantrayoga.ui.programm
 
 import android.arch.lifecycle.*
 import android.view.View
-import com.tantra.tantrayoga.model.Post
+import com.tantra.tantrayoga.model.Programm
 import io.reactivex.disposables.Disposable
 
 import com.tantra.tantrayoga.base.BaseViewModel
-import com.tantra.tantrayoga.model.dao.PostDao
-import com.tantra.tantrayoga.network.PostApi
 import javax.inject.Inject
 import android.support.design.widget.Snackbar
 import android.util.Log
 import com.tantra.tantrayoga.model.Event
+import com.tantra.tantrayoga.model.dao.ProgrammDao
+import com.tantra.tantrayoga.network.ProgrammApi
 import kotlinx.coroutines.*
 import java.lang.Exception
 import kotlin.coroutines.CoroutineContext
 
-class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
+class ProgrammListViewModel(private val programmDao: ProgrammDao) : BaseViewModel() {
 
     @Inject
-    lateinit var postApi: PostApi
+    lateinit var programmApi: ProgrammApi
     //    @Inject
     private val parentJob = Job()
     private val coroutineContext: CoroutineContext
@@ -27,17 +27,15 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
 
     private val scope = CoroutineScope(coroutineContext)
 
-    private lateinit var lifecycleOwner: LifecycleOwner
 
-
-    val postListAdapter: PostListAdapter = PostListAdapter()
+    val programmListAdapter= ProgrammListAdapter()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
 
-    val popularMoviesLiveData = MutableLiveData<MutableList<Post>>()
+    val popularMoviesLiveData = MutableLiveData<MutableList<Programm>>()
 
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
-    val errorClickListener = View.OnClickListener { loadPosts() }
+    val errorClickListener = View.OnClickListener { loadProgramms() }
 
     private val _navigateToDetails = MutableLiveData<Event<String>>()
     val navigateToDetails: LiveData<Event<String>>
@@ -46,12 +44,7 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
     private lateinit var subscription: Disposable
 
     init {
-        loadPosts()
-    }
-
-    // Assign our LifecyclerObserver to LifecycleOwner
-    fun addLocationUpdates(lifecycleOwner: LifecycleOwner) {
-        this.lifecycleOwner = lifecycleOwner
+        loadProgramms()
     }
 
 
@@ -60,21 +53,21 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
         subscription.dispose()
     }
 
-    private fun loadPosts() {
+    private fun loadProgramms() {
 
-        onRetrievePostListStart()
+        onRetrieveProgrammListStart()
 
         scope.launch {
-            val postRequest = postApi.getPosts()
+            val postRequest = programmApi.getProgramms()
             try {
                 val response = postRequest.await()
                 if (response.isSuccessful) {
                     val posts = response.body()
-                    postDao.insertAll(*posts!!.toTypedArray())
-                    popularMoviesLiveData.postValue(postDao.all.toMutableList())
+                    programmDao.insertAll(*posts!!.toTypedArray())
+                    popularMoviesLiveData.postValue(programmDao.all.toMutableList())
 
                 } else {
-                    onRetrievePostListError()
+                    onRetrieveProgrammListError()
                     Log.d("MainActivity ", response.errorBody().toString())
                 }
 
@@ -85,24 +78,24 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
 
     }
 
-    private fun onRetrievePostListStart() {
+    private fun onRetrieveProgrammListStart() {
         loadingVisibility.value = View.VISIBLE
         errorMessage.value = null
     }
 
-    private fun onRetrievePostListFinish() {
+    private fun onRetrieveProgrammListFinish() {
         loadingVisibility.value = View.GONE
     }
 
-    fun onRetrievePostListSuccess(postList: List<Post>) {
-        postListAdapter.updatePostList(postList)
+    fun onRetrieveProgrammListSuccess(postList: List<Programm>) {
+        programmListAdapter.updateProgrammList(postList)
     }
 
     private fun onSomeException(e: Exception) {
         errorMessage.postValue(com.tantra.tantrayoga.R.string.some_error)
     }
 
-    private fun onRetrievePostListError() {
+    private fun onRetrieveProgrammListError() {
         errorMessage.value = com.tantra.tantrayoga.R.string.post_error
     }
 
@@ -114,15 +107,15 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
     }
 
     fun addNewItem(name: String) {
-        scope.launch {
-            val i = postDao.insert(Post(5, 0, "title", name))
-            popularMoviesLiveData.postValue(postDao.all.toMutableList())
-        }
+//        scope.launch {
+//            val i = programmDao.insert(Programm(5, 0, "title", name))
+//            popularMoviesLiveData.postValue(programmDao.all.toMutableList())
+//        }
     }
 
-    fun updateList(postList: MutableList<Post>?) {
-        onRetrievePostListSuccess(postList?.toList() ?: emptyList())
+    fun updateList(postList: MutableList<Programm>?) {
+        onRetrieveProgrammListSuccess(postList?.toList() ?: emptyList())
 
-        onRetrievePostListFinish()
+        onRetrieveProgrammListFinish()
     }
 }

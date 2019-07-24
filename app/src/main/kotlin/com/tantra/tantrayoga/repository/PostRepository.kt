@@ -1,18 +1,10 @@
 package com.tantra.tantrayoga.repository
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.provider.MediaStore
 import com.tantra.tantrayoga.model.Post
-import com.tantra.tantrayoga.model.PostDao
-import com.tantra.tantrayoga.network.PostApi
+import com.tantra.tantrayoga.model.dao.PostDao
 import kotlinx.coroutines.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import java.io.IOException
-import javax.annotation.Resource
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 

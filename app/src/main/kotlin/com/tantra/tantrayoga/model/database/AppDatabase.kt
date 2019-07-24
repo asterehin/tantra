@@ -1,15 +1,14 @@
 package com.tantra.tantrayoga.model.database
-import android.arch.persistence.db.SupportSQLiteDatabase
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.migration.Migration
 import android.content.Context
-import android.util.Log
 import com.tantra.tantrayoga.model.Post
-import com.tantra.tantrayoga.model.PostDao
+import com.tantra.tantrayoga.model.dao.PostDao
+import com.tantra.tantrayoga.model.Programm
+import com.tantra.tantrayoga.model.dao.ProgrammDao
 
-@Database(entities = [Post::class], version = 2)
+@Database(entities = [Post::class, Programm::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -33,4 +32,5 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
     abstract fun postDao(): PostDao
+    abstract fun programmDao(): ProgrammDao
 }
