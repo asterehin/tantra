@@ -5,4 +5,6 @@
     <string name="some_error">Some error </string>
     <string name="retry">Retry</string>
     <string name="action_asanas">Асаны</string>
+    <string name="programm_name_label">Название программы</string>
+    <string name="programm_desc_label">Описание</string>
 </resources>

@@ -1,9 +1,10 @@
 package com.tantra.tantrayoga.model
 
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Index
 import android.arch.persistence.room.PrimaryKey
 
-@Entity
+@Entity(indices = arrayOf(Index(value = ["UUID"], name = "indexUUID",  unique = true)))
 data class Programm(
     @PrimaryKey(autoGenerate = true) val id: Long,
     val userUUID: String,

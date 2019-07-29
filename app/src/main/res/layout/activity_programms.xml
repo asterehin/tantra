@@ -52,6 +52,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                    app:spanCount="3"
                     android:paddingBottom="?attr/actionBarSize"/>
         </android.support.constraint.ConstraintLayout>
 

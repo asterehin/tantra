@@ -1,3 +1,20 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="mcm_big_row_min_height">42dp</dimen>
+    <dimen name="mcm_row_small_gap">2dp</dimen>
+    <dimen name="mcm_row_normal_gap">4dp</dimen>
+    <dimen name="mcm_row_label_margin">10dp</dimen>
+    <dimen name="mcm_half_gutter">4dp</dimen>
+    <dimen name="mcm_button_inset_vertical_material">6dp</dimen>
+    <dimen name="mcm_control_inset_material">4dp</dimen>
+    <dimen name="mcm_control_corner_material">2dp</dimen>
+    <dimen name="mcm_control_padding_material">4dp</dimen>
+    <dimen name="mcm_button_padding_horizontal_material">8dp</dimen>
+    <dimen name="default_padding">4dp</dimen>
+
+    <dimen name="mcm_button_padding_vertical_material">@dimen/mcm_control_padding_material</dimen>
+
+    <dimen name="mcm_button_inset_horizontal_material">@dimen/mcm_control_inset_material</dimen>
+    <dimen name="mcm_activity_horizontal_margin">8dp</dimen>
+
 </resources>

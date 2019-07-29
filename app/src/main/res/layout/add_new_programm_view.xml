@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/mcm_activity_horizontal_margin"
+              android:paddingTop="@dimen/mcm_activity_horizontal_margin"
+              android:paddingRight="@dimen/mcm_activity_horizontal_margin">
+    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <TableRow style="?valueRowStyle">
+
+            <TextView
+                    style="?labelStyle"
+                    android:text="@string/programm_name_label"/>
+
+            <EditText
+                    android:id="@+id/programmNameEditText"
+                    style="?valueStyle"
+                    tools:text="Курс 1"/>
+
+        </TableRow>
+
+        <TableRow style="?valueRowStyle">
+
+            <TextView
+                    style="?labelStyle"
+                    android:text="@string/programm_desc_label"/>
+
+            <EditText
+                    android:id="@+id/programmDescEditText"
+                    style="?valueStyle"
+                    tools:text="программа для первого курса"/>
+
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

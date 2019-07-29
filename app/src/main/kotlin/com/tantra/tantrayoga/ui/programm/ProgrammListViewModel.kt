@@ -14,6 +14,7 @@ import com.tantra.tantrayoga.model.dao.ProgrammDao
 import com.tantra.tantrayoga.network.ProgrammApi
 import kotlinx.coroutines.*
 import java.lang.Exception
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 class ProgrammListViewModel(private val programmDao: ProgrammDao) : BaseViewModel() {
@@ -106,11 +107,11 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao) : BaseViewMode
 
     }
 
-    fun addNewItem(name: String) {
-//        scope.launch {
-//            val i = programmDao.insert(Programm(5, 0, "title", name))
-//            popularMoviesLiveData.postValue(programmDao.all.toMutableList())
-//        }
+    fun addNewItem(name: String, desc: String) {
+        scope.launch {
+            val i = programmDao.insert(Programm(0, "andter", UUID.randomUUID().toString(), name, desc))
+            popularMoviesLiveData.postValue(programmDao.all.toMutableList())
+        }
     }
 
     fun updateList(postList: MutableList<Programm>?) {

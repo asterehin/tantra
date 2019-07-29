@@ -1,17 +1,220 @@
-<resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--<resources>-->
 
+        <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
+        <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+            <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+            <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+            <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+            <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <!--</style>-->
+        <!--<style name="AppTheme.NoActionBar">-->
+            <!--<item name="windowActionBar">false</item>-->
+            <!--<item name="windowNoTitle">true</item>-->
+        <!--</style>-->
+        <!--<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
+        <!--<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>-->
+
+        <style name="TantraCardViewStyle" parent="Theme.AppCompat.Light">
+            <item name="cardCornerRadius">2dp</item>
+            <item name="cardElevation">2dp</item>
+            <item name="contentPaddingBottom">24dp</item>
+            <item name="contentPaddingTop">24dp</item>
+            <item name="contentPaddingLeft">16dp</item>
+            <item name="contentPaddingRight">16dp</item>
+            <item name="cardBackgroundColor">@color/coins_card_green</item>
+        </style>
+        <!--<style name="Widget.Coins.Flat.ValueRowStyle">-->
+            <!--&lt;!&ndash;<item name="android:minHeight">@dimen/mcm_row_min_height</item>&ndash;&gt;-->
+            <!--<item name="android:gravity">center_vertical</item>-->
+            <!--<item name="android:layout_marginBottom">@dimen/mcm_row_normal_gap</item>-->
+            <!--<item name="android:layout_marginTop">@dimen/mcm_row_small_gap</item>-->
+        <!--</style>-->
+
+        <!--<color name="cardview_green_color">#73C6B6</color>-->
+    <!--</resources>-->
+<!-- Base application theme. -->
+<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+</style>
+<!-- Text -->
+<style name="Body1" parent="TextAppearance.AppCompat.Body1">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+</style>
+
+<style name="Body2" parent="TextAppearance.AppCompat.Body2">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+</style>
+
+<style name="Body1.White" />
+
+<style name="Body2.White" />
+
+<style name="Body2.Black" />
+
+<style name="Body1.White.Primary">
+    <item name="android:textColor">@color/coins_white</item>
+</style>
+
+<style name="Body2.White.Primary">
+    <item name="android:textColor">@color/coins_white</item>
+</style>
+
+
+<style name="StyleNoActionBarTheme" parent="Theme.Coins.Flat.NoActionBar"></style>
+
+<style name="AppTheme.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+</style>
+
+<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+<style name="Widget" />
+
+<style name="Widget.Coins" />
+
+<style name="Widget.Coins.Flat" />
+
+<style name="Widget.Coins.Flat.Button" parent="@style/Widget.AppCompat.Button"></style>
+
+<style name="Widget.Coins.Flat.Button.Dialog" parent="@style/Widget.AppCompat.Button.Small">
+    <item name="android:minHeight">42dip</item>
+</style>
+
+<style name="Widget.Coins.Flat.Button.Dialog.Success">
+    <item name="android:background">@drawable/mcm_success_button_background</item>
+</style>
+
+<style name="Widget.Coins.Flat.Button.Dialog.Error">
+    <item name="android:background">@drawable/mcm_error_button_background</item>
+</style>
+
+<style name="Widget.Coins.Flat.CardStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">match_parent</item>
+    <item name="android:layout_marginTop">@dimen/mcm_half_gutter</item>
+    <item name="android:layout_marginBottom">@dimen/mcm_half_gutter</item>
+    <item name="android:layout_marginLeft">@dimen/mcm_half_gutter</item>
+    <item name="android:layout_marginRight">@dimen/mcm_half_gutter</item>
+    <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    <item name="cardBackgroundColor">@color/coins_card_blue</item>
+    <item name="cardElevation">2dp</item>
+</style>
+
+<style name="Widget.Coins.Flat.LabelTextAppearance" parent="@style/TextAppearance.AppCompat.Medium">
+    <item name="android:textSize">16sp</item>
+    <item name="android:textColor">?android:textColorSecondary</item>
+</style>
+
+<style name="Widget.Coins.Flat.LabelStyle">
+    <item name="android:textAppearance">?labelTextAppearance</item>
+    <item name="android:layout_gravity">center_vertical|left</item>
+    <item name="android:gravity">center_vertical|left</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingRight">@dimen/mcm_row_label_margin</item>
+</style>
+
+<style name="Widget.Coins.Flat.ValueTextAppearance" parent="@style/TextAppearance.AppCompat.Medium">
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">16sp</item>
+</style>
+
+<style name="Widget.Coins.Flat.ValueStyle">
+    <item name="android:textAppearance">?valueTextAppearance</item>
+    <item name="android:layout_gravity">center_vertical|left</item>
+    <item name="android:gravity">center_vertical|left</item>
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_weight">1</item>
+</style>
+
+<style name="Widget.Coins.Flat.ValueRowStyle">
+    <!--<item name="android:minHeight">@dimen/mcm_row_min_height</item>-->
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:layout_marginBottom">@dimen/mcm_row_normal_gap</item>
+    <item name="android:layout_marginTop">@dimen/mcm_row_small_gap</item>
+</style>
+
+<style name="Widget.Coins.Flat.HorizontalSeparator">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">1dp</item>
+    <item name="android:layout_marginBottom">@dimen/mcm_row_normal_gap</item>
+    <item name="android:layout_marginTop">@dimen/mcm_row_normal_gap</item>
+    <item name="android:background">@color/coins_flat_background_darker</item>
+</style>
+
+<style name="Widget.Coins.Flat.ValueRowNoSpaceStyle">
+    <!--<item name="android:minHeight">@dimen/mcm_row_min_height</item>-->
+    <item name="android:layout_marginTop">@dimen/mcm_row_small_gap</item>
+    <item name="android:gravity">center_vertical</item>
+</style>
+
+<style name="Widget.Coins.Flat.ValueBigRowStyle" parent="Widget.Coins.Flat.ValueRowStyle">
+    <item name="android:minHeight">@dimen/mcm_big_row_min_height</item>
+</style>
+
+<style name="Widget.Coins.Flat.HeaderTextAppearance" parent="@style/Widget.Coins.Flat.LabelTextAppearance">
+    <item name="android:textSize">20sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">?android:textColorSecondary</item>
+</style>
+
+<style name="Widget.Coins.FabStyle" parent="@style/Widget.Design.FloatingActionButton">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_gravity">right|bottom</item>
+    <item name="android:layout_marginBottom">@dimen/fab_margin</item>
+    <item name="android:layout_marginRight">@dimen/fab_margin</item>
+    <item name="borderWidth">0dp</item>
+    <item name="elevation">4dp</item>
+    <item name="fabSize">normal</item>
+    <item name="layout_anchorGravity">bottom|right</item>
+</style>
+
+<style name="Widget.Coins.FabStyle.Mini">
+    <item name="fabSize">mini</item>
+</style>
+
+<style name="Widget.Coins.Flat.FabLabelStyle" parent="android:Widget.TextView">
+    <item name="android:background">@drawable/mcm_fab_label_background</item>
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:maxLines">2</item>
+    <item name="android:ellipsize">end</item>
+</style>
+
+<style name="Widget.Coins.Flat.DrawerItemTextAppearance" parent="TextAppearance.AppCompat.Body2">
+
+</style>
+
+<style name="Widget.Coins.Flat.TextAppearanceButton" parent="TextAppearance.AppCompat.Widget.Button.Inverse">
+    <item name="textAllCaps">false</item>
+    <item name="android:textAllCaps" tools:ignore="NewApi">false</item>
+    <!--
+            <item name="android:textColor">@color/mcm_flat_primary_text</item>
+    -->
+</style>
+
+<style name="Widget.Coins.Flat.SpinnerStyle" parent="@style/Widget.AppCompat.Spinner"></style>
+
+<style name="Widget.Coins.Flat.SpinnerItemStyle" parent="@style/Widget.AppCompat.TextView.SpinnerItem"></style>
+
+<style name="Widget.Coins.Flat.DropDownListViewStyle" parent="@style/Widget.AppCompat.ListView.DropDown"></style>
+
+<style name="Widget.Coins.Flat.SpinnerDropDownItemStyle" parent="@style/Widget.AppCompat.DropDownItem.Spinner"></style>
+
+
+<string name="yes">YES</string>
+<string name="no">NO</string>
 </resources>
+

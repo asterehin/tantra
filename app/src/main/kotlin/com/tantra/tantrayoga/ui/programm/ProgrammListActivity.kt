@@ -21,6 +21,7 @@ import android.app.AlertDialog
 import android.content.Context
 import com.tantra.tantrayoga.databinding.ActivityProgrammsBinding
 import com.tantra.tantrayoga.ui.programm.ProgrammListViewModel
+import kotlinx.android.synthetic.main.add_new_programm_view.view.*
 
 
 //https://nuancesprog.ru/p/3270/
@@ -36,7 +37,7 @@ class ProgrammListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, com.tantra.tantrayoga.R.layout.activity_programms)
         setSupportActionBar(toolbar)
 
-        binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+//        binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(ProgrammListViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
@@ -56,16 +57,17 @@ class ProgrammListActivity : AppCompatActivity() {
     }
 
     private fun showAddItemDialog(c: Context) {
-        val taskEditText = EditText(c)
+        val addProgrammDialogView = this.getLayoutInflater().inflate(R.layout.add_new_programm_view, null)
+
         val dialog = AlertDialog.Builder(c)
             .setTitle("Создаем новую программу тренировок")
             .setMessage("Введите название новой программы")
-            .setView(taskEditText)
+            .setView(addProgrammDialogView)
             .setPositiveButton("Add",
                 DialogInterface.OnClickListener { dialog, which ->
-                    val task = taskEditText.text.toString()
-                    viewModel.addNewItem(task)
-
+                    val task = addProgrammDialogView.programmNameEditText.text.toString()
+                    val desc = addProgrammDialogView.programmDescEditText.text.toString()
+                    viewModel.addNewItem(task, desc)
                 })
             .setNegativeButton("Cancel", null)
             .create()

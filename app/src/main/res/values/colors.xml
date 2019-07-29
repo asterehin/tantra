@@ -1,6 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <!-- basic colours -->
+    <color name="coins_white">#FFFFFF</color>
+    <color name="coins_black">#000000</color>
+
+    <!-- please change the lib/src/main/svg/mcm_ic_launcher-w48mdpi.svg:24 as well -->
+    <color name="coins_logo_orange">#F18240</color>
+
+    <color name="coins_logo_gray">#e8eaed</color>
+
+    <!-- standard COINS colours -->
+    <color name="coins_orange">@color/coins_logo_orange</color>
+    <color name="coins_light_grey">#97999B</color>
+    <color name="coins_grey">#53555A</color>
+    <color name="coins_blue">#0c2340</color>
+
+    <!-- extended COINS colours -->
+    <color name="coins_red">#C00000</color>
+    <color name="coins_teal">#009DA0</color>
+    <color name="coins_light_yellow">#FCED5A</color>
+    <color name="coins_light_orange">#FB8353</color>
+    <color name="coins_light_blue">#205FAC</color>
+
+    <!-- flat ui COINS colours -->
+    <color name="coins_flat_blue_darker">#578cc1</color>
+    <color name="coins_flat_blue">#749fcb</color>
+    <color name="coins_flat_blue_light">#a2bfdd</color>
+    <color name="coins_flat_orange">#fc9e53</color>
+    <color name="coins_flat_green">#6abe60</color>
+    <color name="coins_flat_green_light">#8d6abe60</color>
+    <color name="coins_flat_red">#ea6760</color>
+    <color name="coins_flat_red_light">#8dea6760</color>
+    <color name="coins_flat_purple">#ac8dc6</color>
+    <color name="coins_flat_pink">#ec99c9</color>
+    <color name="coins_flat_grey">#a2a2a2</color>
+    <color name="coins_flat_yellow">#cecb64</color>
+    <color name="coins_flat_yellow_light">#8dcecb64</color>
+    <color name="coins_flat_light_blue">#70ccd9</color>
+
+    <!-- theme colours -->
+    <color name="coins_flat_orange_light">#bbfc9e53</color>
+
+    <color name="coins_flat_text_normal">#ffffff</color>
+    <color name="coins_flat_text_disable">#fafafa</color>
+
+    <color name="coins_flat_text_secondary_normal">#000000</color>
+    <color name="coins_flat_text_secondary_disable">#ff757575</color>
+
+    <color name="coins_flat_text_tertiary_normal">#2D6D9A</color>
+    <color name="coins_flat_text_tertiary_disable">#A4C4DB</color>
+
+    <color name="coins_flat_icon_light">#f0f0f0</color>
+    <color name="coins_flat_icon">#e0e0e0</color>
+    <color name="coins_flat_icon_dark">#c0c0c0</color>
+    <color name="coins_flat_clickable_icon">#A9A9A9</color>
+    <color name="coins_flat_clickable_icon_darker">#909090</color>
+
+    <color name="coins_flat_normal">@color/coins_flat_blue</color>
+    <color name="coins_flat_normal_disable">@color/coins_flat_blue_light</color>
+    <color name="coins_flat_secondary_normal">@color/coins_flat_blue_darker</color>
+
+    <color name="coins_flat_success">@color/coins_flat_green</color>
+    <color name="coins_flat_success_disable">@color/coins_flat_green_light</color>
+
+    <color name="coins_flat_error">@color/coins_flat_red</color>
+    <color name="coins_flat_error_disable">@color/coins_flat_red_light</color>
+
+    <color name="coins_flat_warning">@color/coins_flat_yellow</color>
+    <color name="coins_flat_warning_disable">@color/coins_flat_yellow_light</color>
+
+    <color name="coins_toolbar_blue">#49627D</color>
+    <color name="coins_toolbar_dark_blue">#2D6D9A</color>
+    <color name="coins_toolbar_light_blue">#4884A8</color>
+
+    <!-- card colors -->
+    <color name="coins_card_blue">#749FCB</color>
+    <color name="coins_card_green">@color/coins_flat_success</color>
+    <color name="coins_card_orange">#fc9e53</color>
+    <color name="coins_card_red">@color/coins_flat_error</color>
+    <color name="coins_card_gray">#e0e0e0</color>
+
+    <!-- FAB colors -->
+    <color name="coins_fab_red">#EA6760</color>
+    <color name="coins_fab_blue">#719ECC</color>
+    <color name="coins_fab_dark_green">#60A21D</color>
+    <color name="coins_fab_alt_green">#73CF53</color>
+    <color name="coins_fab_green">#34CDAE</color>
+    <color name="coins_fab_orange">#FC9E53</color>
+
+    <!-- background colors -->
+    <color name="coins_flat_background_darker">#ffdce0e3</color>
+    <color name="coins_flat_background_darker_light">#6ddce0e3</color>
+    <color name="coins_flat_background">#ECF0F3</color>
+    <color name="coins_flat_background_light">#F3F4F6</color>
+
+    <!-- possible to be removed -->
+    <!-- INFO: possible replaceble by appcompat theme values -->
+    <color name="coins_active_background">#E8E8E8</color>
+    <!-- INFO: use ?selectableItemBackgroundBorderless instead -->
+    <color name="coins_transparent_black">#2A000000</color>
+
+
 </resources>

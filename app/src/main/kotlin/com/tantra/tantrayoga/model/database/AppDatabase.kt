@@ -8,7 +8,7 @@ import com.tantra.tantrayoga.model.dao.PostDao
 import com.tantra.tantrayoga.model.Programm
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 
-@Database(entities = [Post::class, Programm::class], version = 3)
+@Database(entities = [Post::class, Programm::class], version = 4)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

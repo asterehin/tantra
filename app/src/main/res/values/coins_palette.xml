@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mcm_primary">#2D6D9A</color>
+    <color name="mcm_primary_dark">#225274</color>
+    <color name="mcm_primary_light">#C0D3E1</color>
+    <color name="mcm_accent">#FC9E53</color>
+    <color name="mcm_primary_text">#212121</color>
+    <color name="mcm_secondary_text">#727272</color>
+    <color name="mcm_icons">#FFFFFF</color>
+    <color name="mcm_divider">#B6B6B6</color>
+</resources>

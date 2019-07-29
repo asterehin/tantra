@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme" />
+
+    <style name="Theme.Coins" />
+
+    <style name="Theme.Coins.Base" />
+
+    <style name="Theme.Coins.Base.DialogWhenLarge" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Coins.Flat" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Main theme colors -->
+        <!--   your app branding color for the app bar -->
+        <item name="colorPrimary">@color/mcm_primary</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/mcm_primary_dark</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/mcm_accent</item>
+
+        <item name="colorControlNormal">@color/coins_flat_grey</item>
+        <item name="android:windowBackground">@drawable/mcm_light_background</item>
+        <item name="android:colorBackground">@color/coins_flat_background</item>
+
+
+        <item name="buttonStyle">@style/Widget.Coins.Flat.Button</item>
+        <item name="android:buttonStyle">@style/Widget.Coins.Flat.Button</item>
+
+        <item name="android:textAppearanceButton">@style/Widget.Coins.Flat.TextAppearanceButton
+        </item>
+
+
+        <item name="labelTextAppearance">@style/Widget.Coins.Flat.LabelTextAppearance</item>
+        <item name="labelStyle">@style/Widget.Coins.Flat.LabelStyle</item>
+        <item name="valueStyle">@style/Widget.Coins.Flat.ValueStyle</item>
+        <item name="valueTextAppearance">@style/Widget.Coins.Flat.ValueTextAppearance</item>
+        <item name="valueRowStyle">@style/Widget.Coins.Flat.ValueRowStyle</item>
+        <item name="valueBigRowStyle">@style/Widget.Coins.Flat.ValueBigRowStyle</item>
+
+        <item name="dialogTheme">@style/Theme.Coins.Flat.Dialog</item>
+        <item name="actionBarStyle">@style/Theme.Coins.Flat.ActionBar</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="spinnerStyle">@style/Widget.Coins.Flat.SpinnerStyle</item>
+        <item name="spinnerDropDownItemStyle">@style/Widget.Coins.Flat.SpinnerDropDownItemStyle
+        </item>
+        <item name="android:spinnerItemStyle">@style/Widget.Coins.Flat.SpinnerItemStyle</item>
+        <item name="android:dropDownListViewStyle">@style/Widget.Coins.Flat.DropDownListViewStyle
+        </item>
+    </style>
+
+
+    <style name="Theme.Coins.Flat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+
+    <style name="Theme.Coins.Flat.DialogWhenLarge" parent="@style/Theme.Coins.Base.DialogWhenLarge">
+
+
+        <item name="buttonStyle">@style/Widget.Coins.Flat.Button</item>
+        <item name="android:buttonStyle">@style/Widget.Coins.Flat.Button</item>
+        <item name="android:textAppearanceButton">@style/Widget.Coins.Flat.TextAppearanceButton
+        </item>
+
+
+        <item name="labelStyle">@style/Widget.Coins.Flat.LabelStyle</item>
+        <item name="valueStyle">@style/Widget.Coins.Flat.ValueStyle</item>
+        <item name="valueTextAppearance">@style/Widget.Coins.Flat.ValueTextAppearance</item>
+        <item name="valueRowStyle">@style/Widget.Coins.Flat.ValueRowStyle</item>
+        <item name="valueBigRowStyle">@style/Widget.Coins.Flat.ValueBigRowStyle</item>
+
+        <item name="dialogTheme">@style/Theme.Coins.Flat.Dialog</item>
+        <item name="actionBarStyle">@style/Theme.Coins.Flat.ActionBar</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+
+    </style>
+
+    <style name="Theme.Coins.Flat.Dialog" parent="@style/Base.Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="colorButtonNormal">@color/coins_flat_normal</item>
+
+        <item name="buttonStyle">@style/Widget.Coins.Flat.Button.Dialog</item>
+        <item name="android:buttonStyle">@style/Widget.Coins.Flat.Button.Dialog</item>
+
+        <item name="android:textAppearanceButton">@style/Widget.Coins.Flat.TextAppearanceButton
+        </item>
+
+        <item name="successButtonStyle">@style/Widget.Coins.Flat.Button.Dialog.Success</item>
+        <item name="errorButtonStyle">@style/Widget.Coins.Flat.Button.Dialog.Error</item>
+
+        <item name="android:windowSoftInputMode">adjustResize|stateHidden</item>
+    </style>
+
+    <style name="Theme.Coins.Flat.ActionBar" parent="@style/Base.Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="Theme.Coins.Flat.Translucent" parent="Theme.Coins.Flat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
+
+    <style name="Theme.Coins.LoginActionBar" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@android:color/transparent</item>
+        <item name="displayOptions">none</item>
+    </style>
+
+</resources>
