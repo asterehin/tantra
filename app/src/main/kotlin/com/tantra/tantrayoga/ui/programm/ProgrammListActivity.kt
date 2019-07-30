@@ -7,20 +7,16 @@ import android.os.Bundle
 import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
-import com.tantra.tantrayoga.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.DialogInterface
-import android.widget.EditText
 import android.app.AlertDialog
 import android.content.Context
 import com.tantra.tantrayoga.databinding.ActivityProgrammsBinding
-import com.tantra.tantrayoga.ui.programm.ProgrammListViewModel
+import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
 import kotlinx.android.synthetic.main.add_new_programm_view.view.*
 
 
@@ -43,7 +39,7 @@ class ProgrammListActivity : AppCompatActivity() {
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             if (errorMessage != null) showError(errorMessage) else hideError()
         })
-        viewModel.popularMoviesLiveData.observe(this, Observer { posts ->
+        viewModel.programmsLiveData.observe(this, Observer { posts ->
             viewModel.updateList(posts)
         })
         viewModel.navigateToDetails.observe(this, Observer {
@@ -91,7 +87,10 @@ class ProgrammListActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            com.tantra.tantrayoga.R.id.action_settings -> true
+            com.tantra.tantrayoga.R.id.action_asanas -> {
+                startActivity(asanasActivityIntent(this))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

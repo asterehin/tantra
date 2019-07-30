@@ -19,6 +19,7 @@ import android.content.DialogInterface
 import android.widget.EditText
 import android.app.AlertDialog
 import android.content.Context
+import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
 
 
 //https://nuancesprog.ru/p/3270/
@@ -45,7 +46,8 @@ class PostListActivity : AppCompatActivity() {
             viewModel.updateList(posts)
         })
         viewModel.navigateToDetails.observe(this, Observer {
-            it?.getContentIfNotHandled()?.let { // Only proceed if the event has never been handled
+            it?.getContentIfNotHandled()?.let {
+                // Only proceed if the event has never been handled
                 Log.e("PostListActivity-onCreate 48 ", "trigger the opening the dialog")
                 showAddItemDialog(this)
             }
@@ -61,8 +63,9 @@ class PostListActivity : AppCompatActivity() {
             .setMessage("Введите название новой программы")
             .setView(taskEditText)
             .setPositiveButton("Add",
-                DialogInterface.OnClickListener { dialog, which -> val task = taskEditText.text.toString()
-                Log.e("PostListActivity-showAddItemDialog 69 ", "" + task)
+                DialogInterface.OnClickListener { dialog, which ->
+                    val task = taskEditText.text.toString()
+                    Log.e("PostListActivity-showAddItemDialog 69 ", "" + task)
                     viewModel.addNewItem(task)
 
                 })
@@ -88,7 +91,10 @@ class PostListActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            com.tantra.tantrayoga.R.id.action_settings -> true
+            com.tantra.tantrayoga.R.id.action_asanas -> {
+                startActivity(asanasActivityIntent(this))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

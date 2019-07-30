@@ -3,13 +3,13 @@ package com.tantra.tantrayoga.ui.programm
 import android.arch.lifecycle.*
 import android.view.View
 import com.tantra.tantrayoga.model.Programm
-import io.reactivex.disposables.Disposable
 
 import com.tantra.tantrayoga.base.BaseViewModel
 import javax.inject.Inject
 import android.support.design.widget.Snackbar
 import android.util.Log
 import com.tantra.tantrayoga.model.Event
+import com.tantra.tantrayoga.model.dao.AsanaDao
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 import com.tantra.tantrayoga.network.ProgrammApi
 import kotlinx.coroutines.*
@@ -17,7 +17,7 @@ import java.lang.Exception
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 
-class ProgrammListViewModel(private val programmDao: ProgrammDao) : BaseViewModel() {
+class ProgrammListViewModel(private val programmDao: ProgrammDao, private val asanaDao: AsanaDao) : BaseViewModel() {
 
     @Inject
     lateinit var programmApi: ProgrammApi
@@ -28,12 +28,11 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao) : BaseViewMode
 
     private val scope = CoroutineScope(coroutineContext)
 
-
-    val programmListAdapter= ProgrammListAdapter()
+    val programmListAdapter = ProgrammListAdapter()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
 
-    val popularMoviesLiveData = MutableLiveData<MutableList<Programm>>()
+    val programmsLiveData = MutableLiveData<MutableList<Programm>>()
 
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadProgramms() }
@@ -42,31 +41,40 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao) : BaseViewMode
     val navigateToDetails: LiveData<Event<String>>
         get() = _navigateToDetails
 
-    private lateinit var subscription: Disposable
-
     init {
         loadProgramms()
     }
 
-
-    override fun onCleared() {
-        super.onCleared()
-        subscription.dispose()
-    }
 
     private fun loadProgramms() {
 
         onRetrieveProgrammListStart()
 
         scope.launch {
-            val postRequest = programmApi.getProgramms()
+            val programmsRequest = programmApi.getProgramms()
             try {
-                val response = postRequest.await()
+                val response = programmsRequest.await()
                 if (response.isSuccessful) {
                     val posts = response.body()
                     programmDao.insertAll(*posts!!.toTypedArray())
-                    popularMoviesLiveData.postValue(programmDao.all.toMutableList())
+                    programmsLiveData.postValue(programmDao.all.toMutableList())
 
+                } else {
+                    onRetrieveProgrammListError()
+                    Log.d("MainActivity ", response.errorBody().toString())
+                }
+
+            } catch (e: Exception) {
+                onSomeException(e)
+            }
+        }
+        scope.launch {
+            val asanasRequest = programmApi.getAsanas()
+            try {
+                val response = asanasRequest.await()
+                if (response.isSuccessful) {
+                    val asanasList = response.body()
+                    asanaDao.insertAll(*asanasList!!.toTypedArray())
                 } else {
                     onRetrieveProgrammListError()
                     Log.d("MainActivity ", response.errorBody().toString())
@@ -110,7 +118,7 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao) : BaseViewMode
     fun addNewItem(name: String, desc: String) {
         scope.launch {
             val i = programmDao.insert(Programm(0, "andter", UUID.randomUUID().toString(), name, desc))
-            popularMoviesLiveData.postValue(programmDao.all.toMutableList())
+            programmsLiveData.postValue(programmDao.all.toMutableList())
         }
     }
 

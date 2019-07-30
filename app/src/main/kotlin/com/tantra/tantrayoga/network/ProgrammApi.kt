@@ -1,5 +1,6 @@
 package com.tantra.tantrayoga.network
 
+import com.tantra.tantrayoga.model.Asana
 import com.tantra.tantrayoga.model.Post
 import com.tantra.tantrayoga.model.PostResponse
 import com.tantra.tantrayoga.model.Programm
@@ -18,4 +19,7 @@ interface ProgrammApi {
 
     @GET("/asterehin/tantra/programms/")
     fun getProgramms(): Deferred<Response<List<Programm>>>
+
+    @GET("/asterehin/tantra/asanas/")
+    fun getAsanas(): Deferred<Response<List<Asana>>>
 }
