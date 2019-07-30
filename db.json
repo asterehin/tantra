@@ -23,6 +23,18 @@
       "photo": "https://www.niketan108.com/uploads/posts/2016-12/1482323113_vra-anatomiya.jpg",
       "contraindications": [],
       "indications": []
+    },
+    {
+      "UUID": "34533e2e-041e-4813-aa71-985664960a70",
+      "name": "Сиддха-йони-асана",
+      "desc": "совершенная поза для женщин",
+      "technics": "Сиддха-йони-асана (совершенная поза для женщин) техника выполнения: Сядьте, вытянув ноги вперед. Согните правую ногу и прижмите ее ступню подошвой к внутренней поверхности левого бедра; пятку поместите между большими губами влагалища. Согните левую ногу и положите ее ступню на правую голень, пальцы левой ноги поместите между голенью и бедром правой ноги, а пальцы правой ноги втяните рукой в пространство между голенью и бедром левой ноги. Держите позвоночный столб неподвижно и вертикально.",
+      "effects": "Сиддха-йони-асана — это отличная поза для медитации, позволяющая женщине поддерживать полную неподвижность, необходимую для успешной практики.",
+      "consciousness": "Асана воздействует на нервные сплетения, управляющие женской половой системой, позволяет получить контроль над нейро-психическими импульсами, которые йоги используют для духовного совершенства, а обычные люди – для получения сексуального удовольствия.",
+      "audio": "",
+      "photo": "https://www.evaveda.com/wp-content/uploads/2014/11/Siddha-joni-asana-foto.jpg",
+      "contraindications": [],
+      "indications": []
     }
   ],
   "comments": [
@@ -45,25 +57,105 @@
       "userUUID": "andter",
       "UUID": "27390e2e-041e-4813-aa71-985664960a70",
       "name": "Курс 1",
-      "desc": "Программа асан йоги для практики на первом курсе"
+      "desc": "Программа асан йоги для практики на первом курсе",
+      "asanas": [
+        {
+          "sequence": 1,
+          "asanaUUID": "25433e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 30,
+          "consciousnessTime": 10,
+          "showTimer": true,
+          "playSignals": true
+        },
+        {
+          "sequence": 2,
+          "asanaUUID": "25433e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 30,
+          "consciousnessTime": 10,
+          "showTimer": true,
+          "playSignals": true
+        },
+        {
+          "sequence": 3,
+          "asanaUUID": "34533e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 30,
+          "consciousnessTime": 10,
+          "showTimer": true,
+          "playSignals": true
+        }
+      ]
     },
     {
       "userUUID": "andter",
       "UUID": "99c93a08-6e02-4627-9b53-37d634ce660b",
       "name": "Курс 2",
-      "desc": "Программа асан йоги для практики на втором курсе"
+      "desc": "Программа асан йоги для практики на втором курсе",
+      "asanas": [
+        {
+          "sequence": 1,
+          "asanaUUID": "25433e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 100,
+          "consciousnessTime": 30,
+          "showTimer": true,
+          "playSignals": true
+        },
+        {
+          "sequence": 2,
+          "asanaUUID": "34533e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 330,
+          "consciousnessTime": 20,
+          "showTimer": true,
+          "playSignals": true
+        }
+      ]
     },
     {
       "userUUID": "andzab",
       "UUID": "f9c82941-44a9-4b4a-8611-7f74bea33392",
       "name": "Курс 3",
-      "desc": "Программа асан йоги для практики на третьем курсе"
+      "desc": "Программа асан йоги для практики на третьем курсе",
+      "asanas": [
+        {
+          "sequence": 1,
+          "asanaUUID": "25433e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 30,
+          "consciousnessTime": 10,
+          "showTimer": true,
+          "playSignals": true
+        },
+        {
+          "sequence": 2,
+          "asanaUUID": "34533e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 40,
+          "consciousnessTime": 5,
+          "showTimer": true,
+          "playSignals": true
+        }
+      ]
     },
     {
       "userUUID": "andzab",
       "UUID": "ee21a714-2a17-4d28-94b2-4e0bfe294bbb",
       "name": "Курс 4",
-      "desc": "Программа асан йоги для практики на четвертом курсе"
+      "desc": "Программа асан йоги для практики на четвертом курсе",
+      "asanas": [
+        {
+          "sequence": 1,
+          "asanaUUID": "25433e2e-041e-4813-aa71-985664960a70",
+          "playAudio": true,
+          "dueTime": 30,
+          "consciousnessTime": 10,
+          "showTimer": true,
+          "playSignals": true
+        }
+      ]
     }
   ]
 }
