@@ -17,5 +17,5 @@ interface LiveAsanaDao {
     fun insert( asana: LiveAsana): Long
 
     @Query("SELECT * FROM liveAsana where programmUUID = :programmUUID")
-    fun getLiveAsana(programmUUID: String): Asana
+    fun getLiveAsana(programmUUID: String): List<LiveAsana>
 }

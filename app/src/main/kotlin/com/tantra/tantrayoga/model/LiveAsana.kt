@@ -23,13 +23,13 @@ import android.arch.persistence.room.PrimaryKey
     )
 )
 data class LiveAsana(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    val programmUUID: String,
-    val asanaUUID: String,
-    val sequence: Int,
-    val playAudio: Boolean,
-    val dueTime: Int, //in sec
-    val consciousnessTime: Int, //in sec
-    val showTimer: Boolean,
-    val playSignals: Boolean
+    @PrimaryKey(autoGenerate = true) var id: Long = 0L,
+    var programmUUID: String = "",
+    var asanaUUID: String = "",
+    var sequence: Int = 0,
+    var playAudio: Boolean = true,
+    var dueTime: Int = 0, //in sec
+    var consciousnessTime: Int = 0, //in sec
+    var showTimer: Boolean = false,
+    var playSignals: Boolean = false
 )

@@ -33,16 +33,14 @@ class ProgrammListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, com.tantra.tantrayoga.R.layout.activity_programms)
         setSupportActionBar(toolbar)
 
-//        binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
         viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(ProgrammListViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             if (errorMessage != null) showError(errorMessage) else hideError()
         })
-        viewModel.programmsLiveData.observe(this, Observer { posts ->
-            viewModel.updateList(posts)
+        viewModel.programmsWithAsanasLiveData.observe(this, Observer { programmsWithAsanas ->
+            viewModel.updateList(programmsWithAsanas!!)
         })
-        viewModel.navigateToDetails.observe(this, Observer {
+        viewModel.tapOnAddFab.observe(this, Observer {
             it?.getContentIfNotHandled()?.let {
                 // Only proceed if the event has never been handled
                 showAddItemDialog(this)

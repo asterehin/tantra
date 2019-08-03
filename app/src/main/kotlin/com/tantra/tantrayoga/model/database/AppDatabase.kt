@@ -12,9 +12,10 @@ import com.tantra.tantrayoga.model.Post
 import com.tantra.tantrayoga.model.dao.PostDao
 import com.tantra.tantrayoga.model.Programm
 import com.tantra.tantrayoga.model.dao.AsanaDao
+import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 
-@Database(entities = [Post::class, Programm::class, Asana::class, LiveAsana::class], version = 7)
+@Database(entities = [Post::class, Programm::class, Asana::class, LiveAsana::class], version = 9)
 //@TypeConverters(LiveAsanasConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -44,4 +45,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun postDao(): PostDao
     abstract fun programmDao(): ProgrammDao
     abstract fun asanaDao(): AsanaDao
+    abstract fun liveAsanaDao(): LiveAsanaDao
 }

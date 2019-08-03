@@ -9,19 +9,21 @@ import javax.inject.Inject
 import android.support.design.widget.Snackbar
 import android.util.Log
 import com.tantra.tantrayoga.model.Event
-import com.tantra.tantrayoga.model.Programm2
+import com.tantra.tantrayoga.model.ProgrammWithAsanas
 import com.tantra.tantrayoga.model.dao.AsanaDao
+import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 import com.tantra.tantrayoga.network.ProgrammApi
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.lang.Exception
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.coroutines.CoroutineContext
 
-class ProgrammListViewModel(private val programmDao: ProgrammDao, private val asanaDao: AsanaDao) : BaseViewModel() {
+class ProgrammListViewModel(
+    private val programmDao: ProgrammDao,
+    private val asanaDao: AsanaDao
+) : BaseViewModel() {
 
     @Inject
     lateinit var programmApi: ProgrammApi
@@ -33,17 +35,14 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao, private val as
     private val scope = CoroutineScope(coroutineContext)
 
     val programmListAdapter = ProgrammListAdapter()
-
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
-
-    val programmsLiveData = MutableLiveData<MutableList<Programm>>()
-
+    val programmsWithAsanasLiveData = MutableLiveData<MutableList<ProgrammWithAsanas>>()
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadProgramms() }
 
-    private val _navigateToDetails = MutableLiveData<Event<String>>()
-    val navigateToDetails: LiveData<Event<String>>
-        get() = _navigateToDetails
+    private val openAddProgrammDialog = MutableLiveData<Event<String>>()
+    val tapOnAddFab: LiveData<Event<String>>
+        get() = openAddProgrammDialog
 
     init {
         loadProgramms()
@@ -56,37 +55,34 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao, private val as
 
         scope.launch {
 
-//            programmApi.getProgramms(object : Callback<List<Programm>> {
-//                override fun onFailure(call: Call<List<Programm>>, t: Throwable) {
-//                    Log.e("ProgrammListViewModel-onFailure 61 ", "oopssss") //todo No Retrofit annotation found.
+            //            val call = programmApi.getProgrammsCall() //todo this approach is also working
+//            call.enqueue(object : Callback<List<Programm2>> {
+//                override fun onResponse(call: Call<List<Programm2>>, response: Response<List<Programm2>>) {
+//                    Log.e("ProgrammListViewModel-onResponse 78 ", "-" + response.body()?.size)
 //                }
 //
-//                override fun onResponse(call: Call<List<Programm>>, response: Response<List<Programm>>) {
-//                    Log.e("ProgrammListViewModel-onResponse 65 ", "response ")
+//                override fun onFailure(call: Call<List<Programm2>>, t: Throwable) {
+//
+//                    Log.d("Error", t.message)
 //                }
-//
-//
 //            })
-
-            val call = programmApi.getProgrammsCall()
-            call.enqueue(object : Callback<List<Programm2>> {
-                override fun onResponse(call: Call<List<Programm2>>, response: Response<List<Programm2>>) {
-                    Log.e("ProgrammListViewModel-onResponse 78 ", "-" + response.body()?.size)
-                }
-
-                override fun onFailure(call: Call<List<Programm2>>, t: Throwable) {
-
-                    Log.d("Error", t.message)
-                }
-            })
 
             val programmsRequest = programmApi.getProgramms()
             try {
                 val response = programmsRequest.await()
                 if (response.isSuccessful) {
                     val programms = response.body()
-                    programmDao.insertAll(*programms!!.toTypedArray())
-                    programmsLiveData.postValue(programmDao.all.toMutableList())
+                    programms!!.forEach { programm ->
+                        programm.asanas.forEach { liveAsana ->
+                            liveAsana.programmUUID = programm.UUID
+                        }
+                        val programmWithAsanas = ProgrammWithAsanas()
+                        programmWithAsanas.programm = programm
+                        programmWithAsanas.liveAsanas = programm.asanas
+                        programmDao.insert(programmWithAsanas)
+                    }
+
+                    programmsWithAsanasLiveData.postValue(programmDao.loadAllProgrammWithAsanas())
 
                 } else {
                     onRetrieveProgrammListError()
@@ -125,8 +121,8 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao, private val as
         loadingVisibility.value = View.GONE
     }
 
-    fun onRetrieveProgrammListSuccess(postList: List<Programm>) {
-        programmListAdapter.updateProgrammList(postList)
+    fun onRetrieveProgrammListSuccess(mutableList: MutableList<ProgrammWithAsanas>) {
+        programmListAdapter.updateProgrammList(mutableList)
     }
 
     private fun onSomeException(e: Exception) {
@@ -140,19 +136,22 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao, private val as
     fun onClick(view: View) {
         //https://medium.com/@kyle.dahlin0/room-persistence-library-with-coroutines-cdd32f9fe669
         Snackbar.make(view, "onCLick has been processed", Snackbar.LENGTH_SHORT).show()
-        _navigateToDetails.value = Event("some content")  // Trigger the event by setting a new Event as a new value
+        openAddProgrammDialog.value = Event("some content")  // Trigger the event by setting a new Event as a new value
 
     }
 
     fun addNewItem(name: String, desc: String) {
         scope.launch {
-            val i = programmDao.insert(Programm(0, "andter", UUID.randomUUID().toString(), name, desc))
-            programmsLiveData.postValue(programmDao.all.toMutableList())
+            val programmWithAsanas = ProgrammWithAsanas()
+            programmWithAsanas.programm = Programm(0, "andter", UUID.randomUUID().toString(), name, desc)
+            programmWithAsanas.liveAsanas = ArrayList()
+            val i = programmDao.insert(programmWithAsanas)
+            programmsWithAsanasLiveData.postValue(programmDao.loadAllProgrammWithAsanas())
         }
     }
 
-    fun updateList(postList: MutableList<Programm>?) {
-        onRetrieveProgrammListSuccess(postList?.toList() ?: emptyList())
+    fun updateList(mutableList: MutableList<ProgrammWithAsanas>) {
+        onRetrieveProgrammListSuccess(mutableList) //mutableList?.toList() ?: emptyList())
 
         onRetrieveProgrammListFinish()
     }

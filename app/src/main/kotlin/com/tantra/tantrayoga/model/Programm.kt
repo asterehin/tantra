@@ -8,9 +8,12 @@ import com.tantra.tantrayoga.model.database.LiveAsanasConverter
 
 @Entity(indices = arrayOf(Index(value = ["UUID"], name = "indexUUID", unique = true)))
 data class Programm(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    val userUUID: String,
-    val UUID: String,
-    val name: String,
-    val desc: String
+    @PrimaryKey(autoGenerate = true) var id: Long =0L,
+    var userUUID: String="",
+    var UUID: String="",
+    var name: String="",
+    var desc: String="",
+    @SerializedName("asanas")
+    @Ignore
+    var asanas: List<LiveAsana> = ArrayList()
 )

@@ -3,6 +3,7 @@ package com.tantra.tantrayoga.model.dao
 import android.arch.persistence.room.*
 import com.tantra.tantrayoga.model.Programm
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
 import android.arch.persistence.room.Transaction
 import android.arch.persistence.room.OnConflictStrategy
@@ -27,6 +28,10 @@ interface ProgrammDao {
     @Query("SELECT * FROM programm WHERE UUID = :uuid")
     fun loadProgrammWithAsanasByUuid(uuid: String): LiveData<ProgrammWithAsanas>
 
+    @Transaction  //для обеспечения целостности, т.к. может такое быть, что данные не полностью загружены
+    @Query("SELECT * FROM programm ")
+    fun loadAllProgrammWithAsanas(): MutableList<ProgrammWithAsanas>
+
     @Transaction
     @Query("SELECT * FROM programm WHERE UUID = :uuid")
     fun getProgrammWithAsanasByUuid(uuid: String): ProgrammWithAsanas
@@ -34,8 +39,8 @@ interface ProgrammDao {
     @Transaction
     fun insert(programmWithAsanas: ProgrammWithAsanas) {
         insert(programmWithAsanas.programm)
-        for (liveAsana in programmWithAsanas.liveAsanas) {
-            insert(liveAsana)
+        programmWithAsanas.liveAsanas.forEach {
+                insert(it)
         }
     }
 

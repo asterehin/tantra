@@ -23,10 +23,6 @@ interface ProgrammApi {
     @GET("/asterehin/tantra/asanas/")
     fun getAsanas(): Deferred<Response<List<Asana>>>
 
-    @GET("/asterehin/tantra/programms/")
-    fun getProgrammsCall(): Call<List<Programm2>>
-
-
-    @GET("/asterehin/tantra/programms/")
-    fun getProgramms(callbackResponse: Callback<List<Programm>>): Deferred<Response<List<Asana>>>
+//    @GET("/asterehin/tantra/programms/") //todo this approach is also working
+//    fun getProgrammsCall(): Call<List<Programm2>>
 }

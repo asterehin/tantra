@@ -1,16 +1,16 @@
 package com.tantra.tantrayoga.ui.programm
 
 import android.arch.lifecycle.MutableLiveData
-import com.tantra.tantrayoga.model.Programm
 import com.tantra.tantrayoga.base.BaseViewModel
+import com.tantra.tantrayoga.model.ProgrammWithAsanas
 
 class ProgrammViewModel: BaseViewModel() {
     private val programmName = MutableLiveData<String>()
     private val programmDesc = MutableLiveData<String>()
 
-    fun bind(post: Programm){
-        programmName.value = post.name
-        programmDesc.value = post.desc
+    fun bind(programmWithAsanas: ProgrammWithAsanas){
+        programmName.value = programmWithAsanas.programm.name
+        programmDesc.value = programmWithAsanas.programm.desc
     }
 
     fun getProgrammName():MutableLiveData<String>{
