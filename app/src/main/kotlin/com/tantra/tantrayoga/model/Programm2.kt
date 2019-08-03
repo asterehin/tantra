@@ -6,11 +6,11 @@ import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.tantra.tantrayoga.model.database.LiveAsanasConverter
 
-@Entity(indices = arrayOf(Index(value = ["UUID"], name = "indexUUID", unique = true)))
-data class Programm(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+data class Programm2(
+    val id: Long,
     val userUUID: String,
     val UUID: String,
     val name: String,
-    val desc: String
+    val desc: String,
+    @SerializedName("asanas") val asanas: ArrayList<LiveAsana> = ArrayList()
 )

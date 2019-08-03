@@ -1,13 +1,13 @@
 package com.tantra.tantrayoga.network
 
-import com.tantra.tantrayoga.model.Asana
-import com.tantra.tantrayoga.model.Post
-import com.tantra.tantrayoga.model.PostResponse
-import com.tantra.tantrayoga.model.Programm
+import com.tantra.tantrayoga.model.*
 import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 /**
  * The interface which provides methods to get result of webservices
@@ -22,4 +22,11 @@ interface ProgrammApi {
 
     @GET("/asterehin/tantra/asanas/")
     fun getAsanas(): Deferred<Response<List<Asana>>>
+
+    @GET("/asterehin/tantra/programms/")
+    fun getProgrammsCall(): Call<List<Programm2>>
+
+
+    @GET("/asterehin/tantra/programms/")
+    fun getProgramms(callbackResponse: Callback<List<Programm>>): Deferred<Response<List<Asana>>>
 }

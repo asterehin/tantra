@@ -10,6 +10,7 @@ import com.tantra.tantrayoga.network.PostApi
 import com.tantra.tantrayoga.network.ProgrammApi
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 /**
@@ -53,7 +54,8 @@ object NetworkModule {
     internal fun provideRetrofitInterface(): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+//                .addConverterFactory(MoshiConverterFactory.create())
 //                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()

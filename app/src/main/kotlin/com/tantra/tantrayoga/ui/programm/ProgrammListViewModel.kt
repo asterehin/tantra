@@ -9,10 +9,14 @@ import javax.inject.Inject
 import android.support.design.widget.Snackbar
 import android.util.Log
 import com.tantra.tantrayoga.model.Event
+import com.tantra.tantrayoga.model.Programm2
 import com.tantra.tantrayoga.model.dao.AsanaDao
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 import com.tantra.tantrayoga.network.ProgrammApi
 import kotlinx.coroutines.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 import java.util.*
 import kotlin.coroutines.CoroutineContext
@@ -51,12 +55,37 @@ class ProgrammListViewModel(private val programmDao: ProgrammDao, private val as
         onRetrieveProgrammListStart()
 
         scope.launch {
+
+//            programmApi.getProgramms(object : Callback<List<Programm>> {
+//                override fun onFailure(call: Call<List<Programm>>, t: Throwable) {
+//                    Log.e("ProgrammListViewModel-onFailure 61 ", "oopssss") //todo No Retrofit annotation found.
+//                }
+//
+//                override fun onResponse(call: Call<List<Programm>>, response: Response<List<Programm>>) {
+//                    Log.e("ProgrammListViewModel-onResponse 65 ", "response ")
+//                }
+//
+//
+//            })
+
+            val call = programmApi.getProgrammsCall()
+            call.enqueue(object : Callback<List<Programm2>> {
+                override fun onResponse(call: Call<List<Programm2>>, response: Response<List<Programm2>>) {
+                    Log.e("ProgrammListViewModel-onResponse 78 ", "-" + response.body()?.size)
+                }
+
+                override fun onFailure(call: Call<List<Programm2>>, t: Throwable) {
+
+                    Log.d("Error", t.message)
+                }
+            })
+
             val programmsRequest = programmApi.getProgramms()
             try {
                 val response = programmsRequest.await()
                 if (response.isSuccessful) {
-                    val posts = response.body()
-                    programmDao.insertAll(*posts!!.toTypedArray())
+                    val programms = response.body()
+                    programmDao.insertAll(*programms!!.toTypedArray())
                     programmsLiveData.postValue(programmDao.all.toMutableList())
 
                 } else {
