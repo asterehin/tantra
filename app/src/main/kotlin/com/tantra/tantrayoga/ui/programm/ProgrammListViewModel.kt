@@ -43,9 +43,11 @@ class ProgrammListViewModel(
     private val openAddProgrammDialog = MutableLiveData<Event<String>>()
     val tapOnAddFab: LiveData<Event<String>>
         get() = openAddProgrammDialog
+    var selectedProgramm = MutableLiveData<ProgrammWithAsanas>()
 
     init {
         loadProgramms()
+        programmListAdapter.selectedProgramm = selectedProgramm
     }
 
 

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.tantra.tantrayoga.model.database.AppDatabase
 import com.tantra.tantrayoga.model.database.AppDatabase.Companion.appDatabaseInstance
 import com.tantra.tantrayoga.ui.asanas.AsanasListViewModel
+import com.tantra.tantrayoga.ui.liveasanas.LiveAsanasListViewModel
 import com.tantra.tantrayoga.ui.post.PostListViewModel
 import com.tantra.tantrayoga.ui.programm.ProgrammListViewModel
 
@@ -25,6 +26,10 @@ class ViewModelFactory(private val activity: AppCompatActivity): ViewModelProvid
             val db = appDatabaseInstance(activity.applicationContext)
             @Suppress("UNCHECKED_CAST")
             return AsanasListViewModel(db.asanaDao()) as T
+        } else if (modelClass.isAssignableFrom(LiveAsanasListViewModel::class.java)) {
+            val db = appDatabaseInstance(activity.applicationContext)
+            @Suppress("UNCHECKED_CAST")
+            return LiveAsanasListViewModel(db.liveAsanaDao()) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
 

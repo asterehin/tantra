@@ -15,8 +15,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.content.DialogInterface
 import android.app.AlertDialog
 import android.content.Context
+import android.util.Log
 import com.tantra.tantrayoga.databinding.ActivityProgrammsBinding
 import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
+import com.tantra.tantrayoga.ui.liveasanas.liveAsanasActivityIntent
 import kotlinx.android.synthetic.main.add_new_programm_view.view.*
 
 
@@ -39,6 +41,9 @@ class ProgrammListActivity : AppCompatActivity() {
         })
         viewModel.programmsWithAsanasLiveData.observe(this, Observer { programmsWithAsanas ->
             viewModel.updateList(programmsWithAsanas!!)
+        })
+        viewModel.selectedProgramm.observe(this, Observer { programmsWithAsanas ->
+            startActivity(liveAsanasActivityIntent(this))
         })
         viewModel.tapOnAddFab.observe(this, Observer {
             it?.getContentIfNotHandled()?.let {

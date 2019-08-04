@@ -4,17 +4,13 @@
 
     <data>
         <variable
-                name="obj"
-                type="com.tantra.tantrayoga.model.ProgrammWithAsanas" />
-        <variable
                 name="viewModel"
-                type="com.tantra.tantrayoga.ui.programm.ProgrammViewModel"/>
+                type="com.tantra.tantrayoga.ui.liveasanas.LiveAsanaViewModel"/>
     </data>
 
     <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view"
-            android:onClick="@{() -> viewModel.onItemClick(obj)}"
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -29,11 +25,11 @@
                 android:paddingRight="16dp">
 
             <TextView
-                    android:id="@+id/programmName"
+                    android:id="@+id/asanaName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    app:mutableText="@{viewModel.getProgrammName()}"
+                    app:mutableText="@{viewModel.getAsanaName()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:text="Курс 1"
@@ -45,12 +41,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    app:mutableText="@{viewModel.getProgrammDesc()}"
+                    app:mutableText="@{viewModel.getAsanaDesc()}"
                     tools:text="Программа асан йоги для практики на первом курсе"
                     android:gravity="center_vertical|center_horizontal|top"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/programmName"/>
+                    app:layout_constraintTop_toBottomOf="@+id/asanaName"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </layout>
