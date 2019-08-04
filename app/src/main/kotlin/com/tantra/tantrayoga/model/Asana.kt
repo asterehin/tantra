@@ -6,8 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(indices = arrayOf(Index(value = ["UUID"], name = "asanasIndexUUID",  unique = true)))
 data class Asana(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    val UUID: String,
+    @PrimaryKey val UUID: String,
     val name: String,
     val desc: String,
     val technics: String,

@@ -19,6 +19,12 @@ import android.arch.persistence.room.PrimaryKey
             parentColumns = arrayOf("UUID"),
             childColumns = arrayOf("programmUUID"),
             onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = Asana::class,
+            parentColumns = arrayOf("UUID"),
+            childColumns = arrayOf("asanaUUID"),
+            onDelete = ForeignKey.NO_ACTION
         )
     )
 )

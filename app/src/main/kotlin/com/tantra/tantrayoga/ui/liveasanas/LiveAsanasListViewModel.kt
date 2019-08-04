@@ -4,11 +4,15 @@ import android.arch.lifecycle.*
 import com.tantra.tantrayoga.model.LiveAsana
 
 import com.tantra.tantrayoga.base.BaseViewModel
+import com.tantra.tantrayoga.model.LiveAsanaDetails
 import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class LiveAsanasListViewModel(private val liveLiveAsanaDao: LiveAsanaDao) : BaseViewModel() {
+class LiveAsanasListViewModel(
+    private val liveLiveAsanaDao: LiveAsanaDao,
+    val uuid: String
+) : BaseViewModel() {
 
     private val parentJob = Job()
     private val coroutineContext: CoroutineContext
@@ -17,7 +21,7 @@ class LiveAsanasListViewModel(private val liveLiveAsanaDao: LiveAsanaDao) : Base
     private val scope = CoroutineScope(coroutineContext)
 
     val liveAsanasListAdapter = LiveAsanasListAdapter()
-    val popularMoviesLiveData = MutableLiveData<MutableList<LiveAsana>>()
+    val liveAsanasList = MutableLiveData<MutableList<LiveAsanaDetails>>()
 
 
     init {
@@ -25,15 +29,15 @@ class LiveAsanasListViewModel(private val liveLiveAsanaDao: LiveAsanaDao) : Base
     }
 
     private fun loadLiveAsanas() = scope.launch {
-        popularMoviesLiveData.postValue(liveLiveAsanaDao.all.toMutableList())
+        liveAsanasList.postValue(liveLiveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
     }
 
-    fun onRetrieveLiveAsanaListSuccess(postList: List<LiveAsana>) {
-        liveAsanasListAdapter.updateLiveAsanaList(postList)
+    fun onRetrieveLiveAsanaListSuccess(liveAsanasDetailsList: List<LiveAsanaDetails>) {
+        liveAsanasListAdapter.updateLiveAsanaList(liveAsanasDetailsList)
     }
 
-    fun updateList(postList: MutableList<LiveAsana>?) {
-        onRetrieveLiveAsanaListSuccess(postList?.toList() ?: emptyList())
+    fun updateList(list: MutableList<LiveAsanaDetails>?) {
+        onRetrieveLiveAsanaListSuccess(list?.toList() ?: emptyList())
 
     }
 }
