@@ -1,0 +1,11 @@
+<resources>
+    <declare-styleable name="BaseCardView">
+        <attr name="withStatus" format="boolean|reference" />
+        <attr name="withBigStatus" format="boolean|reference" />
+        <attr name="statusColor" format="color|reference" />
+        <attr name="statusLabel" format="string|reference" />
+        <attr name="statusIcon" format="reference" />
+        <attr name="cardBackground" format="reference" />
+        <attr name="cardForeground" format="reference" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mcm_default_card_width_size">8dp</dimen>
+    <dimen name="mcm_default_card_status_large_width">28dp</dimen>
+    <dimen name="mcm_default_card_status_icon_size">14dp</dimen>
+    <dimen name="mcm_default_card_status_icon_padding_size">4dp</dimen>
+    <dimen name="mcm_default_card_status_text_size">12dp</dimen>
+    <dimen name="mcm_default_card_status_text_padding_size">7dp</dimen>
+    <dimen name="mcm_default_card_content_vertical_padding">12dp</dimen>
+    <dimen name="mcm_default_card_content_horizontal_padding">12dp</dimen>
+</resources>

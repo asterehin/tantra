@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_update_frequency">Update Frequency (minutes)</string>
+
+    <string name="mcm_update_frequency">Update Frequency</string>
+    <string name="mcm_pending_submissions">Pending Submissions</string>
+</resources>

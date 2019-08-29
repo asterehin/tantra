@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mcm_activity_horizontal_margin">40dp</dimen>
+    <dimen name="mcm_gutter">24dp</dimen>
+    <dimen name="mcm_half_gutter">12dp</dimen>
+</resources>

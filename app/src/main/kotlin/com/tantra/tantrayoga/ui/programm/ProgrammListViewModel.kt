@@ -84,12 +84,12 @@ class ProgrammListViewModel(
                         programmDao.insert(programmWithAsanas)
                     }
 
-                    programmsWithAsanasLiveData.postValue(programmDao.loadAllProgrammWithAsanas())
-
                 } else {
                     onRetrieveProgrammListError()
                     Log.d("MainActivity ", response.errorBody().toString())
                 }
+
+                programmsWithAsanasLiveData.postValue(programmDao.loadAllProgrammWithAsanas())
 
             } catch (e: Exception) {
                 onSomeException(e)
@@ -132,6 +132,8 @@ class ProgrammListViewModel(
     }
 
     private fun onRetrieveProgrammListError() {
+        loadingVisibility.value = View.GONE
+
         errorMessage.value = com.tantra.tantrayoga.R.string.post_error
     }
 

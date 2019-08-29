@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- anim -->
+    <public name="mcm_fade_in" type="anim" />
+    <public name="mcm_fade_in_long" type="anim" />
+    <public name="mcm_fade_out" type="anim" />
+    <public name="mcm_fade_out_long" type="anim" />
+    <public name="mcm_fragment_slide_left_enter" type="anim" />
+    <public name="mcm_fragment_slide_left_exit" type="anim" />
+    <public name="mcm_fragment_slide_right_enter" type="anim" />
+    <public name="mcm_fragment_slide_right_exit" type="anim" />
+    <public name="mcm_scale_in" type="anim" />
+    <public name="mcm_scale_out" type="anim" />
+
+    <!-- coins colors (more like alternative colors) -->
+    <public name="coins_orange" type="color" />
+    <public name="coins_light_grey" type="color" />
+    <public name="coins_grey" type="color" />
+    <public name="coins_blue" type="color" />
+
+    <public name="coins_red" type="color" />
+    <public name="coins_teal" type="color" />
+    <public name="coins_light_yellow" type="color" />
+    <public name="coins_light_orange" type="color" />
+    <public name="coins_light_blue" type="color" />
+
+    <!-- colors -->
+    <public name="coins_white" type="color" />
+    <public name="coins_black" type="color" />
+
+    <public name="coins_card_blue" type="color" />
+    <public name="coins_card_green" type="color" />
+    <public name="coins_card_orange" type="color" />
+    <public name="coins_card_red" type="color" />
+    <public name="coins_card_gray" type="color" />
+
+    <public name="coins_fab_red" type="color" />
+    <public name="coins_fab_blue" type="color" />
+    <public name="coins_fab_dark_green" type="color" />
+    <public name="coins_fab_alt_green" type="color" />
+    <public name="coins_fab_green" type="color" />
+    <public name="coins_fab_orange" type="color" />
+
+    <public name="coins_flat_blue_darker" type="color" />
+    <public name="coins_flat_blue" type="color" />
+    <public name="coins_flat_blue_light" type="color" />
+    <public name="coins_flat_orange" type="color" />
+
+    <!-- potentially this should not be public -->
+    <public name="coins_flat_green" type="color" />
+    <public name="coins_flat_green_light" type="color" />
+    <public name="coins_flat_red" type="color" />
+    <public name="coins_flat_red_light" type="color" />
+    <public name="coins_flat_purple" type="color" />
+    <public name="coins_flat_pink" type="color" />
+    <public name="coins_flat_grey" type="color" />
+    <public name="coins_flat_yellow" type="color" />
+    <public name="coins_flat_yellow_light" type="color" />
+    <public name="coins_flat_light_blue" type="color" />
+
+    <public name="coins_active_background" type="color" />
+    <public name="coins_transparent_black" type="color" />
+
+    <!-- drawables -->
+    <public name="mcm_ic_action_info" type="drawable" />
+    <public name="mcm_ic_action_logout" type="drawable" />
+    <public name="mcm_ic_action_refresh" type="drawable" />
+    <public name="mcm_ic_action_search" type="drawable" />
+    <public name="mcm_ic_action_settings" type="drawable" />
+    <public name="mcm_ic_action_left" type="drawable" />
+    <public name="mcm_ic_action_right" type="drawable" />
+    <public name="mcm_ic_action_edit" type="drawable" />
+    <public name="mcm_ic_check" type="drawable" />
+    <public name="mcm_ic_close" type="drawable" />
+    <public name="mcm_ic_content_add" type="drawable" />
+    <public name="mcm_ic_content_add_circle" type="drawable" />
+    <public name="mcm_ic_content_add_circle_outline" type="drawable" />
+    <public name="mcm_ic_content_close" type="drawable" />
+    <public name="mcm_ic_content_delete" type="drawable" />
+    <public name="mcm_ic_content_remove_circle" type="drawable" />
+    <public name="mcm_ic_content_remove_circle_outline" type="drawable" />
+    <public name="mcm_ic_content_send" type="drawable" />
+    <public name="mcm_ic_content_sign" type="drawable" />
+    <public name="mcm_ic_image_collections" type="drawable" />
+    <public name="mcm_ic_image_delete" type="drawable" />
+    <public name="mcm_ic_pause" type="drawable" />
+    <public name="mcm_ic_photo_camera" type="drawable" />
+    <public name="mcm_ic_play" type="drawable" />
+    <public name="mcm_rectangular_frame" type="drawable" />
+    <public name="mcm_ic_undo" type="drawable" />
+    <public name="mcm_ic_redo" type="drawable" />
+    <public name="mcm_ic_arrow_left" type="drawable" />
+    <public name="mcm_ic_arrow_right" type="drawable" />
+
+    <!-- layouts -->
+    <public name="mcm_activity_toolbar" type="layout" />
+    <public name="mcm_add_fab" type="layout" />
+    <public name="mcm_next_fab" type="layout" />
+    <public name="mcm_edit_fab" type="layout" />
+    <public name="mcm_previous_fab" type="layout" />
+    <public name="mcm_send_fab" type="layout" />
+    <public name="mcm_simple_spinner_item" type="layout" />
+    <public name="mcm_simple_spinner_item_dropdown" type="layout" />
+    <public name="mcm_simple_radioset_item" type="layout" />
+
+    <!-- dimens -->
+    <public name="mcm_text_size_small" type="dimen" />
+    <public name="mcm_text_size_normal" type="dimen" />
+    <public name="mcm_text_size_medium" type="dimen" />
+    <public name="mcm_text_size_large" type="dimen" />
+
+    <public name="mcm_row_min_height" type="dimen" />
+
+    <public name="mcm_icon_normal_size" type="dimen" />
+    <public name="mcm_icon_large_size" type="dimen" />
+
+    <public name="mcm_row_small_gap" type="dimen" />
+    <public name="mcm_row_normal_gap" type="dimen" />
+    <public name="mcm_row_large_gap" type="dimen" />
+
+    <public name="mcm_row_label_margin" type="dimen" />
+
+    <public name="mcm_gutter" type="dimen" />
+    <public name="mcm_half_gutter" type="dimen" />
+
+    <public name="mcm_card_min_height" type="dimen" />
+
+    <public name="mcm_min_height_touch_target" type="dimen" />
+    <public name="mcm_min_wight_touch_target" type="dimen" />
+
+    <public name="mcm_activity_horizontal_margin" type="dimen" />
+    <public name="mcm_activity_vertical_margin" type="dimen" />
+
+    <public name="mcm_dialog_when_large_margin" type="dimen" />
+
+    <public name="mcm_margin_bottom_with_fab" type="dimen" />
+
+    <public name="mcm_fab_margin" type="dimen" />
+    <public name="mcm_spinner_item_padding" type="dimen" />
+
+    <public name="mcm_signature_height" type="dimen" />
+    <public name="mcm_signature_width" type="dimen" />
+
+    <public name="mcm_drawer_divider_padding" type="dimen" />
+    <public name="mcm_drawer_item_min_height" type="dimen" />
+
+    <public name="mcm_card_content_margin" type="dimen" />
+    <public name="mcm_card_content_big_margin" type="dimen" />
+    <public name="mcm_card_logo_size" type="dimen" />
+
+    <public name="mcm_default_card_width_size" type="dimen" />
+    <public name="mcm_default_card_status_large_width" type="dimen" />
+    <public name="mcm_default_card_status_icon_size" type="dimen" />
+    <public name="mcm_default_card_status_icon_padding_size" type="dimen" />
+    <public name="mcm_default_card_status_text_size" type="dimen" />
+    <public name="mcm_default_card_status_text_padding_size" type="dimen" />
+    <public name="mcm_default_card_content_vertical_padding" type="dimen" />
+    <public name="mcm_default_card_content_horizontal_padding" type="dimen" />
+
+    <!-- integers -->
+    <public name="mcm_text_area_lines" type="integer" />
+    <public name="mcm_cards_layout_span_count" type="integer" />
+
+    <!-- menu -->
+    <public name="mcm_dialog" type="menu" />
+
+    <!-- strings -->
+    <public name="save" type="string" />
+    <public name="close" type="string" />
+    <public name="none" type="string" />
+    <public name="no_items_to_display" type="string" />
+    <public name="loading_message" type="string" />
+    <public name="clear" type="string" />
+    <public name="type" type="string" />
+    <public name="yes" type="string" />
+    <public name="no" type="string" />
+    <public name="refresh" type="string" />
+    <public name="edit" type="string" />
+    <public name="undo" type="string" />
+    <public name="redo" type="string" />
+    <public name="search" type="string" />
+    <public name="updates" type="string" />
+    <public name="category" type="string" />
+
+    <!-- attrs -->
+    <public name="buttonStyle" type="attr" />
+    <public name="toggleErrorSuccessStyle" type="attr" />
+    <public name="successButtonStyle" type="attr" />
+    <public name="errorButtonStyle" type="attr" />
+    <public name="alternativeButtonStyle" type="attr" />
+
+    <public name="iconColor" type="attr" />
+    <public name="clickableIconColor" type="attr" />
+
+    <public name="cardStyle" type="attr" />
+    <public name="cardStatusWidth" type="attr" />
+    <public name="cardStatusLargeWidth" type="attr" />
+    <public name="cardStatusIconSize" type="attr" />
+    <public name="cardStatusIconPadding" type="attr" />
+    <public name="cardStatusTextSize" type="attr" />
+    <public name="cardStatusTextPadding" type="attr" />
+    <public name="cardContentVerticalPadding" type="attr" />
+    <public name="cardContentHorizontalPadding" type="attr" />
+    <public name="cardContentBackground" type="attr" />
+
+    <public name="cardHeaderStyle" type="attr" />
+    <public name="cardSubHeaderStyle" type="attr" />
+    <public name="cardLogoStyle" type="attr" />
+    <public name="cardContentStyle" type="attr" />
+    <public name="cardActionImageButtonStyle" type="attr" />
+
+    <public name="labelStyle" type="attr" />
+    <public name="labelTextAppearance" type="attr" />
+    <public name="valueStyle" type="attr" />
+    <public name="valueTextAppearance" type="attr" />
+    <public name="valueRowStyle" type="attr" />
+    <public name="valueRowNoSpaceStyle" type="attr" />
+    <public name="valueBigRowStyle" type="attr" />
+
+    <public name="headlineTextAppearance" type="attr" />
+
+    <public name="drawerItemStyle" type="attr" />
+    <public name="drawerStaticItemStyle" type="attr" />
+
+    <public name="fabLabelStyle" type="attr" />
+    <public name="fabOverlayColor" type="attr" />
+
+    <public name="buttonGroupStyle" type="attr" />
+    <public name="buttonGroupItemStyle" type="attr" />
+
+    <public name="textAreaStyle" type="attr" />
+
+    <public name="headerTextAppearance" type="attr" />
+    <public name="headerStyle" type="attr" />
+
+    <public name="subHeaderTextAppearance" type="attr" />
+    <public name="subHeaderStyle" type="attr" />
+
+    <public name="horizontalSeparatorStyle" type="attr" />
+    <public name="horizontalSeparator" type="attr" />
+
+    <!-- mipmaps -->
+    <public name="mcm_ic_launcher" type="mipmap" />
+    <public name="mcm_ic_launcher_dev" type="mipmap" />
+    <public name="mcm_ic_launcher_qa" type="mipmap" />
+
+    <!-- ids -->
+    <public name="mcm_activity_content" type="id" />
+
+
+</resources>

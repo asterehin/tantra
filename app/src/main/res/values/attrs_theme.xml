@@ -10,5 +10,16 @@
         <attr name="successButtonStyle" format="reference" />
         <attr name="errorButtonStyle" format="reference" />
         <attr name="labelTextAppearance" format="reference" />
+
+        <attr name="cardStyle" format="reference" />
+        <attr name="cardStatusWidth" format="reference|dimension" />
+        <attr name="cardStatusLargeWidth" format="reference|dimension" />
+        <attr name="cardStatusIconSize" format="reference|dimension" />
+        <attr name="cardStatusIconPadding" format="reference|dimension" />
+        <attr name="cardStatusTextSize" format="reference|dimension" />
+        <attr name="cardStatusTextPadding" format="reference|dimension" />
+        <attr name="cardContentBackground" format="reference|color" />
+        <attr name="cardContentVerticalPadding" format="reference|dimension" />
+        <attr name="cardContentHorizontalPadding" format="reference|dimension" />
     </declare-styleable>
 </resources>

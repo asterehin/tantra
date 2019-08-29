@@ -1,11 +1,11 @@
 package com.tantra.tantrayoga.ui.programm
 
 import android.arch.lifecycle.MutableLiveData
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.tantra.tantrayoga.BR
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.databinding.ProgrammCardBinding
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
@@ -13,11 +13,13 @@ import com.tantra.tantrayoga.model.ProgrammWithAsanas
 class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>() {
     private lateinit var mutableList: MutableList<ProgrammWithAsanas>
     lateinit var selectedProgramm: MutableLiveData<ProgrammWithAsanas>
+    lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ProgrammCardBinding =
             DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.programm_card, parent, false)
-        return ViewHolder(binding, selectedProgramm)
+        context=parent.context
+        return ViewHolder(binding, selectedProgramm, context)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,13 +37,14 @@ class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>
 
     class ViewHolder(
         private val binding: ProgrammCardBinding,
-        var selectedProgramm: MutableLiveData<ProgrammWithAsanas>
+        var selectedProgramm: MutableLiveData<ProgrammWithAsanas>,
+        val context: Context
     ) : RecyclerView.ViewHolder(binding.root) {
         private val viewModel = ProgrammViewModel()
 
         fun bind(programmWithAsanas: ProgrammWithAsanas) {
 
-            viewModel.bind(programmWithAsanas)
+            viewModel.bind(programmWithAsanas, context)
             binding.obj = programmWithAsanas
             binding.viewModel = viewModel
             viewModel.selectedProgramm = selectedProgramm

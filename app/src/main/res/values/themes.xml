@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme" />
+    <style name="Theme"/>
 
-    <style name="Theme.Coins" />
+    <style name="Theme.Coins"/>
 
-    <style name="Theme.Coins.Base" />
+    <style name="Theme.Coins.Base"/>
 
     <style name="Theme.Coins.Base.DialogWhenLarge" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
@@ -50,14 +50,42 @@
         <item name="android:spinnerItemStyle">@style/Widget.Coins.Flat.SpinnerItemStyle</item>
         <item name="android:dropDownListViewStyle">@style/Widget.Coins.Flat.DropDownListViewStyle
         </item>
+
+        <item name="cardStyle">@style/Widget.Coins.Flat.CardStyle</item>
+        <item name="cardStatusWidth">@dimen/mcm_default_card_width_size</item>
+        <item name="cardStatusLargeWidth">@dimen/mcm_default_card_status_large_width</item>
+        <item name="cardStatusIconSize">@dimen/mcm_default_card_status_icon_size</item>
+        <item name="cardStatusIconPadding">@dimen/mcm_default_card_status_icon_padding_size</item>
+        <item name="cardStatusTextSize">@dimen/mcm_default_card_status_text_size</item>
+        <item name="cardStatusTextPadding">@dimen/mcm_default_card_status_text_padding_size</item>
+        <item name="cardContentVerticalPadding">@dimen/mcm_default_card_content_vertical_padding</item>
+        <item name="cardContentHorizontalPadding">@dimen/mcm_default_card_content_horizontal_padding</item>
+        <item name="cardContentBackground">@color/coins_white</item>
+
+        <!--<item name="cardHeaderStyle">@style/Widget.Coins.Flat.Card.HeaderStyle</item>-->
+        <!--<item name="cardSubHeaderStyle">@style/Widget.Coins.Flat.Card.SubHeaderStyle</item>-->
+        <!--<item name="cardLogoStyle">@style/Widget.Coins.Flat.Card.LogoStyle</item>-->
+        <!--<item name="cardContentStyle">@style/Widget.Coins.Flat.Card.ContentStyle</item>-->
+        <!--<item name="cardActionImageButtonStyle">@style/Widget.Coins.Flat.Card.ActionImageButtonStyle</item>-->
     </style>
 
+    <style name="Widget.Coins.Flat.CardStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/mcm_half_gutter</item>
+        <item name="android:layout_marginBottom">@dimen/mcm_half_gutter</item>
+        <item name="android:layout_marginLeft">@dimen/mcm_half_gutter</item>
+        <item name="android:layout_marginRight">@dimen/mcm_half_gutter</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="cardBackgroundColor">@color/coins_card_blue</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">3dp</item>
+    </style>
 
-    <style name="Theme.Coins.Flat.NoActionBar">
+    <style name="Theme.Coins.Flat.NoActionBar" parent="@style/Theme.Coins.Flat">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
 
 
     <style name="Theme.Coins.Flat.DialogWhenLarge" parent="@style/Theme.Coins.Base.DialogWhenLarge">

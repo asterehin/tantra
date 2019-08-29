@@ -10,6 +10,7 @@ import com.tantra.tantrayoga.model.database.LiveAsanasConverter
 data class Programm(
     @PrimaryKey(autoGenerate = true) var id: Long =0L,
     var userUUID: String="",
+//    var schoolUUID: String="",
     var UUID: String="",
     var name: String="",
     var desc: String="",
