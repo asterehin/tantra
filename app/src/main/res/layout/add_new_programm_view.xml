@@ -8,8 +8,20 @@
               android:paddingLeft="@dimen/mcm_activity_horizontal_margin"
               android:paddingTop="@dimen/mcm_activity_horizontal_margin"
               android:paddingRight="@dimen/mcm_activity_horizontal_margin">
-    <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 
+    <ImageView
+            android:id="@+id/photoProgramm"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/default_padding"
+            android:background="@color/coins_card_green"
+            android:src="@drawable/mcm_ic_action_info"
+            android:layout_gravity="center">
+    </ImageView>
+
+    <TableLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
         <TableRow style="?valueRowStyle">
 
             <TextView
@@ -32,8 +44,61 @@
             <EditText
                     android:id="@+id/programmDescEditText"
                     style="?valueStyle"
+                    android:layout_weight="1"
+                    android:gravity="top|start"
+                    android:inputType="text|textMultiLine"
+                    android:minLines="4"
                     tools:text="программа для первого курса"/>
 
+        </TableRow>
+
+        <TableRow style="?valueRowStyle">
+
+            <TextView
+                    style="?labelStyle"
+                    android:text="@string/isСyclic"/>
+            <Switch
+                    android:id="@+id/cyclicSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/Widget.Coins.Flat.LabelTextAppearance"
+                    android:layout_margin="@dimen/default_padding"
+                    android:gravity="left|center"/>
+
+            <EditText
+                    android:id="@+id/numberOfCyclesEditText"
+                    style="?valueStyle"
+                    android:gravity="center"
+                    tools:text="5"/>
+            <TextView
+                    android:id="@+id/countLabel"
+                    style="?labelStyle"
+                    android:text="@string/count_label"/>
+
+        </TableRow>
+
+        <TableRow style="?valueRowStyle">
+            <TextView
+                    style="?labelStyle"
+                    android:text="@string/tags_label"/>
+
+            <EditText
+                    android:id="@+id/tagsEditText"
+                    style="?valueStyle"
+                    tools:text="суставы,спина,бодрость"/>
+        </TableRow>
+
+        <TableRow style="?valueRowStyle">
+
+            <TextView
+                    style="?labelStyle"
+                    android:text="@string/school_label"/>
+
+            <Spinner
+                    android:id="@+id/deliveryMethodsSpinner"
+                    android:layout_width="match_parent"
+                    style="?spinnerStyle"/>
         </TableRow>
     </TableLayout>
 </LinearLayout>

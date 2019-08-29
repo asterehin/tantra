@@ -146,12 +146,9 @@ class ProgrammListViewModel(
 
     }
 
-    fun addNewItem(name: String, desc: String) {
+    fun saveProgramm(programm: Programm) {
         scope.launch {
-            val programmWithAsanas = ProgrammWithAsanas()
-            programmWithAsanas.programm = Programm(0, "andter", "", UUID.randomUUID().toString(), name, desc)
-            programmWithAsanas.liveAsanas = ArrayList()
-            val i = programmDao.insert(programmWithAsanas)
+            programmDao.insert(programm)
             programmsWithAsanasLiveData.postValue(programmDao.loadAllProgrammWithAsanas())
         }
     }

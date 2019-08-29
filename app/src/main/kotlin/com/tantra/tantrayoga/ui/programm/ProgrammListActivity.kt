@@ -12,14 +12,15 @@ import android.view.MenuItem
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
-import android.content.DialogInterface
 import android.app.AlertDialog
 import android.content.Context
 import com.tantra.tantrayoga.databinding.ActivityProgrammsBinding
 import com.tantra.tantrayoga.model.Event
+import com.tantra.tantrayoga.model.Programm
 import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
 import com.tantra.tantrayoga.ui.liveasanas.liveAsanasActivityIntent
 import kotlinx.android.synthetic.main.add_new_programm_view.view.*
+import java.util.*
 
 
 //https://nuancesprog.ru/p/3270/
@@ -46,40 +47,51 @@ class ProgrammListActivity : AppCompatActivity() {
 //            startActivity(liveAsanasActivityIntent(this, programmsWithAsanas!!.programm.UUID))
 //        })
         viewModel.onProgrammActionEvent.observe(this, Observer {
-            it?.getContentIfNotHandled()?.let {actionProgramm ->
-                when(actionProgramm.action) {
+            it?.getContentIfNotHandled()?.let { actionProgramm ->
+                when (actionProgramm.action) {
                     // Only proceed if the event has never been handled
-                    Event.Action.SELECT -> startActivity(liveAsanasActivityIntent(this, actionProgramm.content.programm.UUID))
+                    Event.Action.SELECT -> startActivity(
+                        liveAsanasActivityIntent(
+                            this,
+                            actionProgramm.content.programm.UUID
+                        )
+                    )
                     Event.Action.DELETE -> viewModel.deleteProgramm(actionProgramm.content)
+                    Event.Action.EDIT -> showAddEditProgrammDialog(this, actionProgramm.content.programm)
                 }
             }
         })
         viewModel.tapOnAddFab.observe(this, Observer {
             it?.getContentIfNotHandled()?.let {
                 // Only proceed if the event has never been handled
-                showAddItemDialog(this)
+                showAddEditProgrammDialog(this, Programm(0, "andter", "", UUID.randomUUID().toString()))
             }
         })
         binding.viewModel = viewModel
         binding.handler = viewModel
     }
 
-    private fun showAddItemDialog(c: Context) {
+    private fun showAddEditProgrammDialog(c: Context, programm: Programm) {
         val addProgrammDialogView = this.getLayoutInflater().inflate(R.layout.add_new_programm_view, null)
 
-        val dialog = AlertDialog.Builder(c)
-            .setTitle("Создаем новую программу тренировок")
-            .setMessage("Введите название новой программы")
-            .setView(addProgrammDialogView)
-            .setPositiveButton("Add",
-                DialogInterface.OnClickListener { dialog, which ->
-                    val task = addProgrammDialogView.programmNameEditText.text.toString()
-                    val desc = addProgrammDialogView.programmDescEditText.text.toString()
-                    viewModel.addNewItem(task, desc)
-                })
-            .setNegativeButton("Cancel", null)
-            .create()
-        dialog.show()
+        programm.apply {
+            if (!isNew()) {
+                addProgrammDialogView.programmNameEditText.setText(name)
+                addProgrammDialogView.programmDescEditText.setText(desc)
+            }
+            val dialog = AlertDialog.Builder(c)
+                .setTitle(if (isNew()) "Создаем новую программу" else "Редактируем программу ${name}")
+                .setView(addProgrammDialogView)
+                .setPositiveButton(if (isNew()) "Добавить" else "Изменить"
+                ) { _, which ->
+                    name = addProgrammDialogView.programmNameEditText.text.toString()
+                    desc = addProgrammDialogView.programmDescEditText.text.toString()
+                    viewModel.saveProgramm(this)
+                }
+                .setNegativeButton("Отмена", null)
+                .create()
+            dialog.show()
+        }
     }
 
     private fun showError(@StringRes errorMessage: Int) {
