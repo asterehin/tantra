@@ -16,9 +16,9 @@
             android:onClick="@{() -> viewModel.onItemClick(obj)}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:statusColor="@{viewModel.getStatusColor()}"
-            app:statusIcon="@{viewModel.getStatusIcon()}"
-            app:statusLabel="Test Xpto 123"
+            app:statusColor="@{viewModel.getStatusColor(context,obj)}"
+            app:statusIcon="@{viewModel.getStatusIcon(obj)}"
+            app:statusLabel="@{viewModel.getSchoolName(context, obj)}"
             app:withBigStatus="true">
 
         <LinearLayout
@@ -70,6 +70,7 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/default_padding"
+                            android:onClick="@{() -> viewModel.onEdit(obj)}"
                             android:tint="@color/coins_card_blue"
                             app:srcCompat="@drawable/ic_material_edit"
                             android:background="?attr/selectableItemBackgroundBorderless"
@@ -80,7 +81,10 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/default_padding"
+                            android:onClick="@{() -> viewModel.onDelete(obj)}"
                             android:tint="@color/coins_card_blue"
+                            android:visibility="@{viewModel.deleteButtonVisibility(obj), default=gone}"
+                            tools:visibility="visible"
                             app:srcCompat="@drawable/ic_material_delete"
                             android:background="?attr/selectableItemBackgroundBorderless"
                     />
@@ -114,7 +118,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         style="@style/Widget.Coins.Flat.HeaderTextAppearance"
-                        app:mutableText="@{viewModel.getAsanasCount()}"
+                        app:mutableText="@{viewModel.getAsanasCount(context, obj)}"
                         tools:text="10 asans"/>
 
                 <TextView

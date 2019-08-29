@@ -15,4 +15,6 @@ class ProgrammWithAsanas() {
         entity = LiveAsana::class
     )
     lateinit var liveAsanas: List<LiveAsana>
+    fun isPersonal() = programm.schoolUUID.isEmpty()
+
 }

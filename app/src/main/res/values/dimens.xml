@@ -16,5 +16,6 @@
 
     <dimen name="mcm_button_inset_horizontal_material">@dimen/mcm_control_inset_material</dimen>
     <dimen name="mcm_activity_horizontal_margin">8dp</dimen>
+    <dimen name="mcm_margin_bottom_with_fab">80dp</dimen>
 
 </resources>

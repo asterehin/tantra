@@ -8,18 +8,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.databinding.ProgrammCardBinding
+import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
 
 class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>() {
     private lateinit var mutableList: MutableList<ProgrammWithAsanas>
-    lateinit var selectedProgramm: MutableLiveData<ProgrammWithAsanas>
-    lateinit var context: Context
+    lateinit var onProgrammActionEvent: MutableLiveData<Event<ProgrammWithAsanas>>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ProgrammCardBinding =
             DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.programm_card, parent, false)
-        context=parent.context
-        return ViewHolder(binding, selectedProgramm, context)
+        return ViewHolder(binding, onProgrammActionEvent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -37,17 +36,16 @@ class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>
 
     class ViewHolder(
         private val binding: ProgrammCardBinding,
-        var selectedProgramm: MutableLiveData<ProgrammWithAsanas>,
-        val context: Context
+        var onProgrammActionEvent:  MutableLiveData<Event<ProgrammWithAsanas>>
     ) : RecyclerView.ViewHolder(binding.root) {
         private val viewModel = ProgrammViewModel()
 
         fun bind(programmWithAsanas: ProgrammWithAsanas) {
 
-            viewModel.bind(programmWithAsanas, context)
+            viewModel.bind(programmWithAsanas)
             binding.obj = programmWithAsanas
             binding.viewModel = viewModel
-            viewModel.selectedProgramm = selectedProgramm
+            viewModel.onProgrammActionEvent = onProgrammActionEvent
         }
     }
 }

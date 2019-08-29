@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="viewModel"
@@ -53,8 +53,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                    tools:listitem="@layout/programm_card"
                     app:spanCount="@integer/mcm_cards_layout_span_count"
-                    android:paddingBottom="?attr/actionBarSize"/>
+                    android:paddingBottom="@dimen/mcm_margin_bottom_with_fab"/>
         </android.support.constraint.ConstraintLayout>
 
         <android.support.design.widget.FloatingActionButton

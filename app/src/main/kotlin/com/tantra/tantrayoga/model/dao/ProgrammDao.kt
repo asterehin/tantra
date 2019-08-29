@@ -3,10 +3,10 @@ package com.tantra.tantrayoga.model.dao
 import android.arch.persistence.room.*
 import com.tantra.tantrayoga.model.Programm
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
 import android.arch.persistence.room.Transaction
 import android.arch.persistence.room.OnConflictStrategy
+import android.util.Log
 import com.tantra.tantrayoga.model.LiveAsana
 
 
@@ -44,6 +44,20 @@ interface ProgrammDao {
         }
     }
 
+    @Transaction
+    fun delete(programmWithAsanas: ProgrammWithAsanas) {
+        programmWithAsanas.liveAsanas.forEach {
+            deleteLiveAsanas(it)
+        }
+        deleteProgramm(programmWithAsanas.programm)
+    }
+
+    @Delete
+    fun deleteProgramm(programm: Programm): Int
+
+    @Delete
+    fun deleteLiveAsanas(liveAsana: LiveAsana): Int
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    abstract fun insert(tag: LiveAsana): Long
+    abstract fun insert(liveAsana: LiveAsana): Long
 }

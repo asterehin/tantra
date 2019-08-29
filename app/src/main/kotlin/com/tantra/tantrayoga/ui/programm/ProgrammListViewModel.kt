@@ -11,7 +11,6 @@ import android.util.Log
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
 import com.tantra.tantrayoga.model.dao.AsanaDao
-import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 import com.tantra.tantrayoga.network.ProgrammApi
 import kotlinx.coroutines.*
@@ -43,11 +42,13 @@ class ProgrammListViewModel(
     private val openAddProgrammDialog = MutableLiveData<Event<String>>()
     val tapOnAddFab: LiveData<Event<String>>
         get() = openAddProgrammDialog
-    var selectedProgramm = MutableLiveData<ProgrammWithAsanas>()
+
+    //    var selectedProgramm = MutableLiveData<ProgrammWithAsanas>()
+    var onProgrammActionEvent = MutableLiveData<Event<ProgrammWithAsanas>>()
 
     init {
         loadProgramms()
-        programmListAdapter.selectedProgramm = selectedProgramm
+        programmListAdapter.onProgrammActionEvent = onProgrammActionEvent
     }
 
 
@@ -140,14 +141,15 @@ class ProgrammListViewModel(
     fun onClick(view: View) {
         //https://medium.com/@kyle.dahlin0/room-persistence-library-with-coroutines-cdd32f9fe669
         Snackbar.make(view, "onCLick has been processed", Snackbar.LENGTH_SHORT).show()
-        openAddProgrammDialog.value = Event("some content")  // Trigger the event by setting a new Event as a new value
+        openAddProgrammDialog.value =
+            Event("some content"/*, Event.Action.NONE*/)  // Trigger the event by setting a new Event as a new value
 
     }
 
     fun addNewItem(name: String, desc: String) {
         scope.launch {
             val programmWithAsanas = ProgrammWithAsanas()
-            programmWithAsanas.programm = Programm(0, "andter", UUID.randomUUID().toString(), name, desc)
+            programmWithAsanas.programm = Programm(0, "andter", "", UUID.randomUUID().toString(), name, desc)
             programmWithAsanas.liveAsanas = ArrayList()
             val i = programmDao.insert(programmWithAsanas)
             programmsWithAsanasLiveData.postValue(programmDao.loadAllProgrammWithAsanas())
@@ -155,8 +157,15 @@ class ProgrammListViewModel(
     }
 
     fun updateList(mutableList: MutableList<ProgrammWithAsanas>) {
-        onRetrieveProgrammListSuccess(mutableList) //mutableList?.toList() ?: emptyList())
+        onRetrieveProgrammListSuccess(mutableList)
 
         onRetrieveProgrammListFinish()
+    }
+
+    fun deleteProgramm(programmWithAsanas: ProgrammWithAsanas) {
+        scope.launch {
+            programmDao.delete(programmWithAsanas)
+            programmsWithAsanasLiveData.postValue(programmDao.loadAllProgrammWithAsanas())
+        }
     }
 }
