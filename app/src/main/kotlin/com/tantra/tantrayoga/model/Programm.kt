@@ -14,6 +14,9 @@ data class Programm(
     var UUID: String = "",
     var name: String = "",
     var desc: String = "",
+    var numOfCycles: Int = 0,
+    var tags: String,
+    var photoUrl: String,
     @SerializedName("asanas")
     @Ignore
     var asanas: List<LiveAsana> = ArrayList()

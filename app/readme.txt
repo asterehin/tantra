@@ -2,3 +2,9 @@ https://startandroid.ru/ru/courses/architecture-components/27-course/architectur
 - классный сайт по использованию Room
 https://github.com/alphamu/android-MVVM-DataBinding-RecyclerViewExample/blob/method_alt/app/src/main/java/com/alimuzaffar/example/dogs/viewmodel/DogBreedsViewModel.java
 - отличный проект(уже скачан) для понимания retrofit, livedata, mvvm and binding
+
+30/08/19
+Нужно Разобраться как работать с Пикассо, чтобы загружать фотки(для программы) для начала.
+Проекты скачаны в папке downloads/color-movies
+https://www.raywenderlich.com/3658341-picasso-tutorial-for-android-getting-started
+- пример, как использовать пикассо
