@@ -69,6 +69,7 @@
                     android:id="@+id/numberOfCyclesEditText"
                     style="?valueStyle"
                     android:gravity="center"
+                    android:inputType="number"
                     tools:text="5"/>
             <TextView
                     android:id="@+id/countLabel"

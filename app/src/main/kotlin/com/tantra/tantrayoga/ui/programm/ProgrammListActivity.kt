@@ -14,6 +14,10 @@ import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import android.app.AlertDialog
 import android.content.Context
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.tantra.tantrayoga.databinding.ActivityProgrammsBinding
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.Programm
@@ -72,25 +76,57 @@ class ProgrammListActivity : AppCompatActivity() {
     }
 
     private fun showAddEditProgrammDialog(c: Context, programm: Programm) {
-        val addProgrammDialogView = this.getLayoutInflater().inflate(R.layout.add_new_programm_view, null)
+        this.getLayoutInflater().inflate(R.layout.add_new_programm_view, null).apply {
 
-        programm.apply {
-            if (!isNew()) {
-                addProgrammDialogView.programmNameEditText.setText(name)
-                addProgrammDialogView.programmDescEditText.setText(desc)
-            }
-            val dialog = AlertDialog.Builder(c)
-                .setTitle(if (isNew()) "Создаем новую программу" else "Редактируем программу ${name}")
-                .setView(addProgrammDialogView)
-                .setPositiveButton(if (isNew()) "Добавить" else "Изменить"
-                ) { _, which ->
-                    name = addProgrammDialogView.programmNameEditText.text.toString()
-                    desc = addProgrammDialogView.programmDescEditText.text.toString()
-                    viewModel.saveProgramm(this)
+            with(programm) {
+                if (!isNew()) {
+                    programmNameEditText.setText(name)
+                    programmDescEditText.setText(desc)
+
+                    val url =
+                        "${photoUrl}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
+                    Glide.with(this@apply)
+                        .load(url)
+                        .centerCrop() //4
+                        .placeholder(R.drawable.ic_image_place_holder) //5
+                        .error(R.drawable.ic_broken_image) //6
+                        .fallback(R.drawable.ic_no_image) //7
+                        .transform(CircleCrop()) //4
+                        .into(photoProgramm) //8
                 }
-                .setNegativeButton("Отмена", null)
-                .create()
-            dialog.show()
+                tagsEditText.setText(tags)
+
+                if (numOfCycles > 0) {
+                    numberOfCyclesEditText.visibility = VISIBLE
+                    countLabel.visibility = VISIBLE
+                    cyclicSwitch.isChecked = true
+                    numberOfCyclesEditText.setText(numOfCycles.toString())
+                } else {
+                    numberOfCyclesEditText.visibility = GONE
+                    countLabel.visibility = GONE
+                }
+                cyclicSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+                    numberOfCyclesEditText.visibility = if (isChecked) VISIBLE else GONE
+                    countLabel.visibility = if (isChecked) VISIBLE else GONE
+                }
+
+                val dialog = AlertDialog.Builder(c)
+                    .setTitle(if (isNew()) "Создаем новую программу" else "Редактируем программу ${name}") //todo amend to string res
+                    .setView(this@apply)
+                    .setPositiveButton(
+                        if (isNew()) "Добавить" else "Изменить"
+                    ) { _, which ->
+                        name = programmNameEditText.text.toString()
+                        desc = programmDescEditText.text.toString()
+                        tags = tagsEditText.text.toString()
+                        numOfCycles =
+                            if (cyclicSwitch.isChecked) numberOfCyclesEditText.text.toString().toInt() else 0
+                        viewModel.saveProgramm(this)
+                    }
+                    .setNegativeButton("Отмена", null)
+                    .create()
+                dialog.show()
+            }
         }
     }
 
