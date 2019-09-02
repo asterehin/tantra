@@ -7,11 +7,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.databinding.ProgrammCardBinding
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
-import kotlinx.android.synthetic.main.add_new_programm_view.view.*
+import kotlinx.android.synthetic.main.programm_card.view.*
 
 class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>() {
     private lateinit var mutableList: MutableList<ProgrammWithAsanas>
@@ -49,13 +50,14 @@ class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>
             binding.viewModel = viewModel
             viewModel.onProgrammActionEvent = onProgrammActionEvent
 
-            val url = "$programmWithAsanas.programm.photoUrl?w=360"
-            Glide.with(itemView)  //2
-                .load(url) //3
+            val url = "${programmWithAsanas.programm.photoUrl}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
+            Glide.with(itemView)
+                .load(url)
                 .centerCrop() //4
                 .placeholder(R.drawable.ic_image_place_holder) //5
                 .error(R.drawable.ic_broken_image) //6
                 .fallback(R.drawable.ic_no_image) //7
+                .transform(CircleCrop()) //4
                 .into(itemView.photoProgramm) //8
         }
     }

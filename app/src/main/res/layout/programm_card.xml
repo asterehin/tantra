@@ -96,11 +96,11 @@
                           android:orientation="vertical"
                           android:padding="@dimen/default_padding">
                 <ImageView
+                        android:id="@+id/photoProgramm"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:scaleType="fitCenter"
-                        android:background="@color/coins_card_green"
-                        android:src="@drawable/mcm_ic_action_info"
+                        android:src="@drawable/ic_no_image"
                         android:layout_gravity="center">
                 </ImageView>
 
