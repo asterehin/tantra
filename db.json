@@ -45,8 +45,8 @@
       "name": "Курс 1",
       "desc": "Программа асан йоги для практики на первом курсе",
       "numOfCycles": 1,
-      "photoUrl": "https://images.unsplash.com/photo-1553926297-57bb350c4f08",
       "tags": "",
+      "photoUrl": "https://images.unsplash.com/photo-1553926297-57bb350c4f08",
       "asanas": [
         {
           "sequence": 1,
@@ -84,8 +84,8 @@
       "name": "Курс 2",
       "desc": "Программа асан йоги для практики на втором курсе",
       "numOfCycles": 1,
-      "photoUrl": "https://images.unsplash.com/photo-1553052037-eb1fa8d3b1ce",
       "tags": "",
+      "photoUrl": "https://images.unsplash.com/photo-1553052037-eb1fa8d3b1ce",
       "asanas": [
         {
           "sequence": 1,
@@ -114,8 +114,8 @@
       "name": "Курс 3",
       "desc": "Программа асан йоги для практики на третьем курсе",
       "numOfCycles": 1,
-      "photoUrl": "https://images.unsplash.com/photo-1553575297-0a5fede484ce",
       "tags": "",
+      "photoUrl": "https://images.unsplash.com/photo-1553575297-0a5fede484ce",
       "asanas": [
         {
           "sequence": 1,
@@ -144,8 +144,8 @@
       "name": "Курс 4",
       "desc": "Программа асан йоги для практики на четвертом курсе",
       "numOfCycles": 1,
-      "photoUrl": "https://images.unsplash.com/photo-1554185624-d49be4319189",
       "tags": "",
+      "photoUrl": "https://images.unsplash.com/photo-1554185624-d49be4319189",
       "asanas": [
         {
           "sequence": 1,

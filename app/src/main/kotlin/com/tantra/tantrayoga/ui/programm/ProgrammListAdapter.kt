@@ -6,10 +6,12 @@ import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.databinding.ProgrammCardBinding
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
+import kotlinx.android.synthetic.main.add_new_programm_view.view.*
 
 class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>() {
     private lateinit var mutableList: MutableList<ProgrammWithAsanas>
@@ -46,6 +48,15 @@ class ProgrammListAdapter : RecyclerView.Adapter<ProgrammListAdapter.ViewHolder>
             binding.obj = programmWithAsanas
             binding.viewModel = viewModel
             viewModel.onProgrammActionEvent = onProgrammActionEvent
+
+            val url = "$programmWithAsanas.programm.photoUrl?w=360"
+            Glide.with(itemView)  //2
+                .load(url) //3
+                .centerCrop() //4
+                .placeholder(R.drawable.ic_image_place_holder) //5
+                .error(R.drawable.ic_broken_image) //6
+                .fallback(R.drawable.ic_no_image) //7
+                .into(itemView.photoProgramm) //8
         }
     }
 }
