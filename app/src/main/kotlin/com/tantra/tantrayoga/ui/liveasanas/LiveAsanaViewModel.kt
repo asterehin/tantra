@@ -12,16 +12,22 @@ import com.tantra.tantrayoga.model.ProgrammWithAsanas
 
 class LiveAsanaViewModel : BaseViewModel() {
     private val asanaName = MutableLiveData<String>()
+    private val sanscritName = MutableLiveData<String>()
     private val asanaDesc = MutableLiveData<String>()
 
     fun bind(liveAsana: LiveAsanaDetails) {
         asanaName.value = liveAsana.asana.name
+        sanscritName.value = liveAsana.asana.sanscritName
 //        asanaDesc.value = "%d".format(liveAsana.liveAsana.consciousnessTime)
         asanaDesc.value = liveAsana.asana.desc
     }
 
     fun getAsanaName(): MutableLiveData<String> {
         return asanaName
+    }
+
+    fun getSanscritAsanaName(): MutableLiveData<String> {
+        return sanscritName
     }
 
     fun getAsanaDesc(): MutableLiveData<String> {
