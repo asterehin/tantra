@@ -13,5 +13,6 @@ data class Asana(
     val effects: String,
     val consciousness: String,
     val audio: String,
-    val photo: String
+    val photo: String,
+    val tags: String
 )

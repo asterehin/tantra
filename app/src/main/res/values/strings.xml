@@ -8,9 +8,11 @@
     <string name="programm_name_label">Название программы</string>
     <string name="programm_desc_label">Описание</string>
     <string name="count_of_asanas_label">%1$d asanas</string>
+    <string name="count_of_cicles_label">%1$d cicles</string>
     <string name="personal_label">Моя личная</string>
     <string name="isСyclic">Цикличная?</string>
     <string name="count_label">раз</string>
     <string name="tags_label">Теги</string>
     <string name="school_label">Школа</string>
+    <string name="programms_title">Курсы</string>
 </resources>

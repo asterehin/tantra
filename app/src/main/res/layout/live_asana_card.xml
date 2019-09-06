@@ -4,50 +4,141 @@
 
     <data>
         <variable
+                name="obj"
+                type="com.tantra.tantrayoga.model.LiveAsanaDetails"/>
+        <variable
                 name="viewModel"
                 type="com.tantra.tantrayoga.ui.liveasanas.LiveAsanaViewModel"/>
     </data>
 
-    <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <com.tantra.tantrayoga.widget.BaseCardView
             android:id="@+id/card_view"
-            android:layout_gravity="center"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            card_view:cardCornerRadius="4dp"
-            android:layout_margin="20dp"
-            style="@style/TantraCardViewStyle">
-
-        <android.support.constraint.ConstraintLayout
+            android:onClick="@{() -> viewModel.onItemClick(obj)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:statusColor="@{viewModel.getStatusColor(context,obj)}"
+            app:statusIcon="@{viewModel.getStatusIcon(obj)}"
+            app:statusLabel="@{viewModel.getItemType(context, obj)}"
+            app:withBigStatus="true">
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="16dp"
-                android:paddingRight="16dp">
-
+                android:paddingRight="16dp"
+                android:orientation="vertical">
             <TextView
                     android:id="@+id/asanaName"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    style="@style/Widget.Coins.Flat.HeaderTextAppearance"
                     app:mutableText="@{viewModel.getAsanaName()}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:text="Курс 1"
-                    android:gravity="center_vertical|center_horizontal|top"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
+                    tools:text="Поза воина"/>
             <TextView
-                    android:id="@+id/post_body"
-                    android:layout_width="0dp"
+                    android:id="@+id/asanaNameSanscrit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:mutableText="@{viewModel.getAsanaDesc()}"
-                    tools:text="Программа асан йоги для практики на первом курсе"
-                    android:gravity="center_vertical|center_horizontal|top"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/asanaName"/>
-        </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+                    style="@style/Widget.Coins.Flat.SubHeaderTextAppearance"
+                    app:mutableText="@{viewModel.getAsanaName()}"
+                    tools:text="Вирабхадрасана"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout android:layout_weight="1"
+                              android:layout_width="0dp"
+                              android:layout_height="match_parent"
+                              android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            app:mutableText="@{viewModel.getAsanaDesc()}"
+                            tools:text="Эта асана посвящена Вирабхадре, могучему герою, которого Шива сотворил из своих спутанных волос. В этой асане грудная клетка полностью раскрывается, что способствует глуб."
+                            android:ellipsize="end"
+                            android:maxLines="6"/>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom"
+                            android:orientation="horizontal">
+
+                        <ImageButton
+                                android:id="@+id/detailsImageButton"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/default_padding"
+                                android:onClick="@{() -> viewModel.onDetails(obj)}"
+                                android:tint="@color/coins_card_blue"
+                                app:srcCompat="@drawable/ic_awesome_info"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                        />
+                        <ImageButton
+                                android:id="@+id/editImageButton"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/default_padding"
+                                android:onClick="@{() -> viewModel.onEdit(obj)}"
+                                android:tint="@color/coins_card_blue"
+                                app:srcCompat="@drawable/ic_material_edit"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                        />
+                        <ImageButton
+                                android:id="@+id/deleteImageButton"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/default_padding"
+                                android:onClick="@{() -> viewModel.onDelete(obj)}"
+                                android:tint="@color/coins_card_blue"
+                                android:visibility="@{viewModel.deleteButtonVisibility(obj), default=gone}"
+                                tools:visibility="visible"
+                                app:srcCompat="@drawable/ic_material_delete"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                        />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_weight="1"
+                              android:layout_width="0dp"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical"
+                              android:padding="@dimen/default_padding">
+                    <ImageView
+                            android:id="@+id/photoAsana"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_no_image"
+                            android:layout_gravity="center">
+                    </ImageView>
+
+                    <TextView
+                            android:id="@+id/minutesTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.Coins.Flat.HeaderTextAppearance"
+                            app:mutableText="@{viewModel.getMinutes()}"
+                            tools:text="5 минут"/>
+
+                    <TextView
+                            android:id="@+id/ciclesCountTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            style="@style/Widget.Coins.Flat.HeaderTextAppearance"
+                            app:mutableText="@{viewModel.getCiclesCount(context, obj)}"
+                            tools:text="5 циклов"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.tantra.tantrayoga.widget.BaseCardView>
 </layout>
 

@@ -10,7 +10,8 @@
       "audio": "",
       "photo": "https://images.unsplash.com/photo-1554692918-08fa0fdc9db3",
       "contraindications": [],
-      "indications": []
+      "indications": [],
+      "tags": "аджна,анахата"
     },
     {
       "UUID": "25433e2e-041e-4813-aa71-985664960a70",
@@ -22,7 +23,8 @@
       "audio": "",
       "photo": "https://images.unsplash.com/photo-1554335562-eb859255c3a6",
       "contraindications": [],
-      "indications": []
+      "indications": [],
+      "tags": "аджна,анахата"
     },
     {
       "UUID": "34533e2e-041e-4813-aa71-985664960a70",
@@ -34,7 +36,8 @@
       "audio": "",
       "photo": "https://images.unsplash.com/photo-1553285991-4c74211f5097",
       "contraindications": [],
-      "indications": []
+      "indications": [],
+      "tags": "свадхистана"
     }
   ],
   "programms": [
@@ -55,7 +58,8 @@
           "dueTime": 30,
           "consciousnessTime": 10,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         },
         {
           "sequence": 2,
@@ -64,7 +68,8 @@
           "dueTime": 30,
           "consciousnessTime": 10,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         },
         {
           "sequence": 3,
@@ -73,7 +78,8 @@
           "dueTime": 30,
           "consciousnessTime": 10,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         }
       ]
     },
@@ -94,7 +100,8 @@
           "dueTime": 100,
           "consciousnessTime": 30,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         },
         {
           "sequence": 2,
@@ -103,7 +110,8 @@
           "dueTime": 330,
           "consciousnessTime": 20,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         }
       ]
     },
@@ -124,7 +132,8 @@
           "dueTime": 30,
           "consciousnessTime": 10,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         },
         {
           "sequence": 2,
@@ -133,7 +142,8 @@
           "dueTime": 40,
           "consciousnessTime": 5,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         }
       ]
     },
@@ -154,7 +164,8 @@
           "dueTime": 30,
           "consciousnessTime": 10,
           "showTimer": true,
-          "playSignals": true
+          "playSignals": true,
+          "type": "a"
         }
       ]
     }

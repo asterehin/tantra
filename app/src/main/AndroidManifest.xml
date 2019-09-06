@@ -20,7 +20,8 @@
         </activity>
         <activity
                 android:name=".ui.programm.ProgrammListActivity"
-                android:theme="@style/Theme.Coins.Flat.NoActionBar">
+                android:theme="@style/Theme.Coins.Flat.NoActionBar"
+                android:label="@string/programms_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -29,11 +30,12 @@
         </activity>
         <activity
                 android:name=".ui.asanas.AsanasActivity"
-                android:theme="@style/Theme.Coins.Flat.NoActionBar">
+                android:theme="@style/Theme.Coins.Flat.NoActionBar"
+                android:label="@string/action_asanas">
         </activity>
         <activity
                 android:name=".ui.liveasanas.LiveAsanasActivity"
-                android:theme="@style/Theme.Coins.Flat.NoActionBar">
+                android:label="@string/action_asanas">
         </activity>
     </application>
 

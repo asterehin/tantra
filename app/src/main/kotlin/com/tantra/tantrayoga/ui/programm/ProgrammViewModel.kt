@@ -26,6 +26,10 @@ class ProgrammViewModel : BaseViewModel() {
         return programmName
     }
 
+    fun getProgrammDesc(): MutableLiveData<String> {
+        return programmDesc
+    }
+
     fun getSchoolName(context: Context, programmWithAsanas: ProgrammWithAsanas): String {
         return if (programmWithAsanas.isPersonal()) context.getString(R.string.personal_label) else "Сатья"
     }
@@ -57,10 +61,6 @@ class ProgrammViewModel : BaseViewModel() {
         val string = MutableLiveData<String>()
         string.value = "30 pranayamas"
         return string
-    }
-
-    fun getProgrammDesc(): MutableLiveData<String> {
-        return programmDesc
     }
 
     fun onItemClick(programmWithAsanas: ProgrammWithAsanas) {

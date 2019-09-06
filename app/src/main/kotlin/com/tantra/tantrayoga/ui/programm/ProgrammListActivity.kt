@@ -47,9 +47,6 @@ class ProgrammListActivity : AppCompatActivity() {
         viewModel.programmsWithAsanasLiveData.observe(this, Observer { programmsWithAsanas ->
             viewModel.updateList(programmsWithAsanas!!)
         })
-//        viewModel.selectedProgramm.observe(this, Observer { programmsWithAsanas ->
-//            startActivity(liveAsanasActivityIntent(this, programmsWithAsanas!!.programm.UUID))
-//        })
         viewModel.onProgrammActionEvent.observe(this, Observer {
             it?.getContentIfNotHandled()?.let { actionProgramm ->
                 when (actionProgramm.action) {

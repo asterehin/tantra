@@ -54,6 +54,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layoutManager="android.support.v7.widget.GridLayoutManager"
                     tools:listitem="@layout/programm_card"
+                    android:clipToPadding="false"
                     app:spanCount="@integer/mcm_cards_layout_span_count"
                     android:paddingBottom="@dimen/mcm_margin_bottom_with_fab"/>
         </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="viewModel"
@@ -11,16 +11,29 @@
                 type="com.tantra.tantrayoga.ui.liveasanas.LiveAsanasListViewModel"
         />
     </data>
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/asanas_list"
+    <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:adapter="@{viewModel.getLiveAsanasListAdapter()}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layoutManager="android.support.v7.widget.GridLayoutManager"
-            app:spanCount="2"
-            android:paddingBottom="?attr/actionBarSize"/>
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/asanas_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{viewModel.getLiveAsanasListAdapter()}"
+                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                tools:listitem="@layout/programm_card"
+                app:spanCount="@integer/mcm_cards_layout_span_count"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/mcm_margin_bottom_with_fab"/>
+
+        <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:srcCompat="@android:drawable/ic_input_add"
+                android:onClick="@{handler::onClick}"/>
+
+    </FrameLayout>
 </layout>
