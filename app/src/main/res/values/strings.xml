@@ -15,4 +15,7 @@
     <string name="tags_label">Теги</string>
     <string name="school_label">Школа</string>
     <string name="programms_title">Курсы</string>
+    <string name="asana_label">Асана</string>
+    <string name="programm_label">Программа</string>
+    <string name="pranayama_label">Пранаяма</string>
 </resources>

@@ -38,5 +38,5 @@ data class LiveAsana(
     var consciousnessTime: Int = 0, //in sec
     var showTimer: Boolean = false,
     var playSignals: Boolean = false,
-    val type: String = ""
+    var type: String = ""
 )

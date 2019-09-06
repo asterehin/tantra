@@ -10,38 +10,49 @@ import com.tantra.tantrayoga.model.LiveAsana
 import com.tantra.tantrayoga.model.LiveAsanaDetails
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
 
-class LiveAsanaViewModel: BaseViewModel() {
+class LiveAsanaViewModel : BaseViewModel() {
     private val asanaName = MutableLiveData<String>()
     private val asanaDesc = MutableLiveData<String>()
 
-    fun bind(liveAsana: LiveAsanaDetails){
+    fun bind(liveAsana: LiveAsanaDetails) {
         asanaName.value = liveAsana.asana.name
 //        asanaDesc.value = "%d".format(liveAsana.liveAsana.consciousnessTime)
         asanaDesc.value = liveAsana.asana.desc
     }
 
-    fun getAsanaName():MutableLiveData<String>{
+    fun getAsanaName(): MutableLiveData<String> {
         return asanaName
     }
 
-    fun getAsanaDesc():MutableLiveData<String>{
+    fun getAsanaDesc(): MutableLiveData<String> {
         return asanaDesc
     }
 
-    fun getItemType(context: Context, liveAsanaDetails: LiveAsanaDetails): String {
-        return "Асана"
+    fun getItemType(context: Context, liveAsanaDetails: LiveAsanaDetails) = when (liveAsanaDetails.liveAsana.type) {
+        "a" -> context.getString(R.string.asana_label)
+        "p" -> context.getString(R.string.programm_label)
+        "b" -> context.getString(R.string.pranayama_label)
+        else -> ""
     }
 
     fun getStatusColor(context: Context, liveAsanaDetails: LiveAsanaDetails) = ContextCompat.getColor(
-        context,
-        if (true) R.color.coins_flat_blue else R.color.coins_flat_orange
+        context, when (liveAsanaDetails.liveAsana.type) {
+            "a" -> R.color.coins_flat_green
+            "p" -> R.color.coins_flat_orange
+            "b" -> R.color.coins_flat_blue
+            else -> R.color.coins_flat_blue
+        }
     )
 
-    fun getStatusIcon(liveAsanaDetails: LiveAsanaDetails) =
-        if (true) R.drawable.ic_material_person else R.drawable.ic_material_share
+    fun getStatusIcon(liveAsanaDetails: LiveAsanaDetails) = when (liveAsanaDetails.liveAsana.type) {
+        "a" -> R.drawable.ic_material_person
+        "p" -> R.drawable.ic_material_person
+        "b" -> R.drawable.ic_material_person
+        else -> R.drawable.ic_material_person
+    }
 
     fun deleteButtonVisibility(liveAsanaDetails: LiveAsanaDetails) = VISIBLE
-        //if (programmWithAsanas.isPersonal()) VISIBLE else GONE
+    //if (programmWithAsanas.isPersonal()) VISIBLE else GONE
 
     fun getMinutes(): MutableLiveData<String> {
         val string = MutableLiveData<String>()

@@ -14,5 +14,6 @@ data class Asana(
     val consciousness: String,
     val audio: String,
     val photo: String,
-    val tags: String
+    val tags: String,
+    val sanscritName: String
 )
