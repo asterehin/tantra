@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:id="@+id/linearLayout">
+
+    <ImageView
+            android:id="@+id/photoProgramm"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/default_padding"
+            android:src="@drawable/ic_no_image"
+            android:layout_marginTop="16dp" android:layout_marginBottom="12dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+    </ImageView>
+
+
+    <!--<TextView-->
+    <!--style="?labelStyle"-->
+    <!--android:text="@string/programm_name_label"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:id="@+id/textView"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_marginStart="16dp"-->
+    <!--app:layout_constraintBaseline_toBaselineOf="@+id/programmNameEditText"-->
+    <!--app:layout_constraintEnd_toStartOf="@+id/programmNameEditText"/>-->
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameInputLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photoProgramm"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/programmNameTextInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Курс 1"
+                android:hint="@string/programm_name_label"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--<EditText-->
+    <!--android:id="@+id/programmNameEditText"-->
+    <!--style="?valueStyle"-->
+    <!--tools:text="Курс 1"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="0dp" app:layout_constraintStart_toEndOf="@+id/textView"-->
+    <!--app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="6dp"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/programmDescEditText"/>-->
+
+
+    <TextView
+            style="?labelStyle"
+            android:text="@string/programm_desc_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" android:id="@+id/textView2" android:layout_marginTop="56dp"
+            app:layout_constraintTop_toBottomOf="@+id/nameInputLayout"
+            app:layout_constraintEnd_toStartOf="@+id/programmDescEditText" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp" android:layout_marginEnd="92dp"
+            android:layout_marginRight="92dp"/>
+
+    <EditText
+            android:id="@+id/programmDescEditText"
+            style="?valueStyle"
+            android:gravity="top|start"
+            android:inputType="text|textMultiLine"
+            android:minLines="4"
+            tools:text="программа для первого курса"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="166dp"
+            app:layout_constraintStart_toEndOf="@+id/textView2" app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <TextView
+            style="?labelStyle"
+            android:text="@string/isСyclic"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" android:id="@+id/textView3" android:layout_marginTop="56dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" app:layout_constraintEnd_toStartOf="@+id/cyclicSwitch"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" android:layout_marginEnd="83dp" android:layout_marginRight="83dp"/>
+    <Switch
+            android:id="@+id/cyclicSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Widget.Coins.Flat.LabelTextAppearance"
+            android:gravity="left|center"
+            app:layout_constraintBaseline_toBaselineOf="@+id/numberOfCyclesEditText"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintEnd_toStartOf="@+id/numberOfCyclesEditText" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"/>
+
+    <EditText
+            android:id="@+id/numberOfCyclesEditText"
+            style="?valueStyle"
+            android:gravity="center"
+            android:inputType="number"
+            tools:text="5"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp" app:layout_constraintStart_toEndOf="@+id/cyclicSwitch"
+            app:layout_constraintEnd_toStartOf="@+id/countLabel" android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/tagsEditText"/>
+    <TextView
+            android:id="@+id/countLabel"
+            style="?labelStyle"
+            android:text="@string/count_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" app:layout_constraintBaseline_toBaselineOf="@+id/numberOfCyclesEditText"
+            app:layout_constraintStart_toEndOf="@+id/numberOfCyclesEditText" app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <TextView
+            style="?labelStyle"
+            android:text="@string/tags_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" android:id="@+id/textView4" android:layout_marginTop="28dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintEnd_toStartOf="@+id/tagsEditText"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" android:layout_marginEnd="131dp" android:layout_marginRight="131dp"/>
+
+    <EditText
+            android:id="@+id/tagsEditText"
+            style="?valueStyle"
+            tools:text="суставы,спина,бодрость"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp" android:layout_marginTop="55dp"
+            app:layout_constraintTop_toBottomOf="@+id/programmDescEditText"
+            app:layout_constraintStart_toEndOf="@+id/textView4" app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <TextView
+            style="?labelStyle"
+            android:text="@string/school_label"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" android:id="@+id/textView5"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="18dp"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+
+    <Spinner
+            android:id="@+id/deliveryMethodsSpinner"
+            android:layout_width="wrap_content"
+            style="?spinnerStyle"
+            android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="@+id/tagsEditText"
+            android:layout_marginTop="7dp" app:layout_constraintTop_toBottomOf="@+id/tagsEditText"/>
+
+
+</android.support.constraint.ConstraintLayout>

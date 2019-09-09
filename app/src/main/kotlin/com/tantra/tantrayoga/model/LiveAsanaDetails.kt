@@ -11,12 +11,14 @@ class LiveAsanaDetails() {
     lateinit var asana: Asana
     @Embedded
     lateinit var liveAsana: LiveAsana
-//    @Relation(
+
+    //    @Relation(
 //        parentColumn = "UUID",
 //        entityColumn = "asanaUUID",
 //        entity = LiveAsana::class
 //    )
 //    lateinit var liveAsana: List<LiveAsana>
+    fun isNew() = liveAsana.id == 0L
 
 
 }

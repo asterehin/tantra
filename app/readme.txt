@@ -15,3 +15,10 @@ https://www.raywenderlich.com/3658341-picasso-tutorial-for-android-getting-start
 - пример, как использовать пикассо
 https://www.raywenderlich.com/2945946-glide-tutorial-for-android-getting-started
 -пример как исп GLIDE
+
+7/09
+https://www.flaticon.com - много иконок
+9/09
+https://stackoverflow.com/questions/54731643/android-x-dependencies-and-xml-causing-crash
+- там ответ как мигрирова на androidX
+http://developer.alexanderklimov.ru/android/layout/textinputlayout.php

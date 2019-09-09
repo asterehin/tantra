@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat
 import android.view.View.VISIBLE
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.base.BaseViewModel
+import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.LiveAsana
 import com.tantra.tantrayoga.model.LiveAsanaDetails
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
@@ -14,6 +15,8 @@ class LiveAsanaViewModel : BaseViewModel() {
     private val asanaName = MutableLiveData<String>()
     private val sanscritName = MutableLiveData<String>()
     private val asanaDesc = MutableLiveData<String>()
+    lateinit var onItemActionEvent: MutableLiveData<Event<LiveAsanaDetails>>
+
 
     fun bind(liveAsana: LiveAsanaDetails) {
         asanaName.value = liveAsana.asana.name
@@ -51,9 +54,9 @@ class LiveAsanaViewModel : BaseViewModel() {
     )
 
     fun getStatusIcon(liveAsanaDetails: LiveAsanaDetails) = when (liveAsanaDetails.liveAsana.type) {
-        "a" -> R.drawable.ic_material_person
-        "p" -> R.drawable.ic_material_person
-        "b" -> R.drawable.ic_material_person
+        "a" -> R.drawable.ic_yoga_pose
+        "p" -> R.drawable.ic_awesome_list_ol
+        "b" -> R.drawable.ic_lungs
         else -> R.drawable.ic_material_person
     }
 
@@ -73,18 +76,18 @@ class LiveAsanaViewModel : BaseViewModel() {
     }
 
     fun onItemClick(liveAsanaDetails: LiveAsanaDetails) {
-//        onProgrammActionEvent.setValue(Event(programmWithAsanas, Event.Action.SELECT))
+        onItemActionEvent.setValue(Event(liveAsanaDetails, Event.Action.EDIT))
     }
 
     fun onDetails(liveAsanaDetails: LiveAsanaDetails) {
-//        onProgrammActionEvent.setValue(Event(programmWithAsanas, Event.Action.DELETE))
+        onItemActionEvent.setValue(Event(liveAsanaDetails, Event.Action.EDIT))
     }
 
     fun onDelete(liveAsanaDetails: LiveAsanaDetails) {
-//        onProgrammActionEvent.setValue(Event(programmWithAsanas, Event.Action.DELETE))
+        onItemActionEvent.setValue(Event(liveAsanaDetails, Event.Action.DELETE))
     }
 
     fun onEdit(liveAsanaDetails: LiveAsanaDetails) {
-//        onProgrammActionEvent.setValue(Event(programmWithAsanas, Event.Action.EDIT))
+        onItemActionEvent.setValue(Event(liveAsanaDetails, Event.Action.EDIT))
     }
 }

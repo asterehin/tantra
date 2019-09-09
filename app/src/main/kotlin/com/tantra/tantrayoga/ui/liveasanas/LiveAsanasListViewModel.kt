@@ -8,6 +8,7 @@ import com.tantra.tantrayoga.model.LiveAsana
 import com.tantra.tantrayoga.base.BaseViewModel
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.LiveAsanaDetails
+import com.tantra.tantrayoga.model.ProgrammWithAsanas
 import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -25,10 +26,12 @@ class LiveAsanasListViewModel(
 
     val liveAsanasListAdapter = LiveAsanasListAdapter()
     val liveAsanasList = MutableLiveData<MutableList<LiveAsanaDetails>>()
+    var onItemActionEvent = MutableLiveData<Event<LiveAsanaDetails>>()
 
 
     init {
         loadLiveAsanas()
+        liveAsanasListAdapter.onItemActionEvent = onItemActionEvent
     }
 
     private fun loadLiveAsanas() = scope.launch {
