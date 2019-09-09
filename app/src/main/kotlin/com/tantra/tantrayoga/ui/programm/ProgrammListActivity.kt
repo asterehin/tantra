@@ -1,31 +1,30 @@
 package com.tantra.tantrayoga.ui.programm
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.annotation.StringRes
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
-import kotlinx.android.synthetic.main.activity_main.*
 import android.app.AlertDialog
 import android.content.Context
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.google.android.material.snackbar.Snackbar
 import com.tantra.tantrayoga.databinding.ActivityProgrammsBinding
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.Programm
 import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
 import com.tantra.tantrayoga.ui.liveasanas.liveAsanasActivityIntent
+import kotlinx.android.synthetic.main.activity_programms.*
 import kotlinx.android.synthetic.main.add_new_programm_view.view.*
 import java.util.*
-
 
 //https://nuancesprog.ru/p/3270/
 

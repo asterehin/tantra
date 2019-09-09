@@ -1,9 +1,9 @@
 package com.tantra.tantrayoga.ui.asanas
 
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.DataBindingUtil
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.databinding.AsanaCardBinding
 import com.tantra.tantrayoga.model.Asana

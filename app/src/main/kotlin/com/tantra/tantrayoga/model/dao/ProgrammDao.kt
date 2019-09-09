@@ -1,12 +1,10 @@
 package com.tantra.tantrayoga.model.dao
 
-import android.arch.persistence.room.*
 import com.tantra.tantrayoga.model.Programm
-import android.arch.lifecycle.LiveData
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
-import android.arch.persistence.room.Transaction
-import android.arch.persistence.room.OnConflictStrategy
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.tantra.tantrayoga.model.LiveAsana
 
 

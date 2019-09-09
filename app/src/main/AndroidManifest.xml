@@ -11,14 +11,6 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Coins.Flat">
         <activity
-                android:name=".ui.post.PostListActivity"
-                android:theme="@style/Theme.Coins.Flat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-            </intent-filter>
-        </activity>
-        <activity
                 android:name=".ui.programm.ProgrammListActivity"
                 android:theme="@style/Theme.Coins.Flat.NoActionBar"
                 android:label="@string/programms_title">

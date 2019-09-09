@@ -3,10 +3,10 @@ package com.tantra.tantrayoga.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.support.v7.widget.AppCompatTextView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import androidx.appcompat.widget.AppCompatTextView;
 import com.tantra.tantrayoga.R;
 
 public class VerticalTextView extends AppCompatTextView {

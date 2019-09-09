@@ -1,9 +1,9 @@
 package com.tantra.tantrayoga.ui.liveasanas
 
-import android.arch.lifecycle.MutableLiveData
 import android.content.Context
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.View.VISIBLE
+import androidx.lifecycle.MutableLiveData
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.base.BaseViewModel
 import com.tantra.tantrayoga.model.Event

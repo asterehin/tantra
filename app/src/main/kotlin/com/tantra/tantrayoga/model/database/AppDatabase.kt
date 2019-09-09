@@ -1,21 +1,18 @@
 package com.tantra.tantrayoga.model.database
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.TypeConverters
 import android.content.Context
-import android.databinding.adapters.Converters
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.tantra.tantrayoga.model.Asana
 import com.tantra.tantrayoga.model.LiveAsana
 import com.tantra.tantrayoga.model.Post
-import com.tantra.tantrayoga.model.dao.PostDao
 import com.tantra.tantrayoga.model.Programm
 import com.tantra.tantrayoga.model.dao.AsanaDao
 import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 
-@Database(entities = [Post::class, Programm::class, Asana::class, LiveAsana::class], version = 19)
+@Database(entities = [ Programm::class, Asana::class, LiveAsana::class], version = 20)
 //@TypeConverters(LiveAsanasConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -42,7 +39,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 
-    abstract fun postDao(): PostDao
     abstract fun programmDao(): ProgrammDao
     abstract fun asanaDao(): AsanaDao
     abstract fun liveAsanaDao(): LiveAsanaDao

@@ -1,15 +1,15 @@
 package com.tantra.tantrayoga.ui.liveasanas
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.*
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.*
-import android.support.design.widget.Snackbar
-import android.support.v7.app.*
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.tantra.tantrayoga.R
@@ -19,7 +19,6 @@ import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.LiveAsana
 import com.tantra.tantrayoga.model.LiveAsanaDetails
 import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_new_programm_view.view.*
 
 private const val UUID_KEY = "uuid_key"

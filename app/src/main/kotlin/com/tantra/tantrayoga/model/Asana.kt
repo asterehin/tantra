@@ -1,8 +1,8 @@
 package com.tantra.tantrayoga.model
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Index
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
 
 @Entity(indices = arrayOf(Index(value = ["UUID"], name = "asanasIndexUUID",  unique = true)))
 data class Asana(

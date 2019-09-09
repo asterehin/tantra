@@ -1,6 +1,6 @@
 package com.tantra.tantrayoga.model.database
 
-import android.arch.persistence.room.*
+import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.squareup.moshi.JsonAdapter

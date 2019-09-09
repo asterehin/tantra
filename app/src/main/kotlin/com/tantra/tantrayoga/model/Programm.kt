@@ -1,7 +1,10 @@
 package com.tantra.tantrayoga.model
 
-import android.arch.persistence.room.*
-import android.databinding.adapters.Converters
+import androidx.databinding.adapters.Converters
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.tantra.tantrayoga.model.database.LiveAsanasConverter

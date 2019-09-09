@@ -1,8 +1,8 @@
 package com.tantra.tantrayoga.ui.liveasanas
 
-import android.arch.lifecycle.*
-import android.support.design.widget.Snackbar
 import android.view.View
+import androidx.lifecycle.MutableLiveData
+import com.google.android.material.snackbar.Snackbar
 import com.tantra.tantrayoga.model.LiveAsana
 
 import com.tantra.tantrayoga.base.BaseViewModel

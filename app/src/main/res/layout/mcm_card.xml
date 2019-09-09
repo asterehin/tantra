@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.v7.widget.CardView style="?cardStyle">
+    <androidx.cardview.widget.CardView style="?cardStyle">
 
         <ImageView
             android:id="@+id/mcm_card_icon"
@@ -46,6 +46,6 @@
             android:paddingRight="?cardContentHorizontalPadding"
             android:paddingTop="?cardContentVerticalPadding" />
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </merge>

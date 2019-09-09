@@ -1,6 +1,6 @@
 package com.tantra.tantrayoga.ui.asanas
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.tantra.tantrayoga.model.Asana
 import com.tantra.tantrayoga.base.BaseViewModel
 

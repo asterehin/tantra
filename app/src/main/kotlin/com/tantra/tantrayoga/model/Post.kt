@@ -1,6 +1,6 @@
 package com.tantra.tantrayoga.model
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /**
  * Class which provides a model for post

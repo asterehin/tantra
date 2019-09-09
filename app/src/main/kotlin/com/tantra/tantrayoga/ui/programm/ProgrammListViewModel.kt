@@ -1,13 +1,14 @@
 package com.tantra.tantrayoga.ui.programm
 
-import android.arch.lifecycle.*
 import android.view.View
 import com.tantra.tantrayoga.model.Programm
 
 import com.tantra.tantrayoga.base.BaseViewModel
 import javax.inject.Inject
-import android.support.design.widget.Snackbar
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.google.android.material.snackbar.Snackbar
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.ProgrammWithAsanas
 import com.tantra.tantrayoga.model.dao.AsanaDao

@@ -15,18 +15,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/asanas_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:adapter="@{viewModel.getLiveAsanasListAdapter()}"
-                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 tools:listitem="@layout/programm_card"
                 app:spanCount="@integer/mcm_cards_layout_span_count"
                 android:clipToPadding="false"
                 android:paddingBottom="@dimen/mcm_margin_bottom_with_fab"/>
 
-        <android.support.design.widget.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

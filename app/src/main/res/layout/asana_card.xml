@@ -8,7 +8,7 @@
                 type="com.tantra.tantrayoga.ui.asanas.AsanaViewModel"/>
     </data>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view"
             android:layout_gravity="center"
@@ -48,6 +48,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/asanaName"/>
         </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </layout>
 
