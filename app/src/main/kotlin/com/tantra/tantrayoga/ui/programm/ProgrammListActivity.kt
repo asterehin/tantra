@@ -23,7 +23,7 @@ import com.tantra.tantrayoga.model.Programm
 import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
 import com.tantra.tantrayoga.ui.liveasanas.liveAsanasActivityIntent
 import kotlinx.android.synthetic.main.activity_programms.*
-import kotlinx.android.synthetic.main.add_new_programm_view.view.*
+import kotlinx.android.synthetic.main.add_programm_view.view.*
 import java.util.*
 
 //https://nuancesprog.ru/p/3270/
@@ -72,12 +72,12 @@ class ProgrammListActivity : AppCompatActivity() {
     }
 
     private fun showAddEditProgrammDialog(c: Context, programm: Programm) {
-        this.getLayoutInflater().inflate(R.layout.add_new_programm_view, null).apply {
+        this.getLayoutInflater().inflate(R.layout.add_programm_view, null).apply {
 
             with(programm) {
                 if (!isNew()) {
-                    programmNameEditText.setText(name)
-                    programmDescEditText.setText(desc)
+                    programmNameTextInputEditText.setText(name)
+                    programmDescTextInputEditText.setText(desc)
 
                     val url =
                         "${photoUrl}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
@@ -90,7 +90,7 @@ class ProgrammListActivity : AppCompatActivity() {
                         .transform(CircleCrop()) //4
                         .into(photoProgramm) //8
                 }
-                tagsEditText.setText(tags)
+                tagsTextInputEditText.setText(tags)
 
                 if (numOfCycles > 0) {
                     numberOfCyclesEditText.visibility = VISIBLE
@@ -112,9 +112,9 @@ class ProgrammListActivity : AppCompatActivity() {
                     .setPositiveButton(
                         if (isNew()) "Добавить" else "Изменить"
                     ) { _, which ->
-                        name = programmNameEditText.text.toString()
-                        desc = programmDescEditText.text.toString()
-                        tags = tagsEditText.text.toString()
+                        name = programmNameTextInputEditText.text.toString()
+                        desc = programmDescTextInputEditText.text.toString()
+                        tags = tagsTextInputEditText.text.toString()
                         numOfCycles =
                             if (cyclicSwitch.isChecked) numberOfCyclesEditText.text.toString().toInt() else 0
                         viewModel.saveProgramm(this)
