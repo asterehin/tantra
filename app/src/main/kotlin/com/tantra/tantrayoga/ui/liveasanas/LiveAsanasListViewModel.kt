@@ -3,12 +3,9 @@ package com.tantra.tantrayoga.ui.liveasanas
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.snackbar.Snackbar
-import com.tantra.tantrayoga.model.LiveAsana
 
 import com.tantra.tantrayoga.base.BaseViewModel
-import com.tantra.tantrayoga.model.Event
-import com.tantra.tantrayoga.model.LiveAsanaDetails
-import com.tantra.tantrayoga.model.ProgrammWithAsanas
+import com.tantra.tantrayoga.model.*
 import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
@@ -25,7 +22,7 @@ class LiveAsanasListViewModel(
     private val scope = CoroutineScope(coroutineContext)
 
     val liveAsanasListAdapter = LiveAsanasListAdapter()
-    val liveAsanasList = MutableLiveData<MutableList<LiveAsanaDetails>>()
+    val liveAsanasListLiveData = MutableLiveData<MutableList<LiveAsanaDetails>>()
     var onItemActionEvent = MutableLiveData<Event<LiveAsanaDetails>>()
 
 
@@ -35,7 +32,7 @@ class LiveAsanasListViewModel(
     }
 
     private fun loadLiveAsanas() = scope.launch {
-        liveAsanasList.postValue(liveLiveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
+        liveAsanasListLiveData.postValue(liveLiveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
     }
 
     fun onRetrieveLiveAsanaListSuccess(liveAsanasDetailsList: List<LiveAsanaDetails>) {
@@ -52,4 +49,12 @@ class LiveAsanasListViewModel(
         Snackbar.make(view, "onCLick has been processed", Snackbar.LENGTH_SHORT).show()
 
     }
+
+    fun saveLiveAsana(liveAsana: LiveAsana) {
+        scope.launch {
+            liveLiveAsanaDao.insert(liveAsana)
+            liveAsanasListLiveData.postValue(liveLiveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
+        }
+    }
+
 }

@@ -3,8 +3,6 @@ package com.tantra.tantrayoga.ui.liveasanas
 import android.content.*
 import androidx.databinding.DataBindingUtil
 import android.os.*
-import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -16,9 +14,7 @@ import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
 import com.tantra.tantrayoga.databinding.LiveAsanasActivityBinding
 import com.tantra.tantrayoga.model.Event
-import com.tantra.tantrayoga.model.LiveAsana
 import com.tantra.tantrayoga.model.LiveAsanaDetails
-import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
 import kotlinx.android.synthetic.main.add_programm_item_view.view.*
 
 private const val UUID_KEY = "uuid_key"
@@ -41,7 +37,7 @@ class LiveAsanasActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, ViewModelFactory(this, intent.getStringExtra(UUID_KEY)))
             .get(LiveAsanasListViewModel::class.java)
 
-        viewModel.liveAsanasList.observe(this, Observer { LiveAsanaDetails ->
+        viewModel.liveAsanasListLiveData.observe(this, Observer { LiveAsanaDetails ->
                         viewModel.updateList(LiveAsanaDetails)
         })
 
@@ -73,33 +69,24 @@ class LiveAsanasActivity : AppCompatActivity() {
                     consciousnessDropdownTextView.setContentText(asana.desc)
                     techniqueDropdownTextView.setContentText(asana.technics)
                     effectsDropdownTextView.setContentText(asana.effects)
+                    with(liveAsana) {
+                        audioGuideSwitch.isChecked = playAudio
+                        preparationEditText.setText(preparationTime.toString())
+                        lengthEditText.setText(lengthTime.toString())
+                        consciousnessEditText.setText(consciousnessTime.toString())
+                    }
 
                     val url =
                         "${LiveAsanaDetails.asana.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
                     Glide.with(this@apply)
                         .load(url)
-                        .centerCrop() //4
-                        .placeholder(R.drawable.ic_image_place_holder) //5
-                        .error(R.drawable.ic_broken_image) //6
-                        .fallback(R.drawable.ic_no_image) //7
-                        .transform(CircleCrop()) //4
-                        .into(photoProgramm) //8
+                        .centerCrop()
+                        .placeholder(R.drawable.ic_image_place_holder)
+                        .error(R.drawable.ic_broken_image)
+                        .fallback(R.drawable.ic_no_image)
+                        .transform(CircleCrop())
+                        .into(photoProgramm)
                 }
-//                tagsTextInputEditText.setText(asana.tags)
-
-//                if (numOfCycles > 0) {
-//                    numberOfCyclesEditText.visibility = VISIBLE
-//                    countLabel.visibility = VISIBLE
-//                    cyclicSwitch.isChecked = true
-//                    numberOfCyclesEditText.setText(numOfCycles.toString())
-//                } else {
-//                    numberOfCyclesEditText.visibility = GONE
-//                    countLabel.visibility = GONE
-//                }
-//                cyclicSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-//                    numberOfCyclesEditText.visibility = if (isChecked) VISIBLE else GONE
-//                    countLabel.visibility = if (isChecked) VISIBLE else GONE
-//                }
 
                 val dialog = AlertDialog.Builder(c, R.style.my_dialog)
                     .setTitle(if (isNew()) "Добавляем новую асану" else "Редактируем асану ${asana.name}") //todo amend to string res
@@ -107,12 +94,13 @@ class LiveAsanasActivity : AppCompatActivity() {
                     .setPositiveButton(
                         if (isNew()) "Добавить" else "Изменить"
                     ) { _, which ->
-//                        name = programmNameEditText.text.toString()
-//                        desc = programmDescEditText.text.toString()
-//                        tags = tagsEditText.text.toString()
-//                        numOfCycles =
-//                            if (cyclicSwitch.isChecked) numberOfCyclesEditText.text.toString().toInt() else 0
-//                        viewModel.saveProgramm(this)
+                        with(liveAsana) {
+                            playAudio = audioGuideSwitch.isChecked
+                            preparationTime = preparationEditText.text.toString().toIntOrNull() ?:0
+                            lengthTime = lengthEditText.text.toString().toIntOrNull() ?:0
+                            consciousnessTime = consciousnessEditText.text.toString().toIntOrNull() ?:0
+                        viewModel.saveLiveAsana(this)
+                        }
                     }
                     .setNegativeButton("Отмена", null)
                     .create()

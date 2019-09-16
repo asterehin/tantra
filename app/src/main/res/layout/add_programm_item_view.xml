@@ -41,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:enabled="false"
                 style="@style/Widget.AppCompat.EditText"
                 app:layout_constraintEnd_toStartOf="@+id/photoProgramm"
                 app:layout_constraintStart_toStartOf="@+id/itemTypesSpinner"
@@ -142,7 +141,7 @@
                         android:text="@string/is_audio_on_label" />
 
                 <Switch
-                        android:id="@+id/cyclicSwitch"
+                        android:id="@+id/audioGuideSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/default_margin"
@@ -160,11 +159,12 @@
                         android:id="@+id/soundBeginButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:background="@color/coins_flat_green"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:padding="@dimen/default_margin"
+                        android:background="@drawable/technique_text_view_regular"
                         android:gravity="left|center"
                         android:textAlignment="center"
-                        tools:text="Гонг" />
+                        android:text="Гонг" />
             </TableRow>
 
             <TableRow style="?valueRowStyle">
@@ -177,8 +177,8 @@
                         android:id="@+id/soundEndButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:padding="@dimen/mcm_gutter"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:padding="@dimen/default_margin"
                         android:background="@drawable/technique_text_view_regular"
                         android:textColor="@color/white"
                         android:gravity="left|center"

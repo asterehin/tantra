@@ -12,7 +12,7 @@ import com.tantra.tantrayoga.model.dao.AsanaDao
 import com.tantra.tantrayoga.model.dao.LiveAsanaDao
 import com.tantra.tantrayoga.model.dao.ProgrammDao
 
-@Database(entities = [ Programm::class, Asana::class, LiveAsana::class], version = 20)
+@Database(entities = [ Programm::class, Asana::class, LiveAsana::class], version = 21)
 //@TypeConverters(LiveAsanasConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 

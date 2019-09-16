@@ -34,7 +34,8 @@ data class LiveAsana(
     var asanaUUID: String = "",
     var sequence: Int = 0,
     var playAudio: Boolean = true,
-    var dueTime: Int = 0, //in sec
+    var preparationTime: Int = 0,
+    var lengthTime: Int = 0, //in sec
     var consciousnessTime: Int = 0, //in sec
     var showTimer: Boolean = false,
     var playSignals: Boolean = false,
