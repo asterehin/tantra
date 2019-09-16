@@ -188,6 +188,34 @@
         -->
     </style>
 
+    <style name="ConsciousnessTextView" parent="DropdownTextView">
+        <item name="bg_drawable_expanded">@drawable/consciousness_text_view_regular</item>
+        <item name="bg_drawable_regular">@drawable/consciousness_text_view_regular</item>
+    </style>
+
+    <style name="TechniqueTextView" parent="DropdownTextView">
+        <item name="bg_drawable_expanded">@drawable/technique_text_view_regular</item>
+        <item name="bg_drawable_regular">@drawable/technique_text_view_regular</item>
+    </style>
+
+    <style name="EffectsTextView" parent="DropdownTextView">
+        <item name="bg_drawable_expanded">@drawable/effects_text_view_regular</item>
+        <item name="bg_drawable_regular">@drawable/effects_text_view_regular</item>
+    </style>
+
+<!--    <style name="TantraDropdownTextView" parent="DropdownTextView">-->
+<!--        <item name="arrowDrawable">@drawable/ic_arrow</item>-->
+<!--        <item name="bg_drawable_expanded">@drawable/bg_second_dropdown_text_view_expanded</item>-->
+<!--        <item name="bg_drawable_regular">@drawable/consciousness_text_view_regular</item>-->
+<!--&lt;!&ndash;        <item name="content_text_color">?attr/color_1</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="title_text_color">#ff00ff</item>&ndash;&gt;-->
+<!--    </style>-->
+    <style name="my_dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+<!--        <item name="windowMinWidthMajor">70%</item>-->
+<!--        <item name="windowMinWidthMinor">50%</item>-->
+        <item name="windowFixedHeightMinor">100%</item>
+    </style>
+
     <style name="Widget.Coins.Flat.SpinnerStyle" parent="@style/Widget.AppCompat.Spinner"></style>
 
     <style name="Widget.Coins.Flat.SpinnerItemStyle" parent="@style/Widget.AppCompat.TextView.SpinnerItem"></style>

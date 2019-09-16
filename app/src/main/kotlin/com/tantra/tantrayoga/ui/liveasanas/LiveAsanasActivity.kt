@@ -19,7 +19,7 @@ import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.LiveAsana
 import com.tantra.tantrayoga.model.LiveAsanaDetails
 import com.tantra.tantrayoga.ui.asanas.asanasActivityIntent
-import kotlinx.android.synthetic.main.add_new_programm_view.view.*
+import kotlinx.android.synthetic.main.add_programm_item_view.view.*
 
 private const val UUID_KEY = "uuid_key"
 fun liveAsanasActivityIntent(context: Context, uuid: String): Intent {
@@ -65,12 +65,14 @@ class LiveAsanasActivity : AppCompatActivity() {
 
     }
     private fun showAddEditItemDialog(c: Context, LiveAsanaDetails: LiveAsanaDetails) {
-        this.getLayoutInflater().inflate(R.layout.add_new_programm_view, null).apply {
+        this.getLayoutInflater().inflate(R.layout.add_programm_item_view, null).apply {
 
             with(LiveAsanaDetails) {
                 if (!isNew()) {
-                    programmNameEditText.setText(asana.name) //todo: smth wrong with editText
-                    programmDescEditText.setText(asana.desc)
+                    itemNameTextView.setText(asana.name)
+                    consciousnessDropdownTextView.setContentText(asana.desc)
+                    techniqueDropdownTextView.setContentText(asana.technics)
+                    effectsDropdownTextView.setContentText(asana.effects)
 
                     val url =
                         "${LiveAsanaDetails.asana.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
@@ -83,7 +85,7 @@ class LiveAsanasActivity : AppCompatActivity() {
                         .transform(CircleCrop()) //4
                         .into(photoProgramm) //8
                 }
-                tagsEditText.setText(asana.tags)
+//                tagsTextInputEditText.setText(asana.tags)
 
 //                if (numOfCycles > 0) {
 //                    numberOfCyclesEditText.visibility = VISIBLE
@@ -99,7 +101,7 @@ class LiveAsanasActivity : AppCompatActivity() {
 //                    countLabel.visibility = if (isChecked) VISIBLE else GONE
 //                }
 
-                val dialog = AlertDialog.Builder(c)
+                val dialog = AlertDialog.Builder(c, R.style.my_dialog)
                     .setTitle(if (isNew()) "Добавляем новую асану" else "Редактируем асану ${asana.name}") //todo amend to string res
                     .setView(this@apply)
                     .setPositiveButton(

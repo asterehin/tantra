@@ -10,12 +10,13 @@
     <dimen name="mcm_control_corner_material">2dp</dimen>
     <dimen name="mcm_control_padding_material">4dp</dimen>
     <dimen name="mcm_button_padding_horizontal_material">8dp</dimen>
-    <dimen name="default_padding">4dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
 
     <dimen name="mcm_button_padding_vertical_material">@dimen/mcm_control_padding_material</dimen>
 
     <dimen name="mcm_button_inset_horizontal_material">@dimen/mcm_control_inset_material</dimen>
     <dimen name="mcm_activity_horizontal_margin">8dp</dimen>
     <dimen name="mcm_margin_bottom_with_fab">80dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
 
 </resources>

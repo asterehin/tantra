@@ -105,5 +105,8 @@
     <!-- INFO: use ?selectableItemBackgroundBorderless instead -->
     <color name="coins_transparent_black">#2A000000</color>
 
+    <color name="first_drop_down_text_view_title">#FFDFF5FF</color>
+    <color name="first_drop_down_text_view_content">#323b40</color>
+
 
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="arrow_default_size">25dp</dimen>
+    <dimen name="panel_default_padding">12dp</dimen>
+    <dimen name="content_default_padding">12dp</dimen>
+    <dimen name="content_dropdown_text_size">16sp</dimen>
+    <dimen name="drop_down_text_view_panel_padding">22dp</dimen>
+    <dimen name="drop_down_text_view_content_padding">10dp</dimen>
+</resources>

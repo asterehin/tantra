@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DropdownTextView">
+        <attr name="title_text"/>
+        <attr name="content_text"/>
+        <attr name="bg_drawable_regular" format="reference"/>
+        <attr name="bg_drawable_expanded" format="reference"/>
+        <attr name="arrowDrawable" format="reference"/>
+        <attr name="ddTextviewTitleTextColor" format="reference"/>
+        <attr name="title_text_color_expanded"/>
+        <attr name="titleTextSize" format="dimension"/>
+        <attr name="title_font" format="reference"/>
+        <attr name="contentTextSize" format="reference|dimension" />
+        <attr name="contentTextColor" format="reference"/>
+        <attr name="content_font" format="reference"/>
+        <attr name="expand_duration" format="integer"/>
+        <attr name="panelPadding" format="dimension"/>
+        <attr name="contentPadding" format="dimension"/>
+    </declare-styleable>
+</resources>

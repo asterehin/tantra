@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+ext {
+//    bintrayRepo = 'maven'
+//    bintrayName = 'dropdown-textview'
+
+//    publishedGroupId = 'com.github.hakobast'
+//    libraryName = 'DropdownTextView'
+//    artifact = 'dropdown-textview'
+//
+//    libraryDescription = 'Simple drop-down TextView for Android'
+//
+//    siteUrl = 'https://github.com/hakobast/DropdownTextView'
+//    gitUrl = 'https://github.com/hakobast/DropdownTextView.git'
+
+    libraryVersion = '0.2.1'
+
+//    developerId = 'hakobast'
+//    developerName = 'Hakob Astvatsatryan'
+//    developerEmail = 'hakob.astvacatryan@gmail.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    /* Test */
+    implementation 'androidx.core:core-ktx:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    /* AndroidX */
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    /* Kotlin */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}

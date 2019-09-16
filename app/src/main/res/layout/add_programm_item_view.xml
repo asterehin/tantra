@@ -1,104 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:paddingLeft="@dimen/mcm_activity_horizontal_margin"
-              android:paddingTop="@dimen/mcm_activity_horizontal_margin"
-              android:paddingRight="@dimen/mcm_activity_horizontal_margin">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-            android:id="@+id/photoProgramm"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter"
-            android:padding="@dimen/default_padding"
-            android:src="@drawable/ic_no_image"
-            android:layout_gravity="center">
-    </ImageView>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/default_padding">
 
-    <TableLayout android:layout_width="match_parent"
-                 android:layout_height="wrap_content">
-        <TableRow style="?valueRowStyle">
+        <ImageView
+                android:id="@+id/photoProgramm"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:padding="@dimen/default_padding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_no_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></ImageView>
 
-            <TextView
-                    style="?labelStyle"
-                    android:text="@string/programm_name_label"/>
 
-            <EditText
-                    android:id="@+id/programmNameEditText"
-                    style="?valueStyle"
-                    tools:text="Курс 1"/>
+        <Spinner
+                android:id="@+id/itemTypesSpinner"
+                style="?spinnerStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/photoProgramm"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/photoProgramm"
+                tools:listitem="@layout/support_simple_spinner_dropdown_item" />
 
-        </TableRow>
+        <TextView
+                android:id="@+id/itemNameTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:enabled="false"
+                style="@style/Widget.AppCompat.EditText"
+                app:layout_constraintEnd_toStartOf="@+id/photoProgramm"
+                app:layout_constraintStart_toStartOf="@+id/itemTypesSpinner"
+                app:layout_constraintTop_toBottomOf="@+id/itemTypesSpinner"
+                tools:text="Асана" />
 
-        <TableRow style="?valueRowStyle">
+        <LinearLayout
+                android:id="@+id/asanaDetailContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="@+id/itemNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/photoProgramm">
 
-            <TextView
-                    style="?labelStyle"
-                    android:text="@string/programm_desc_label"/>
-
-            <EditText
-                    android:id="@+id/programmDescEditText"
-                    style="?valueStyle"
-                    android:layout_weight="1"
-                    android:gravity="top|start"
-                    android:inputType="text|textMultiLine"
-                    android:minLines="4"
-                    tools:text="программа для первого курса"/>
-
-        </TableRow>
-
-        <TableRow style="?valueRowStyle">
-
-            <TextView
-                    style="?labelStyle"
-                    android:text="@string/isСyclic"/>
-            <Switch
-                    android:id="@+id/cyclicSwitch"
+            <hakobastvatsatryan.DropdownTextView
+                    android:id="@+id/techniqueDropdownTextView"
+                    style="@style/TechniqueTextView"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textAppearance="@style/Widget.Coins.Flat.LabelTextAppearance"
-                    android:layout_margin="@dimen/default_padding"
-                    android:gravity="left|center"/>
+                    app:title_text="@string/technique_label" />
 
-            <EditText
-                    android:id="@+id/numberOfCyclesEditText"
-                    style="?valueStyle"
-                    android:gravity="center"
-                    android:inputType="number"
-                    tools:text="5"/>
-            <TextView
-                    android:id="@+id/countLabel"
-                    style="?labelStyle"
-                    android:text="@string/count_label"/>
-
-        </TableRow>
-
-        <TableRow style="?valueRowStyle">
-            <TextView
-                    style="?labelStyle"
-                    android:text="@string/tags_label"/>
-
-            <EditText
-                    android:id="@+id/tagsEditText"
-                    style="?valueStyle"
-                    tools:text="суставы,спина,бодрость"/>
-        </TableRow>
-
-        <TableRow style="?valueRowStyle">
-
-            <TextView
-                    style="?labelStyle"
-                    android:text="@string/school_label"/>
-
-            <Spinner
-                    android:id="@+id/deliveryMethodsSpinner"
+            <hakobastvatsatryan.DropdownTextView
+                    android:id="@+id/consciousnessDropdownTextView"
+                    style="@style/ConsciousnessTextView"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:layout_width="match_parent"
-                    style="?spinnerStyle"/>
-        </TableRow>
-    </TableLayout>
-</LinearLayout>
+                    android:layout_height="wrap_content"
+                    app:title_text="@string/consciousness_label" />
+
+            <hakobastvatsatryan.DropdownTextView
+                    android:id="@+id/effectsDropdownTextView"
+                    style="@style/EffectsTextView"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title_text="@string/effects_label" />
+        </LinearLayout>
+
+        <TableLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/photoProgramm"
+                app:layout_constraintStart_toStartOf="@+id/asanaDetailContainer"
+                app:layout_constraintTop_toBottomOf="@+id/asanaDetailContainer">
+
+            <TableRow style="?valueRowStyle">
+
+                <TextView
+                        style="?labelStyle"
+                        android:text="@string/preparation_label" />
+
+                <EditText
+                        android:id="@+id/preparationEditText"
+                        style="?valueStyle"
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        tools:text="5:30" />
+            </TableRow>
+
+            <TableRow style="?valueRowStyle">
+
+                <TextView
+                        style="?labelStyle"
+                        android:text="@string/length_label" />
+
+                <EditText
+                        android:id="@+id/lengthEditText"
+                        style="?valueStyle"
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        tools:text="5:30" />
+            </TableRow>
+
+            <TableRow style="?valueRowStyle">
+
+                <TextView
+                        style="?labelStyle"
+                        android:text="@string/consciousness_label" />
+
+                <EditText
+                        android:id="@+id/consciousnessEditText"
+                        style="?valueStyle"
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        tools:text="5:30" />
+            </TableRow>
+
+            <TableRow style="?valueRowStyle">
+
+                <TextView
+                        style="?labelStyle"
+                        android:text="@string/is_audio_on_label" />
+
+                <Switch
+                        android:id="@+id/cyclicSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:gravity="left|center"
+                        android:textAppearance="@style/Widget.Coins.Flat.LabelTextAppearance" />
+            </TableRow>
+
+            <TableRow style="?valueRowStyle">
+
+                <TextView
+                        style="?labelStyle"
+                        android:text="@string/sound_begin_label" />
+
+                <Button
+                        android:id="@+id/soundBeginButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/coins_flat_green"
+                        android:gravity="left|center"
+                        android:textAlignment="center"
+                        tools:text="Гонг" />
+            </TableRow>
+
+            <TableRow style="?valueRowStyle">
+
+                <TextView
+                        style="?labelStyle"
+                        android:text="@string/sound_end_label" />
+
+                <Button
+                        android:id="@+id/soundEndButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:padding="@dimen/mcm_gutter"
+                        android:background="@drawable/technique_text_view_regular"
+                        android:textColor="@color/white"
+                        android:gravity="left|center"
+                        android:textAlignment="center"
+                        android:text="Колокольчик" />
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

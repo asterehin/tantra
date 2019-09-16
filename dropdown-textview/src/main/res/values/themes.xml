@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="DropdownTextView" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="contentTextSize">@dimen/content_dropdown_text_size</item>
+        <item name="titleTextSize">@dimen/content_dropdown_text_size</item>
+        <item name="ddTextviewTitleTextColor">@color/white</item>
+        <item name="panelPadding">@dimen/drop_down_text_view_panel_padding</item>
+        <item name="contentPadding">@dimen/drop_down_text_view_content_padding</item>
+        <item name="contentTextColor">@color/white</item>
+        <item name="arrowDrawable">@drawable/ic_awesome_chevron_right</item>
+    </style>
+
+
+</resources>

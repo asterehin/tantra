@@ -1,6 +1,6 @@
 //open https://my-json-server.typicode.com/asterehin/tantra
 //adb shell "run-as com.tantra.tantrayoga cat /data/data/com.tantra.tantrayoga/databases/tantra_db" > tantraDB.db
-
+https://github.com/asterehin/tantra/
 
 
 https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/534-urok-10-room-zapros-iz-neskolkih-tablic-relation.html
@@ -22,3 +22,6 @@ https://www.flaticon.com - много иконок
 https://stackoverflow.com/questions/54731643/android-x-dependencies-and-xml-causing-crash
 - там ответ как мигрирова на androidX
 http://developer.alexanderklimov.ru/android/layout/textinputlayout.php
+
+10/09/19
+https://medium.com/halcyon-mobile/implementing-googles-refreshed-modal-bottom-sheet-4e76cb5de65b

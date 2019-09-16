@@ -18,4 +18,18 @@
     <string name="asana_label">Асана</string>
     <string name="programm_label">Программа</string>
     <string name="pranayama_label">Пранаяма</string>
+    <string name="preparation_label">Подготовка</string>
+    <string name="length_label">Длительность</string>
+    <string name="consciousness_label">Осознание</string>
+    <string name="technique_label">Техника выполнения</string>
+    <string name="effects_label">Эффекты</string>
+    <string name="is_audio_on_label">Аудиосопровождение</string>
+    <string name="sound_begin_label">Звук начала</string>
+    <string name="sound_end_label">Звук окончания</string>
+
+    <string name="consciousness_title_text">Far away from behind</string>
+    <string name="dropdown_title_text">Far away from behind</string>
+
+    <string name="dropdown_content_text">Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science. Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science.Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science.</string>
+
 </resources>
