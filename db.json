@@ -47,7 +47,7 @@
     {
       "userUUID": "",
       "schoolUUID": "satiaUUID",
-      "UUID": "27390e2e-041e-4813-aa71-985664960a70",
+      "UUID": "fasdfasdf3-041e-4813-aa71-985664960a70",
       "name": "Курс 1",
       "desc": "Программа асан йоги для практики на первом курсе",
       "numOfCycles": 1,
@@ -56,7 +56,7 @@
       "asanas": [
         {
           "sequence": 1,
-          "asanaUUID": "25433e2e-041e-4813-aa71-985664960a70",
+          "asanaUUID": "27390e2e-041e-4813-aa71-985664960a70",
           "playAudio": true,
           "dueTime": 30,
           "consciousnessTime": 10,
