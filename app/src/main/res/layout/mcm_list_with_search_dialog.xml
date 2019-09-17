@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:theme="@style/Theme.Coins.Flat.Dialog">
+
+    <include
+        android:id="@+id/mcm_dialog_title"
+        layout="@layout/mcm_dialog_title" />
+
+    <com.tantra.tantrayoga.widget.NoSwipeViewPager
+        android:id="@+id/mcm_list_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mcm_list_with_search_dialog_controls"
+        android:layout_below="@+id/mcm_dialog_title" />
+
+    <include
+        android:id="@+id/mcm_list_with_search_dialog_controls"
+        layout="@layout/mcm_dialog_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

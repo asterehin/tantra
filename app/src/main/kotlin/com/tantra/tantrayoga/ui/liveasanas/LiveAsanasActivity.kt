@@ -3,18 +3,24 @@ package com.tantra.tantrayoga.ui.liveasanas
 import android.content.*
 import androidx.databinding.DataBindingUtil
 import android.os.*
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.andreyt.vk.style.factories.AsanasDialogFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
 import com.tantra.tantrayoga.databinding.LiveAsanasActivityBinding
+import com.tantra.tantrayoga.model.Asana
 import com.tantra.tantrayoga.model.Event
 import com.tantra.tantrayoga.model.LiveAsanaDetails
+import com.tantra.tantrayoga.widget.ListWithSearchFragment
+import kotlinx.android.synthetic.main.add_programm_item_view.*
 import kotlinx.android.synthetic.main.add_programm_item_view.view.*
 
 private const val UUID_KEY = "uuid_key"
@@ -65,6 +71,21 @@ class LiveAsanasActivity : AppCompatActivity() {
 
             with(LiveAsanaDetails) {
                 if (!isNew()) {
+                    itemNameTextView.setOnClickListener{
+                        val factory = AsanasDialogFactory(1, "")
+                        ListWithSearchFragment.newInstance(factory, ListWithSearchFragment.OnItemSelectedListener {
+                            Log.e("LiveAsanasActivity-showAddEditItemDialog 74 ", "")
+                            liveAsana.asanaUUID = (it as Asana).UUID
+                            asana = it
+//                            setAsanaFields(this)
+                            itemNameTextView.setText(asana.name)
+                            consciousnessDropdownTextView.setContentText(asana.desc)
+                            techniqueDropdownTextView.setContentText(asana.technics)
+                            effectsDropdownTextView.setContentText(asana.effects)
+                        }).show(supportFragmentManager, ListWithSearchFragment.TAG)
+                    }
+//                    setAsanaFields(this)
+
                     itemNameTextView.setText(asana.name)
                     consciousnessDropdownTextView.setContentText(asana.desc)
                     techniqueDropdownTextView.setContentText(asana.technics)
@@ -108,6 +129,15 @@ class LiveAsanasActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun setAsanaFields(        liveAsanaDetails: LiveAsanaDetails
+    ) {
+        itemNameTextView.setText(liveAsanaDetails.asana.name)
+        consciousnessDropdownTextView.setContentText(liveAsanaDetails.asana.desc)
+        techniqueDropdownTextView.setContentText(liveAsanaDetails.asana.technics)
+        effectsDropdownTextView.setContentText(liveAsanaDetails.asana.effects)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long

@@ -31,5 +31,9 @@
     <string name="dropdown_title_text">Far away from behind</string>
 
     <string name="dropdown_content_text">Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science. Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science.Buying the right telescope to take your love of astronomy to the next level is a big next step in the development of your passion for the stars. In many ways, it is a big step from someone who is just fooling around with astronomy to a serious student of the science.</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="dialog_back">Назад</string>
+    <string name="no_items_to_display">Нет данных</string>
+    <string name="mcm_search">Начните вводить</string>
 
 </resources>

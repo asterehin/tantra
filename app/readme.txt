@@ -25,3 +25,5 @@ http://developer.alexanderklimov.ru/android/layout/textinputlayout.php
 
 10/09/19
 https://medium.com/halcyon-mobile/implementing-googles-refreshed-modal-bottom-sheet-4e76cb5de65b
+17/09/19
+implement ListWithSearchDialog.Factory(sttle) for Asana selection

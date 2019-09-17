@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- some issue cause by this SearchView makes the RecyclerView items width to change -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/mcm_list_with_search_dialog_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/mcm_half_gutter"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        app:defaultQueryHint="@string/mcm_search"
+        app:iconifiedByDefault="false"
+        app:queryHint="@string/mcm_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mcm_list_with_search_dialog_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mcm_list_with_search_dialog_search"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/mcm_list_dialog_item" />
+</RelativeLayout>

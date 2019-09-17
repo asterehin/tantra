@@ -1,5 +1,6 @@
 package com.tantra.tantrayoga.model.dao
 
+import android.database.Cursor
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -20,4 +21,7 @@ interface AsanaDao {
 
     @Query("SELECT * FROM asana where UUID = :uuid")
     fun getAsana(uuid: String): Asana
+
+    @Query("SELECT * FROM asana " )
+    fun getAsanasCursor(): Cursor
 }

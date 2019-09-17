@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:background="?android:activatedBackgroundIndicator">
+
+    <TextView
+        android:padding="5dp"
+        tools:text="Lorem ipsum dolor sit amet"
+        android:id="@+id/list_dialog_code"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:padding="5dp"
+        tools:text="consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        android:id="@+id/list_dialog_desc"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:gravity="left|center_vertical"
+        android:layout_weight="4" />
+
+</LinearLayout>
