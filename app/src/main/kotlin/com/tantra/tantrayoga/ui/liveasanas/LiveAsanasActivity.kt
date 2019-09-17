@@ -40,11 +40,12 @@ class LiveAsanasActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.live_asanas_activity)
 //        setSupportActionBar(toolbar)
 
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(this, intent.getStringExtra(UUID_KEY)))
-            .get(LiveAsanasListViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, ViewModelFactory(this, intent.getStringExtra(UUID_KEY)))
+                .get(LiveAsanasListViewModel::class.java)
 
         viewModel.liveAsanasListLiveData.observe(this, Observer { LiveAsanaDetails ->
-                        viewModel.updateList(LiveAsanaDetails)
+            viewModel.updateList(LiveAsanaDetails)
         })
 
         viewModel.onItemActionEvent.observe(this, Observer {
@@ -60,36 +61,31 @@ class LiveAsanasActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.handler = viewModel
 
-        supportActionBar?.apply{
+        supportActionBar?.apply {
             setHomeButtonEnabled(true)
             setDisplayHomeAsUpEnabled(true)
         }
 
     }
+
     private fun showAddEditItemDialog(c: Context, LiveAsanaDetails: LiveAsanaDetails) {
         this.getLayoutInflater().inflate(R.layout.add_programm_item_view, null).apply {
 
             with(LiveAsanaDetails) {
+                var selectedAsana = asana.copy()
                 if (!isNew()) {
-                    itemNameTextView.setOnClickListener{
+                    itemNameTextView.setOnClickListener {
                         val factory = AsanasDialogFactory(1, "")
-                        ListWithSearchFragment.newInstance(factory, ListWithSearchFragment.OnItemSelectedListener {
+                        ListWithSearchFragment.newInstance(
+                            factory
+                        ) {
                             Log.e("LiveAsanasActivity-showAddEditItemDialog 74 ", "")
-                            liveAsana.asanaUUID = (it as Asana).UUID
-                            asana = it
-//                            setAsanaFields(this)
-                            itemNameTextView.setText(asana.name)
-                            consciousnessDropdownTextView.setContentText(asana.desc)
-                            techniqueDropdownTextView.setContentText(asana.technics)
-                            effectsDropdownTextView.setContentText(asana.effects)
-                        }).show(supportFragmentManager, ListWithSearchFragment.TAG)
+                            selectedAsana = (it as Asana)
+                            setAsanaFields(this@apply, selectedAsana)
+                        }.show(supportFragmentManager, ListWithSearchFragment.TAG)
                     }
-//                    setAsanaFields(this)
+                    setAsanaFields(this@apply, selectedAsana)
 
-                    itemNameTextView.setText(asana.name)
-                    consciousnessDropdownTextView.setContentText(asana.desc)
-                    techniqueDropdownTextView.setContentText(asana.technics)
-                    effectsDropdownTextView.setContentText(asana.effects)
                     with(liveAsana) {
                         audioGuideSwitch.isChecked = playAudio
                         preparationEditText.setText(preparationTime.toString())
@@ -116,26 +112,29 @@ class LiveAsanasActivity : AppCompatActivity() {
                         if (isNew()) "Добавить" else "Изменить"
                     ) { _, which ->
                         with(liveAsana) {
+                            asanaUUID = selectedAsana.UUID
                             playAudio = audioGuideSwitch.isChecked
-                            preparationTime = preparationEditText.text.toString().toIntOrNull() ?:0
-                            lengthTime = lengthEditText.text.toString().toIntOrNull() ?:0
-                            consciousnessTime = consciousnessEditText.text.toString().toIntOrNull() ?:0
-                        viewModel.saveLiveAsana(this)
+                            preparationTime = preparationEditText.text.toString().toIntOrNull() ?: 0
+                            lengthTime = lengthEditText.text.toString().toIntOrNull() ?: 0
+                            consciousnessTime =
+                                consciousnessEditText.text.toString().toIntOrNull() ?: 0
+                            viewModel.saveLiveAsana(this)
                         }
                     }
-                    .setNegativeButton("Отмена", null)
+                    .setNegativeButton("Отмена", { _, wh -> })
                     .create()
                 dialog.show()
             }
         }
     }
 
-    private fun setAsanaFields(        liveAsanaDetails: LiveAsanaDetails
+    private fun setAsanaFields(
+        view: View, asana: Asana
     ) {
-        itemNameTextView.setText(liveAsanaDetails.asana.name)
-        consciousnessDropdownTextView.setContentText(liveAsanaDetails.asana.desc)
-        techniqueDropdownTextView.setContentText(liveAsanaDetails.asana.technics)
-        effectsDropdownTextView.setContentText(liveAsanaDetails.asana.effects)
+        view.itemNameTextView.setText(asana.name)
+        view.consciousnessDropdownTextView.setContentText(asana.desc)
+        view.techniqueDropdownTextView.setContentText(asana.technics)
+        view.effectsDropdownTextView.setContentText(asana.effects)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -143,7 +142,7 @@ class LiveAsanasActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            android.R.id.home  -> {
+            android.R.id.home -> {
                 onBackPressed()
                 true
             }
