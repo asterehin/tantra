@@ -1,6 +1,7 @@
 package com.tantra.tantrayoga.ui.liveasanas
 
 import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.snackbar.Snackbar
 
@@ -25,6 +26,9 @@ class LiveAsanasListViewModel(
     val liveAsanasListLiveData = MutableLiveData<MutableList<LiveAsanaDetails>>()
     var onItemActionEvent = MutableLiveData<Event<LiveAsanaDetails>>()
 
+    private val openAdditemDialog = MutableLiveData<Event<String>>()
+    val tapOnAddFab: LiveData<Event<String>>
+        get() = openAdditemDialog
 
     init {
         loadLiveAsanas()
@@ -47,7 +51,8 @@ class LiveAsanasListViewModel(
     fun onClick(view: View) {
         //https://medium.com/@kyle.dahlin0/room-persistence-library-with-coroutines-cdd32f9fe669
         Snackbar.make(view, "onCLick has been processed", Snackbar.LENGTH_SHORT).show()
-
+        openAdditemDialog.value =
+            Event("some content"/*, Event.Action.NONE*/)  // Trigger the event by setting a new Event as a new value
     }
 
     fun saveLiveAsana(liveAsana: LiveAsana) {

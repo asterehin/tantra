@@ -9,16 +9,16 @@ import java.io.Serializable
 
 @Entity(indices = arrayOf(Index(value = ["UUID"], name = "asanasIndexUUID",  unique = true)))
 data class Asana(
-    @PrimaryKey val UUID: String,
-    val name: String,
-    val desc: String,
-    val technics: String,
-    val effects: String,
-    val consciousness: String,
-    val audio: String,
-    val photo: String,
-    val tags: String,
-    val sanscritName: String
+    @PrimaryKey val UUID: String = "",
+    val name: String = "",
+    val desc: String = "",
+    val technics: String = "",
+    val effects: String = "",
+    val consciousness: String = "",
+    val audio: String = "",
+    val photo: String = "",
+    val tags: String = "",
+    val sanscritName: String = ""
 ): Serializable {
 
     constructor(cursor: Cursor) : this(

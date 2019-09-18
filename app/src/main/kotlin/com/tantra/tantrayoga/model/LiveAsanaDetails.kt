@@ -8,7 +8,7 @@ import com.tantra.tantrayoga.model.database.LiveAsanasConverter
 //https://habr.com/ru/post/349280/
 class LiveAsanaDetails() {
     @Embedded
-    lateinit var asana: Asana
+    var asana: Asana? = null
     @Embedded
     lateinit var liveAsana: LiveAsana
 

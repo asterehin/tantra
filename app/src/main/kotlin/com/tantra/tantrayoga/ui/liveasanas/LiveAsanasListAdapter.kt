@@ -49,7 +49,7 @@ class LiveAsanasListAdapter: RecyclerView.Adapter<LiveAsanasListAdapter.ViewHold
             viewModel.onItemActionEvent = onItemActionEvent
 
 
-            val url = "${liveAsanaDetails.asana.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
+            val url = "${liveAsanaDetails.asana?.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
             Glide.with(itemView)
                 .load(url)
                 .centerCrop() //4

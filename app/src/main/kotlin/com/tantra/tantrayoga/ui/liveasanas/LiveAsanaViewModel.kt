@@ -19,10 +19,10 @@ class LiveAsanaViewModel : BaseViewModel() {
 
 
     fun bind(liveAsana: LiveAsanaDetails) {
-        asanaName.value = liveAsana.asana.name
-        sanscritName.value = liveAsana.asana.sanscritName
+        asanaName.value = liveAsana.asana?.name
+        sanscritName.value = liveAsana.asana?.sanscritName
 //        asanaDesc.value = "%d".format(liveAsana.liveAsana.consciousnessTime)
-        asanaDesc.value = liveAsana.asana.desc
+        asanaDesc.value = liveAsana.asana?.desc
     }
 
     fun getAsanaName(): MutableLiveData<String> {

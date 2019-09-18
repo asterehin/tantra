@@ -16,9 +16,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.tantra.tantrayoga.R
 import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
 import com.tantra.tantrayoga.databinding.LiveAsanasActivityBinding
-import com.tantra.tantrayoga.model.Asana
-import com.tantra.tantrayoga.model.Event
-import com.tantra.tantrayoga.model.LiveAsanaDetails
+import com.tantra.tantrayoga.model.*
 import com.tantra.tantrayoga.widget.ListWithSearchFragment
 import kotlinx.android.synthetic.main.add_programm_item_view.*
 import kotlinx.android.synthetic.main.add_programm_item_view.view.*
@@ -58,6 +56,14 @@ class LiveAsanasActivity : AppCompatActivity() {
                 }
             }
         })
+        viewModel.tapOnAddFab.observe(this, Observer {
+            it?.getContentIfNotHandled()?.let {
+                // Only proceed if the event has never been handled
+                val liveAsanaDetails = LiveAsanaDetails();
+//                liveAsanaDetails.liveAsana = LiveAsana(0L, )
+//                showAddEditItemDialog(this, (0, "andter", "", UUID.randomUUID().toString()))
+            }
+        })
         binding.viewModel = viewModel
         binding.handler = viewModel
 
@@ -72,14 +78,13 @@ class LiveAsanasActivity : AppCompatActivity() {
         this.getLayoutInflater().inflate(R.layout.add_programm_item_view, null).apply {
 
             with(LiveAsanaDetails) {
-                var selectedAsana = asana.copy()
+                var selectedAsana = asana?.copy()
                 if (!isNew()) {
                     itemNameTextView.setOnClickListener {
                         val factory = AsanasDialogFactory(1, "")
                         ListWithSearchFragment.newInstance(
                             factory
                         ) {
-                            Log.e("LiveAsanasActivity-showAddEditItemDialog 74 ", "")
                             selectedAsana = (it as Asana)
                             setAsanaFields(this@apply, selectedAsana)
                         }.show(supportFragmentManager, ListWithSearchFragment.TAG)
@@ -94,7 +99,7 @@ class LiveAsanasActivity : AppCompatActivity() {
                     }
 
                     val url =
-                        "${LiveAsanaDetails.asana.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
+                        "${LiveAsanaDetails.asana?.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
                     Glide.with(this@apply)
                         .load(url)
                         .centerCrop()
@@ -106,13 +111,13 @@ class LiveAsanasActivity : AppCompatActivity() {
                 }
 
                 val dialog = AlertDialog.Builder(c, R.style.my_dialog)
-                    .setTitle(if (isNew()) "Добавляем новую асану" else "Редактируем асану ${asana.name}") //todo amend to string res
+                    .setTitle(if (isNew()) "Добавляем новую асану" else "Редактируем асану ${asana?.name}") //todo amend to string res
                     .setView(this@apply)
                     .setPositiveButton(
                         if (isNew()) "Добавить" else "Изменить"
-                    ) { _, which ->
+                    ) { _, _ ->
                         with(liveAsana) {
-                            asanaUUID = selectedAsana.UUID
+                            asanaUUID = selectedAsana?.UUID ?: ""
                             playAudio = audioGuideSwitch.isChecked
                             preparationTime = preparationEditText.text.toString().toIntOrNull() ?: 0
                             lengthTime = lengthEditText.text.toString().toIntOrNull() ?: 0
@@ -121,7 +126,7 @@ class LiveAsanasActivity : AppCompatActivity() {
                             viewModel.saveLiveAsana(this)
                         }
                     }
-                    .setNegativeButton("Отмена", { _, wh -> })
+                    .setNegativeButton("Отмена") { _, _ -> }
                     .create()
                 dialog.show()
             }
@@ -129,8 +134,9 @@ class LiveAsanasActivity : AppCompatActivity() {
     }
 
     private fun setAsanaFields(
-        view: View, asana: Asana
+        view: View, asana: Asana?
     ) {
+        asana ?: return
         view.itemNameTextView.setText(asana.name)
         view.consciousnessDropdownTextView.setContentText(asana.desc)
         view.techniqueDropdownTextView.setContentText(asana.technics)
