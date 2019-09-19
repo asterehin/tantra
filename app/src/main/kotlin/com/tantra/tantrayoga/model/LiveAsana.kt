@@ -40,4 +40,6 @@ data class LiveAsana(
     var showTimer: Boolean = false,
     var playSignals: Boolean = false,
     var type: String = ""
-)
+) {
+    fun getSummaryTime() = preparationTime + lengthTime + consciousnessTime
+}

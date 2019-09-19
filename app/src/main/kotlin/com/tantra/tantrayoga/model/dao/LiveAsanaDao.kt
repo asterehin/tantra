@@ -1,9 +1,6 @@
 package com.tantra.tantrayoga.model.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.tantra.tantrayoga.model.Post
 import com.tantra.tantrayoga.model.Asana
 import com.tantra.tantrayoga.model.LiveAsana
@@ -25,4 +22,7 @@ interface LiveAsanaDao {
 
     @Query("SELECT asana.*,liveAsana.* FROM liveAsana  JOIN asana ON liveAsana.asanaUUID = asana.uuid WHERE programmUUID = :uuid ")
     fun getLiveAsanaDetailsByUuid(uuid: String): MutableList<LiveAsanaDetails>
+
+    @Delete
+    fun deleteLiveAsana(liveAsana: LiveAsana): Int
 }

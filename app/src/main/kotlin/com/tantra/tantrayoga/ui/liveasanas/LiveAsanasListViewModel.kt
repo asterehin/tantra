@@ -12,7 +12,7 @@ import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class LiveAsanasListViewModel(
-    private val liveLiveAsanaDao: LiveAsanaDao,
+    private val liveAsanaDao: LiveAsanaDao,
     val uuid: String
 ) : BaseViewModel() {
 
@@ -36,7 +36,7 @@ class LiveAsanasListViewModel(
     }
 
     private fun loadLiveAsanas() = scope.launch {
-        liveAsanasListLiveData.postValue(liveLiveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
+        liveAsanasListLiveData.postValue(liveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
     }
 
     fun onRetrieveLiveAsanaListSuccess(liveAsanasDetailsList: List<LiveAsanaDetails>) {
@@ -48,17 +48,23 @@ class LiveAsanasListViewModel(
 
     }
 
+    fun deleteLiveAsana(liveAsana: LiveAsana) {
+        scope.launch {
+            liveAsanaDao.deleteLiveAsana(liveAsana)
+            liveAsanasListLiveData.postValue(liveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
+        }
+    }
+
     fun onClick(view: View) {
         //https://medium.com/@kyle.dahlin0/room-persistence-library-with-coroutines-cdd32f9fe669
         Snackbar.make(view, "onCLick has been processed", Snackbar.LENGTH_SHORT).show()
-        openAdditemDialog.value =
-            Event("some content"/*, Event.Action.NONE*/)  // Trigger the event by setting a new Event as a new value
+        openAdditemDialog.value = Event(uuid)  // Trigger the event by setting a new Event as a new value
     }
 
     fun saveLiveAsana(liveAsana: LiveAsana) {
         scope.launch {
-            liveLiveAsanaDao.insert(liveAsana)
-            liveAsanasListLiveData.postValue(liveLiveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
+            liveAsanaDao.insert(liveAsana)
+            liveAsanasListLiveData.postValue(liveAsanaDao.getLiveAsanaDetailsByUuid(uuid))
         }
     }
 

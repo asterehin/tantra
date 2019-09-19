@@ -11,7 +11,7 @@
             android:padding="@dimen/default_padding">
 
         <ImageView
-                android:id="@+id/photoProgramm"
+                android:id="@+id/asanaPhotoView"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="16dp"
@@ -30,9 +30,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toStartOf="@+id/photoProgramm"
+                app:layout_constraintEnd_toStartOf="@+id/asanaPhotoView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/photoProgramm"
+                app:layout_constraintTop_toTopOf="@+id/asanaPhotoView"
                 tools:listitem="@layout/support_simple_spinner_dropdown_item" />
 
         <TextView
@@ -42,7 +42,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 style="@style/Widget.AppCompat.EditText"
-                app:layout_constraintEnd_toStartOf="@+id/photoProgramm"
+                app:layout_constraintEnd_toStartOf="@+id/asanaPhotoView"
                 app:layout_constraintStart_toStartOf="@+id/itemTypesSpinner"
                 app:layout_constraintTop_toBottomOf="@+id/itemTypesSpinner"
                 tools:text="Асана" />
@@ -54,7 +54,7 @@
                 android:layout_marginTop="8dp"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="@+id/itemNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/photoProgramm">
+                app:layout_constraintTop_toBottomOf="@+id/asanaPhotoView">
 
             <hakobastvatsatryan.DropdownTextView
                     android:id="@+id/techniqueDropdownTextView"
@@ -85,7 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/photoProgramm"
+                app:layout_constraintEnd_toEndOf="@+id/asanaPhotoView"
                 app:layout_constraintStart_toStartOf="@+id/asanaDetailContainer"
                 app:layout_constraintTop_toBottomOf="@+id/asanaDetailContainer">
 

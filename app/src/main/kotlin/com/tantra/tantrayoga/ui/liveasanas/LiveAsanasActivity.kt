@@ -3,7 +3,6 @@ package com.tantra.tantrayoga.ui.liveasanas
 import android.content.*
 import androidx.databinding.DataBindingUtil
 import android.os.*
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -18,7 +17,6 @@ import com.tantra.tantrayoga.common.dependencyinjection.ViewModelFactory
 import com.tantra.tantrayoga.databinding.LiveAsanasActivityBinding
 import com.tantra.tantrayoga.model.*
 import com.tantra.tantrayoga.widget.ListWithSearchFragment
-import kotlinx.android.synthetic.main.add_programm_item_view.*
 import kotlinx.android.synthetic.main.add_programm_item_view.view.*
 
 private const val UUID_KEY = "uuid_key"
@@ -51,7 +49,7 @@ class LiveAsanasActivity : AppCompatActivity() {
                 when (action.action) {
                     // Only proceed if the event has never been handled
                     Event.Action.SELECT -> showAddEditItemDialog(this, action.content)
-//                    Event.Action.DELETE -> viewModel.deleteProgramm(action.content)
+                    Event.Action.DELETE -> viewModel.deleteLiveAsana(action.content.liveAsana)
                     Event.Action.EDIT -> showAddEditItemDialog(this, action.content)
                 }
             }
@@ -60,8 +58,8 @@ class LiveAsanasActivity : AppCompatActivity() {
             it?.getContentIfNotHandled()?.let {
                 // Only proceed if the event has never been handled
                 val liveAsanaDetails = LiveAsanaDetails();
-//                liveAsanaDetails.liveAsana = LiveAsana(0L, )
-//                showAddEditItemDialog(this, (0, "andter", "", UUID.randomUUID().toString()))
+                liveAsanaDetails.liveAsana = LiveAsana(0L, it.content, type = "a")
+                showAddEditItemDialog(this, liveAsanaDetails)
             }
         })
         binding.viewModel = viewModel
@@ -79,36 +77,27 @@ class LiveAsanasActivity : AppCompatActivity() {
 
             with(LiveAsanaDetails) {
                 var selectedAsana = asana?.copy()
-                if (!isNew()) {
-                    itemNameTextView.setOnClickListener {
-                        val factory = AsanasDialogFactory(1, "")
-                        ListWithSearchFragment.newInstance(
-                            factory
-                        ) {
-                            selectedAsana = (it as Asana)
-                            setAsanaFields(this@apply, selectedAsana)
-                        }.show(supportFragmentManager, ListWithSearchFragment.TAG)
-                    }
-                    setAsanaFields(this@apply, selectedAsana)
-
-                    with(liveAsana) {
-                        audioGuideSwitch.isChecked = playAudio
-                        preparationEditText.setText(preparationTime.toString())
-                        lengthEditText.setText(lengthTime.toString())
-                        consciousnessEditText.setText(consciousnessTime.toString())
-                    }
-
-                    val url =
-                        "${LiveAsanaDetails.asana?.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
-                    Glide.with(this@apply)
-                        .load(url)
-                        .centerCrop()
-                        .placeholder(R.drawable.ic_image_place_holder)
-                        .error(R.drawable.ic_broken_image)
-                        .fallback(R.drawable.ic_no_image)
-                        .transform(CircleCrop())
-                        .into(photoProgramm)
+//                if (!isNew()) {
+                itemNameTextView.setOnClickListener {
+                    val factory = AsanasDialogFactory(1, "")
+                    ListWithSearchFragment.newInstance(
+                        factory
+                    ) {
+                        selectedAsana = (it as Asana)
+                        setAsanaFields(this@apply, selectedAsana)
+                    }.show(supportFragmentManager, ListWithSearchFragment.TAG)
                 }
+                setAsanaFields(this@apply, selectedAsana)
+
+                with(liveAsana) {
+                    audioGuideSwitch.isChecked = playAudio
+                    preparationEditText.setText(preparationTime.toString())
+                    lengthEditText.setText(lengthTime.toString())
+                    consciousnessEditText.setText(consciousnessTime.toString())
+                }
+
+
+//                }
 
                 val dialog = AlertDialog.Builder(c, R.style.my_dialog)
                     .setTitle(if (isNew()) "Добавляем новую асану" else "Редактируем асану ${asana?.name}") //todo amend to string res
@@ -141,6 +130,16 @@ class LiveAsanasActivity : AppCompatActivity() {
         view.consciousnessDropdownTextView.setContentText(asana.desc)
         view.techniqueDropdownTextView.setContentText(asana.technics)
         view.effectsDropdownTextView.setContentText(asana.effects)
+        val url =
+            "${asana?.photo}?w=360" //Append ?w=360 to the URL if the URL is not null. This value assumes that the device screen has 1080px in width. You can set this value dynamically to be one-third of the device’s screen width.
+        Glide.with(view)
+            .load(url)
+            .centerCrop()
+            .placeholder(R.drawable.ic_image_place_holder)
+            .error(R.drawable.ic_broken_image)
+            .fallback(R.drawable.ic_no_image)
+            .transform(CircleCrop())
+            .into(view.asanaPhotoView)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

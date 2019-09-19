@@ -161,6 +161,8 @@
         <item name="borderWidth">0dp</item>
         <item name="elevation">4dp</item>
         <item name="fabSize">normal</item>
+        <item name="android:tint">@color/coins_white</item>
+        <item name="android:backgroundTint">@color/coins_flat_green</item>
         <item name="layout_anchorGravity">bottom|right</item>
     </style>
 

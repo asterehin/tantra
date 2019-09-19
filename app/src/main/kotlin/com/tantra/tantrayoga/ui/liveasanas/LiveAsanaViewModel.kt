@@ -16,9 +16,11 @@ class LiveAsanaViewModel : BaseViewModel() {
     private val sanscritName = MutableLiveData<String>()
     private val asanaDesc = MutableLiveData<String>()
     lateinit var onItemActionEvent: MutableLiveData<Event<LiveAsanaDetails>>
+    private lateinit var liveAsana: LiveAsana
 
 
     fun bind(liveAsana: LiveAsanaDetails) {
+        this.liveAsana = liveAsana.liveAsana
         asanaName.value = liveAsana.asana?.name
         sanscritName.value = liveAsana.asana?.sanscritName
 //        asanaDesc.value = "%d".format(liveAsana.liveAsana.consciousnessTime)
@@ -65,7 +67,7 @@ class LiveAsanaViewModel : BaseViewModel() {
 
     fun getMinutes(): MutableLiveData<String> {
         val string = MutableLiveData<String>()
-        string.value = "100 minutes"
+        string.value = liveAsana.getSummaryTime().toString()
         return string
     }
 
